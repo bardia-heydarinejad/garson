@@ -1,12 +1,8 @@
 from django.conf.urls import patterns, include, url
-
-from django.contrib import admin
-admin.autodiscover()
-
+from authentication.views import signIn
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'reserver.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^authentication/',include("authentication.urls")),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^signin/',signIn),
 )
