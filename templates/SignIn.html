@@ -4,6 +4,14 @@
     <title></title>
 </head>
 <body>
-    HELLO
+    Registration:
+    <form method="post" action="">
+        {% csrf_token %}
+        <input name="username" type="tel" maxlength="8"> <br>
+        <input name="email" type="email" maxlength="255"> <br>
+        <input name="password" type="password" maxlength="255"> <br>
+        <input name="re_password" type="password" maxlength="255"> <br>
+        <input type="submit">
+    </form>
 </body>
 </html>

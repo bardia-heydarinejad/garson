@@ -1,9 +1,8 @@
-from django.shortcuts import render_to_response, HttpResponse
+from django.shortcuts import render, HttpResponse
 
 # Create your views here.
-
 def signIn(request):
-    if request.POST:
-        return HttpResponse("post")
-    else:
-        return render_to_response("SignIn.html",{})
+    return render(request,"SignIn.html",{})
+
+def login(request):
+    return render(request,"Login.html",{'NEXT':request.GET.get("next","/")})
