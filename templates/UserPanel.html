@@ -6,5 +6,50 @@
 <body>
 User Panel <br>
 <a href="/authentication/logout">Logout</a>
+<div>
+    Salam {{name}}
+    <form method="post" action="change_days/">
+        {% csrf_token %}
+        <br><label>Sat</label><input type="number" name="sat">
+        <br><label>Sun</label><input type="number" name="sun">
+        <br><label>Mon</label><input type="number" name="mon">
+        <br><label>Tue</label><input type="number" name="tue">
+        <br><label>Wed</label><input type="number" name="wed">
+        <br><label>Thu</label><input type="number" name="thu">
+        <br><label>Fri</label><input type="number" name="fri">
+        <br><input type="submit">
+    </form>
+</div>
+<div>
+    <form method="post" action="change_name/">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="نام و نام خانوادگی">
+        <input type="text" name="uni_id" placeholder="شماره دانشجویی">
+        <br><input type="submit">
+    </form>
+</div>
+<div>
+    <form method="post" action="change_food_order/">
+        {% csrf_token %}
+        fav:<input type="text" name="list">
+        <input type="submit">
+    </form>
+</div>
+<div>
+    <form method="post" action="change_ban_food/">
+        {% csrf_token %}
+        ban:<input type="text" name="list">
+        <input type="submit">
+    </form>
+</div>
+<div>
+    stu username password
+    <form method="post" action="change_stu/">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit">
+    </form>
+</div>
 </body>
 </html>

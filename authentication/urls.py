@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from authentication.controllers import signIn,login,logout
+from authentication.controllers import *
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'reserver.views.home', name='home'),
@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     url(r'^signin/',signIn),
     url(r'^login/',login),
     url(r'^logout/',logout),
+    url(r'^debug_active/',debugActiveUser),
 )
