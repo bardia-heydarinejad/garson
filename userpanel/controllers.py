@@ -27,28 +27,6 @@ def changeDays(request):
 
 
 @login_required(login_url='/authentication/login/')
-def changeName(request):
-    user_id = request.user.id
-    us = UserCollection.objects(userId=user_id)
-    if len(us) != 1:
-        return HttpResponse("not active")
-    user = us[0]
-    name = request.POST.get("name", "")
-    if not 3 < len(name) < 75:
-        return HttpResponse("invalid name")
-
-    uni_id = request.POST.get("uni_id", "")
-    if len(uni_id) != 8:
-        return HttpResponse("invalid uni id")
-
-    user.uni_id = uni_id
-    user.name = name
-    user.save()
-
-    return HttpResponse("changed")
-
-
-@login_required(login_url='/authentication/login/')
 def changeFoodOrder(request):
     us = UserCollection.objects(userId=request.user.id)
     if len(us) != 1:
@@ -67,21 +45,15 @@ def changeBanFood(request):
         return HttpResponse("not active")
     user = us[0]
     l = [int(food_id) for food_id in request.POST.get("list", "").split()]
-    user.favorites = l
+    user.baned = l
     user.save()
     return HttpResponse("changed")
 
 
 @login_required(login_url='/authentication/login/')
-def changeStu(request):
-    us = UserCollection.objects(userId=request.user.id)
-    if len(us) != 1:
-        return HttpResponse("not active")
-    user = us[0]
-    if request.POST.get("username", "") != "":
-        user.stu_username = request.POST.get("username")
-    if request.POST.get("password", "") != "":
-        user.stu_password = request.POST.get("password")
-    user.save()
+def changeEmail(request):
+    request.user.email = request.POST.get("new_email")
+    request.user.save()
     return HttpResponse("changed")
+
 

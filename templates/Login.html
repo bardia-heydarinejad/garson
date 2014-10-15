@@ -7,7 +7,7 @@
     <form method="post">
         {% csrf_token %}
         <input name="next" type="hidden" value="{{NEXT}}">
-        <input name="username_or_email">
+        <input name="username">
         <input name="password" type="password">
         <input type="submit">
     </form>

@@ -7,5 +7,4 @@ urlpatterns = patterns('',
     url(r'^signin/',signIn),
     url(r'^login/',login),
     url(r'^logout/',logout),
-    url(r'^debug_active/',debugActiveUser),
 )

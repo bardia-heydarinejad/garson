@@ -7,7 +7,7 @@
 User Panel <br>
 <a href="/authentication/logout">Logout</a>
 <div>
-    Salam {{name}}
+    سلام {{name}}
     <form method="post" action="change_days/">
         {% csrf_token %}
         <br><label>Sat</label><input type="number" name="sat">
@@ -17,14 +17,6 @@ User Panel <br>
         <br><label>Wed</label><input type="number" name="wed">
         <br><label>Thu</label><input type="number" name="thu">
         <br><label>Fri</label><input type="number" name="fri">
-        <br><input type="submit">
-    </form>
-</div>
-<div>
-    <form method="post" action="change_name/">
-        {% csrf_token %}
-        <input type="text" name="name" placeholder="نام و نام خانوادگی">
-        <input type="text" name="uni_id" placeholder="شماره دانشجویی">
         <br><input type="submit">
     </form>
 </div>
@@ -43,11 +35,9 @@ User Panel <br>
     </form>
 </div>
 <div>
-    stu username password
-    <form method="post" action="change_stu/">
+    <form method="post" action="change_email/">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
+        <input type="email" name="new_email" placeholder="Enter your email">
         <input type="submit">
     </form>
 </div>
