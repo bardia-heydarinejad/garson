@@ -6,44 +6,14 @@ from django.shortcuts import HttpResponse, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
 from authentication import views
-from bot.stubot import check
-
-
-def signIn(request):
-    if request.POST:
-        username = request.POST.get("username", '')
-        password = request.POST.get("password", '')
-
-        check_res = check((username,password))
-        if not check_res[0]:
-            return HttpResponse("wrong username or password")
-
-        name = check_res[1]
-        uni_id = check_res[2]
-
-        user = User.objects.create_user(username, password=password)
-        user.is_active = True
-        user.save()
-
-        newUserInMongo = UserCollection()
-        newUserInMongo.userId = user.id
-        newUserInMongo.name = name
-        newUserInMongo.uni_id = uni_id
-        newUserInMongo.stu_username = username
-        newUserInMongo.stu_password = password
-        newUserInMongo.save()
-
-        return HttpResponse("post")
-    else:
-        return views.signIn(request)
-
+from bot.scraper import check, credit
 
 
 def login(request):
     if request.POST:
         username = request.POST.get("username", '')
         password = request.POST.get("password", '')
-        next = request.POST.get("next", '')
+        next_url = request.POST.get("next", '')
 
         user = None
         if password != '' and username != '':
@@ -53,10 +23,32 @@ def login(request):
             # the password verified for the user
             print("User is valid, active and authenticated")
             auth.login(request, user)
-            return redirect(next)
+            return redirect(next_url)
         else:
-            # the authentication system was unable to verify the username and password
-            return HttpResponse("The username and password were incorrect.")
+            print("Not registerd try to register")
+            check_res = check((username, password))
+            if not check_res[0]:
+                print("wrong user or pass to register")
+                return HttpResponse("wrong username or password")
+
+            name = check_res[1]
+            uni_id = check_res[2]
+
+            user = User.objects.create_user(username, password=password)
+            user.is_active = True
+            user.save()
+
+            new_user_in_mongo = UserCollection()
+            new_user_in_mongo.user_id = user.id
+            new_user_in_mongo.name = name
+            new_user_in_mongo.uni_id = uni_id
+            new_user_in_mongo.stu_username = username
+            new_user_in_mongo.stu_password = password
+            new_user_in_mongo.credit = credit((username, password))
+            new_user_in_mongo.save()
+
+            print "Registered successfully"
+            return redirect(next_url)
     else:
         return views.login(request)
 
@@ -64,3 +56,9 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+def flush():
+    for user in User.objects.all():
+        user.delete()
+    UserCollection.drop_collection()

@@ -32,20 +32,15 @@ def changeFoodOrder(request):
     if len(us) != 1:
         return HttpResponse("not active")
     user = us[0]
-    l = [int(food_id) for food_id in request.POST.get("list", "").split()]
-    user.favorites = l
-    user.save()
-    return HttpResponse("changed")
+    l1 = [int(food_id) for food_id in request.POST.get("food_list_1", "").split()]
+    l2 = [int(food_id) for food_id in request.POST.get("food_list_2", "").split()]
+    l3 = [int(food_id) for food_id in request.POST.get("food_list_3", "").split()]
 
+    # TODO: check ids
 
-@login_required(login_url='/authentication/login/')
-def changeBanFood(request):
-    us = UserCollection.objects(userId=request.user.id)
-    if len(us) != 1:
-        return HttpResponse("not active")
-    user = us[0]
-    l = [int(food_id) for food_id in request.POST.get("list", "").split()]
-    user.baned = l
+    user.food_list_1 = l1
+    user.food_list_2 = l2
+    user.food_list_3 = l3
     user.save()
     return HttpResponse("changed")
 

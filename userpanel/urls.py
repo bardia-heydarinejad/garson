@@ -10,5 +10,4 @@ urlpatterns = patterns('',
     url(r'^change_days/',changeDays),
     url(r'^change_email/', changeEmail),
     url(r'^change_food_order/',changeFoodOrder),
-    url(r'^change_ban_food/',changeBanFood),
 )

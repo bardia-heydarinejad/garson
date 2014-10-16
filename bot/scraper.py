@@ -41,7 +41,6 @@ def check((username, password)):
     payload = encoded_dict({"j_username": username,
                             "j_password": password,
                             "login": u"ورود", })
-    print payload
 
     # Use urllib to encode the payload
     data = urllib.urlencode(payload)
@@ -55,15 +54,65 @@ def check((username, password)):
 
     if contents.find('iconWarning.gif') != -1:
         #print contents
-        return (False, None, None)
+        return False, None, None
 
     soup = BeautifulSoup(contents)
     user_info = soup.body.table.tr.find_all('td')[4].div.contents[0].replace(u'\xA0', ' ').replace('\n', ' ').encode(
         'utf8')
     uni_id = re.findall(r"\d{8}", user_info)[0]
     name = str(user_info).replace(uni_id, "").replace(u'\xA0', ' ').strip()
-    return (True, name, uni_id)
+    return True, name, uni_id
 
+
+def credit((username, password)):
+    # Store the cookies and create an opener that will hold them
+    cj = cookielib.CookieJar()
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+
+    # Add our headers
+    opener.addheaders = [('User-agent', 'RedditTesting')]
+
+    # Install our opener (note that this changes the global opener to the one
+    # we just made, but you can also just call opener.open() if you want)
+    urllib2.install_opener(opener)
+
+    # The action/ target from the form
+    authentication_url = "https://stu.iust.ac.ir/j_security_check"
+
+    # Input parameters we are going to send
+    payload = encoded_dict({"j_username": username,
+                            "j_password": password,
+                            "login": u"ورود", })
+
+    # Use urllib to encode the payload
+    data = urllib.urlencode(payload)
+
+    # Build our Request object (supplying 'data' makes it a POST)
+    req = urllib2.Request(authentication_url, data)
+
+    # Make the request and read the response
+    resp = urllib2.urlopen(req)
+    contents = resp.read()
+
+    if contents.find('iconWarning.gif') != -1:
+        print "error"
+        return False
+    #
+
+    credit_url = "https://stu.iust.ac.ir/nurture/user/credit/charge/view.rose"
+
+    req = urllib2.Request(credit_url, data)
+
+    # Make the request and read the response
+    resp = urllib2.urlopen(req)
+    contents = resp.read()
+    soup = BeautifulSoup(contents)
+    user_credit = re.findall(r"\d+",
+                             soup.find(id="charge").find_all("table")[2].tr.td.table.tr.find_all('td')[1].contents[
+                                 0].replace(u'\xA0', ' ').replace('\n', ' ').strip())[0]
+    print 'credit:', user_credit
+    return int(user_credit)
 
 if __name__ == "__main__":
-    print check(("92521114", "0017578167"))
+    print credit(("92521114", "0017578167"))
+    # print check(("92521114", "0017578167"))

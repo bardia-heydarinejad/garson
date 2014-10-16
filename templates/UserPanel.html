@@ -23,7 +23,9 @@ User Panel <br>
 <div>
     <form method="post" action="change_food_order/">
         {% csrf_token %}
-        fav:<input type="text" name="list">
+        fav:<input type="text" name="food_list_1">
+        meh:<input type="text" name="food_list_2">
+        ban:<input type="text" name="food_list_3">
         <input type="submit">
     </form>
 </div>
