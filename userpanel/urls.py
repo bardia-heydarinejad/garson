@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from userpanel.views import userPanel
-from userpanel.controllers import changeDays, changeFoodOrder, changeBanFood, changeEmail
+from userpanel.controllers import changeDays, changeFoodOrder, changeEmail
 
 urlpatterns = patterns('',
     # Examples:

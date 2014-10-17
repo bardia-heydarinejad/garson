@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<site name="stu.iust">
+    <foods>
+        <food id="1" price="640">قیمه</food>
+        <food id="2" price="720">>جوجه کباب</food>
+        <food id="3" price="800">کوبیده</food>
+        <food id="4" price="640">کرفس</food>
+        <food id="5" price="640">لوبیا پلو</food>
+        <food id="6" price="720">ماهی</food>
+        <food id="7" price="640">قرمه سبزی</food>
+    </foods>
+    <dinings>
+        <self id="1" >سلف مرکزی برادران</self>
+        <self id="4">سلف کوی بسیج برادران</self>
+        <self id="5">خوابگاه حکیمیه ارشد</self>
+        <self id="6">خوابگاه دکترا بلوک 10</self>
+        <self id="7">خوابگاه رشید</self>
+        <self id="8">خوابگاه جشنواره</self>
+        <self id="9">خوابگاه ولیعصر(ع)</self>
+        <self id="11">خوابگاه مجیدیه</self>
+        <self id="12">خوابگاه فرجام</self>
+        <self id="13">خوابگاه حکیمیه کارشناسی</self>
+        <self id="14">خوابگاه خاتم</self>
+    </dinings>
+</site>

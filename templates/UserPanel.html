@@ -8,6 +8,10 @@ User Panel <br>
 <a href="/authentication/logout">Logout</a>
 <div>
     سلام {{name}}
+    <br>
+    اعتبار شما:
+    {{credit}}
+    تومن
     <form method="post" action="change_days/">
         {% csrf_token %}
         <br><label>Sat</label><input type="number" name="sat">
@@ -26,13 +30,6 @@ User Panel <br>
         fav:<input type="text" name="food_list_1">
         meh:<input type="text" name="food_list_2">
         ban:<input type="text" name="food_list_3">
-        <input type="submit">
-    </form>
-</div>
-<div>
-    <form method="post" action="change_ban_food/">
-        {% csrf_token %}
-        ban:<input type="text" name="list">
         <input type="submit">
     </form>
 </div>

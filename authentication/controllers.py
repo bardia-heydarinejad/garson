@@ -7,6 +7,7 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from authentication import views
 from bot.scraper import check, credit
+from configuration.models import Food
 
 
 def login(request):
@@ -45,6 +46,7 @@ def login(request):
             new_user_in_mongo.stu_username = username
             new_user_in_mongo.stu_password = password
             new_user_in_mongo.credit = credit((username, password))
+            new_user_in_mongo.food_list_2 = [x.id for x in Food.all_foods()]
             new_user_in_mongo.save()
 
             print "Registered successfully"

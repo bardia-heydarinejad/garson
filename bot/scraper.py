@@ -59,8 +59,13 @@ def check((username, password)):
     soup = BeautifulSoup(contents)
     user_info = soup.body.table.tr.find_all('td')[4].div.contents[0].replace(u'\xA0', ' ').replace('\n', ' ').encode(
         'utf8')
-    uni_id = re.findall(r"\d{8}", user_info)[0]
+    matches = re.findall(r"\d{8}", user_info)
+    if len(matches) != 0:
+        return False, None, None
+    uni_id = matches[0]
     name = str(user_info).replace(uni_id, "").replace(u'\xA0', ' ').strip()
+    if len(name) < 3:
+        return False, None, None
     return True, name, uni_id
 
 
@@ -112,6 +117,7 @@ def credit((username, password)):
                                  0].replace(u'\xA0', ' ').replace('\n', ' ').strip())[0]
     print 'credit:', user_credit
     return int(user_credit)
+
 
 if __name__ == "__main__":
     print credit(("92521114", "0017578167"))

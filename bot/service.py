@@ -23,7 +23,6 @@ class MyDaemon(Daemon):
 
 if __name__ == "__main__":
     daemon = MyDaemon('/tmp/daemon-garson.pid')
-    daemon.run()
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
             daemon.start()

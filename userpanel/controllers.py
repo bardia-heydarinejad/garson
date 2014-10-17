@@ -8,7 +8,7 @@ from userpanel.models import UserCollection
 @login_required(login_url='/authentication/login/')
 def changeDays(request):
     user_id = request.user.id
-    us = UserCollection.objects(userId=user_id)
+    us = UserCollection.objects(user_id=user_id)
     if len(us) != 1:
         return HttpResponse("not active")
     user = us[0]
@@ -28,7 +28,7 @@ def changeDays(request):
 
 @login_required(login_url='/authentication/login/')
 def changeFoodOrder(request):
-    us = UserCollection.objects(userId=request.user.id)
+    us = UserCollection.objects(user_id=request.user.id)
     if len(us) != 1:
         return HttpResponse("not active")
     user = us[0]
