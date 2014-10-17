@@ -15,8 +15,7 @@ class Food:
     def all_foods():
         for e in Food.root.findall('.//foods/food'):
             # How to make decisions based on attributes even in 2.6:
-            print e.attrib.get('id'), e.find('name').text
-            yield Food(e.attrib.get('id'), e.find('name').text, int(e.find('price').text))
+            yield Food(e.attrib.get('id'), e.text, int(e.attrib.get('price')))
 
     @staticmethod
     def max_price():

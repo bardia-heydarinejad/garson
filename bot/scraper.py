@@ -60,7 +60,7 @@ def check((username, password)):
     user_info = soup.body.table.tr.find_all('td')[4].div.contents[0].replace(u'\xA0', ' ').replace('\n', ' ').encode(
         'utf8')
     matches = re.findall(r"\d{8}", user_info)
-    if len(matches) != 0:
+    if len(matches) != 1:
         print contents
         return False, None, None
     uni_id = matches[0]

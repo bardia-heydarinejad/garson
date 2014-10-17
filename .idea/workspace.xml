@@ -26,7 +26,7 @@
       <file leaf-file-name="controllers.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authentication/controllers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="27" selection-start="950" selection-end="950" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="1296">
+            <state line="48" column="0" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.0" vertical-offset="699" max-vertical-offset="1296">
               <folding />
             </state>
           </provider>
@@ -41,10 +41,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configuration/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="12" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="666">
+            <state line="17" column="0" selection-start="435" selection-end="435" vertical-scroll-proportion="0.2137931" vertical-offset="195" max-vertical-offset="630">
               <folding />
             </state>
           </provider>
@@ -59,10 +59,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scraper.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="scraper.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bot/scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="22" selection-start="2097" selection-end="2097" vertical-scroll-proportion="0.39259258" vertical-offset="993" max-vertical-offset="2286">
+            <state line="62" column="24" selection-start="1895" selection-end="1895" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="2286">
               <folding />
             </state>
           </provider>
@@ -80,7 +80,7 @@
       <file leaf-file-name="service.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bot/service.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="47" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="792">
+            <state line="24" column="47" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="104" max-vertical-offset="720">
               <folding />
             </state>
           </provider>
@@ -143,11 +143,11 @@
         <option value="$PROJECT_DIR$/userpanel/controllers.py" />
         <option value="$PROJECT_DIR$/templates/UserPanel.html" />
         <option value="$PROJECT_DIR$/stu_config.xml" />
-        <option value="$PROJECT_DIR$/authentication/controllers.py" />
-        <option value="$PROJECT_DIR$/configuration/models.py" />
         <option value="$PROJECT_DIR$/configuration/stu_config.xml" />
         <option value="$PROJECT_DIR$/userpanel/views.py" />
         <option value="$PROJECT_DIR$/bot/scraper.py" />
+        <option value="$PROJECT_DIR$/authentication/controllers.py" />
+        <option value="$PROJECT_DIR$/configuration/models.py" />
       </list>
     </option>
   </component>
@@ -504,7 +504,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39940387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31445605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26974666" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -747,13 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bot/service.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="47" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="792">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reserver/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="4" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342" />
@@ -779,13 +772,6 @@
         <state line="84" column="33" selection-start="2006" selection-end="2027" vertical-scroll-proportion="0.0" vertical-offset="806" max-vertical-offset="1692" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="12" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/userpanel/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="29" selection-start="498" selection-end="498" vertical-scroll-proportion="0.49675325" vertical-offset="0" max-vertical-offset="616" />
@@ -794,13 +780,6 @@
     <entry file="file://$PROJECT_DIR$/configuration/stu_config.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="22" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanel/controllers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="38" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1080">
           <folding />
         </state>
       </provider>
@@ -822,16 +801,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/userpanel/controllers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="38" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/authentication/controllers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="27" selection-start="950" selection-end="950" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1296">
+        <state line="48" column="0" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.0" vertical-offset="699" max-vertical-offset="1296">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bot/service.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="47" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="792">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bot/scraper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="22" selection-start="2097" selection-end="2097" vertical-scroll-proportion="0.39259258" vertical-offset="993" max-vertical-offset="2286">
+        <state line="62" column="24" selection-start="1895" selection-end="1895" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="435" selection-end="435" vertical-scroll-proportion="0.2137931" vertical-offset="195" max-vertical-offset="630">
           <folding />
         </state>
       </provider>

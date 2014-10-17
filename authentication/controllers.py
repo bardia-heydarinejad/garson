@@ -37,7 +37,6 @@ def login(request):
 
             user = User.objects.create_user(username, password=password)
             user.is_active = True
-            user.save()
 
             new_user_in_mongo = UserCollection()
             new_user_in_mongo.user_id = user.id
@@ -47,8 +46,9 @@ def login(request):
             new_user_in_mongo.stu_password = password
             new_user_in_mongo.credit = credit((username, password))
             new_user_in_mongo.food_list_2 = [x.id for x in Food.all_foods()]
-            new_user_in_mongo.save()
 
+            new_user_in_mongo.save()
+            user.save()
             print "Registered successfully"
             return redirect(next_url)
     else:
