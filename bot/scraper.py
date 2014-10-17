@@ -61,10 +61,12 @@ def check((username, password)):
         'utf8')
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 0:
+        print contents
         return False, None, None
     uni_id = matches[0]
     name = str(user_info).replace(uni_id, "").replace(u'\xA0', ' ').strip()
     if len(name) < 3:
+        print contents
         return False, None, None
     return True, name, uni_id
 
