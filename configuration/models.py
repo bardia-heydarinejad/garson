@@ -20,6 +20,13 @@ class Food:
         return all
 
     @staticmethod
+    def get_all_id():
+        all_id = []
+        for e in Food.root.findall('.//foods/food'):
+            all_id.append(int(e.attrib.get('id')))
+        return all_id
+
+    @staticmethod
     def max_price():
         maximum = 0
         for food in Food.get_all():
@@ -29,9 +36,15 @@ class Food:
 
     @staticmethod
     def get_name(food_id):
-        s = './/foods/food[@id="' + food_id + '"]'
+        s = './/foods/food[@id="' + str(food_id) + '"]'
         node = Food.root.find(s)
         return node.text if node is not None else 'None'
+
+    @staticmethod
+    def get_price(food_id):
+        s = './/foods/food[@id="' + str(food_id) + '"]'
+        node = Food.root.find(s)
+        return node.attrib.get('price') if node is not None else 'None'
 
 
 class Self:

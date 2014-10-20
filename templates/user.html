@@ -118,17 +118,17 @@
 	<div class="sort">
 		<ul id="sortable1" class="droptrue">
             {% for food in food_list_name_1 %}
-            <li data-list_id="1" class="ui-state-default">{{food}}</li>
+            <li data-foodType="{{ food.id_ }}" class="ui-state-default">{{ food.name }} - {{ food.price }}</li>
             {% endfor %}
 		</ul>
 		<ul id="sortable2" class="droptrue">
             {% for food in food_list_name_2 %}
-            <li data-foodType="2" data-list_id="2" class="ui-state-default">{{food}}</li>
+            <li data-foodType="{{ food.id_ }}" class="ui-state-default">{{ food.name }} - {{ food.price }}</li>
             {% endfor %}
 		</ul>
 		<ul id="sortable3" class="droptrue">
             {% for food in food_list_name_3 %}
-            <li data-list_id="3" class="ui-state-default">{{food}}</li>
+            <li data-foodType="{{ food.id_ }}" class="ui-state-default">{{ food.name }} - {{ food.price }}</li>
             {% endfor %}
 		</ul>
 		
@@ -169,16 +169,40 @@
 				$('div.pop').hide();
 			});
             $('button.accfood').click(function(){
-               var list1="".r list2="",list3="" ;
-               var fav = $('ul#sortable2').children('li');
-               for(var i=0;i<fav.length;i++){
-                   var text = fav[i].getAttribute('data-foodtype').toString();
+               var list1="";
+               var ul1 = $('ul#sortable1').children('li');
+               for(var i=0;i<ul1.length;i++){
+                   var text = ul1[i].getAttribute('data-foodType').toString();
                    list1 += text+" " ;
+               }
 
+               var list2="";
+               var ul2 = $('ul#sortable2').children('li');
+               for(var i=0;i<ul2.length;i++){
+                   var text = ul2[i].getAttribute('data-foodType').toString();
+                   list2 += text+" " ;
+               }
+
+               var list3="";
+               var ul3 = $('ul#sortable3').children('li');
+               for(var i=0;i<ul3.length;i++){
+                   var text = ul3[i].getAttribute('data-foodType').toString();
+                   list3 += text+" " ;
                }
 
                console.log(list1);
+               console.log(list2);
+               console.log(list3);
 
+                $.post("/account/change_food_order/",
+                {
+                    food_list_1:list1,
+                    food_list_2:list2,
+                    food_list_3:list3
+                },
+                function(data,status){
+                alert("Data: " + data + "\nStatus: " + status);
+                });
             });
 		});
 

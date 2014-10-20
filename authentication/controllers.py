@@ -49,7 +49,7 @@ def login(request):
             new_user_in_mongo.breakfast = [0, 0, 0, 0, 0, 0]
             new_user_in_mongo.lunch = [0, 0, 0, 0, 0, 0]
             new_user_in_mongo.dinner = [0, 0, 0, 0, 0, 0]
-            new_user_in_mongo.food_list_2 = [int(x.id) for x in Food.get_all()]
+            new_user_in_mongo.food_list_2 = Food.get_all_id()
             new_user_in_mongo.food_list_1 = []
             new_user_in_mongo.food_list_3 = []
 

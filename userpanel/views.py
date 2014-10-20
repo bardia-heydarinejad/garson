@@ -6,6 +6,7 @@ from userpanel.models import UserCollection
 from configuration.models import Food, Self
 from json import dumps
 
+
 def format_price(price):
     price = str(price / 10)
     l = len(price)
@@ -27,16 +28,16 @@ def user_panel(request):
     stu_credit = us[0].credit if us[0].credit is not None else 0
     uni_id = us[0].uni_id if us[0].uni_id is not None else '00000000'
 
-    food_list_name_1 = []
-    food_list_name_2 = []
-    food_list_name_3 = []
+    food_list_1 = []
+    food_list_2 = []
+    food_list_3 = []
 
     for food_id in us[0].food_list_1:
-        food_list_name_1.append(Food.get_name(food_id))
+        food_list_1.append(Food(food_id, Food.get_name(food_id), Food.get_price(food_id)))
     for food_id in us[0].food_list_2:
-        food_list_name_2.append(Food.get_name(food_id))
+        food_list_2.append(Food(food_id, Food.get_name(food_id), Food.get_price(food_id)))
     for food_id in us[0].food_list_3:
-        food_list_name_3.append(Food.get_name(food_id))
+        food_list_3.append(Food(food_id, Food.get_name(food_id), Food.get_price(food_id)))
 
     print us[0].breakfast
 
@@ -50,13 +51,13 @@ def user_panel(request):
 
     aaa = Self.get_all()
     for i in aaa:
-        print i.id_,i.name
+        print i.id_, i.name
 
     print aaa
 
     data = {"name": name, 'uni_id': uni_id, 'credit': format_price(stu_credit),
-            'email': email, 'food_list_name_1': food_list_name_1,
-            'food_list_name_2': food_list_name_2, 'food_list_name_3': food_list_name_3,
+            'email': email, 'food_list_name_1': food_list_1,
+            'food_list_name_2': food_list_2, 'food_list_name_3': food_list_3,
             'all_selves': aaa, 'breakfast': us[0].breakfast,
             'lunch': us[0].lunch, 'dinner': us[0].dinner}
     return render(request, "user.html", data)
