@@ -2,4 +2,5 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def home(request):
-    return render(request,"Main.html",{})
+    msg = request.GET.get("msg")
+    return render(request,"index.html",{'msg':msg})

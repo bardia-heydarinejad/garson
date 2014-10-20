@@ -2,7 +2,7 @@
 <site name="stu.iust">
     <foods>
         <food id="1" price="640">قیمه</food>
-        <food id="2" price="720">>جوجه کباب</food>
+        <food id="2" price="720">جوجه کباب</food>
         <food id="3" price="800">کوبیده</food>
         <food id="4" price="640">کرفس</food>
         <food id="5" price="640">لوبیا پلو</food>

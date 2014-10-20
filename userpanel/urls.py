@@ -1,13 +1,14 @@
-from django.conf.urls import patterns, include, url
-from userpanel.views import userPanel
-from userpanel.controllers import changeDays, changeFoodOrder, changeEmail
+from django.conf.urls import patterns, url
+from userpanel.views import user_panel, credit
+from userpanel.controllers import change_days, change_food_order, change_email
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'reserver.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    url(r'^$',userPanel),
-    url(r'^change_days/',changeDays),
-    url(r'^change_email/', changeEmail),
-    url(r'^change_food_order/',changeFoodOrder),
+                       # Examples:
+                       # url(r'^$', 'reserver.views.home', name='home'),
+                       # url(r'^blog/', include('blog.urls')),
+                       url(r'^$', user_panel),
+                       url(r'^change_days/', change_days),
+                       url(r'^change_email/', change_email),
+                       url(r'^change_food_order/', change_food_order),
+                       url(r'^credit/', credit),
 )
