@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="/css/test.css" />
     <title></title>
 </head>
 <body>
@@ -14,13 +15,30 @@ User Panel <br>
     تومن
     <form method="post" action="change_days/">
         {% csrf_token %}
-        <br><label>Sat</label><input type="number" name="sat">
-        <br><label>Sun</label><input type="number" name="sun">
-        <br><label>Mon</label><input type="number" name="mon">
-        <br><label>Tue</label><input type="number" name="tue">
-        <br><label>Wed</label><input type="number" name="wed">
-        <br><label>Thu</label><input type="number" name="thu">
-        <br><label>Fri</label><input type="number" name="fri">
+        <br><label>Sat: </label>
+            b<input type="number" name="sat_b">
+            l<input type="number" name="sat_l">
+            d<input type="number" name="sat_d">
+        <br><label>Sun: </label>
+            b<input type="number" name="sun_b">
+            l<input type="number" name="sun_l">
+            d<input type="number" name="sun_d">
+        <br><label>Mon: </label>
+            b<input type="number" name="mon_b">
+            l<input type="number" name="mon_l">
+            d<input type="number" name="mon_d">
+        <br><label>Tue: </label>
+            b<input type="number" name="tue_b">
+            l<input type="number" name="tue_l">
+            d<input type="number" name="tue_d">
+        <br><label>Wed: </label>
+            b<input type="number" name="wed_b">
+            l<input type="number" name="wed_l">
+            d<input type="number" name="wed_d">
+        <br><label>Thu: </label>
+            b<input type="number" name="thu_b">
+            l<input type="number" name="thu_l">
+            d<input type="number" name="thu_d">
         <br><input type="submit">
     </form>
 </div>

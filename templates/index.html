@@ -1,0 +1,56 @@
+<html>
+<head>
+    {%load staticfiles%}
+	<meta charset="utf-8">
+	<link rel="icon" href="img/logo-m.png">
+	<title>گارسون| خوش آمدید</title>
+	<link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+	<script src="{%static 'js/jquery-1.9.1.js'%}"></script>
+</head>
+<body>
+
+	<div class="login">
+		<div class="showonmobile">
+		<h1>گارسون</h1>
+		<h3>رزرو اتوماتیک غذای دانشجویی</h3>
+		<p><img class="logo-m" src="{%static 'img/logo-m.png'%}"></p>
+
+		</div>
+		<form method="post" action="/authentication/login/">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{NEXT}}">
+			<p><input tabindex="0" name="username" type="tel" placeholder ="شماره دانشجویی"></p>
+			<p><input tabindex="1" name="password" type="password" placeholder="رمز عبور"></p>
+			<p><input	type="submit" value="ورود"></p>
+			
+            {% if msg %}
+                {% if msg == 'wrong_user_pass' %}
+                    شماره ی دانشجویی یا رمز عبور اشتباه است!
+                {% else %}
+                    خطایی رخ داد!!!
+                {% endif %}
+            {% endif %}
+		</form>
+	</div>
+
+	<div class="describe">
+		<h1>گارسون</h1>
+		<h3>رزرو اتوماتیک غذای دانشجویی</h3>
+	</div>
+
+	<script>
+	 var x = window.innerWidth ;
+	 $(document).ready(function(){
+	 	if(x > 650){
+	 		$('body').animate({'background-position':'0px'},1200);
+	 	}
+	 	else{
+	 		$('body').css('background-image','none');
+	 	}
+	 	window.onResize = function(){
+	 		$('body').css('background-position','0px');
+	 	}
+	 })
+	</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<html>
+<head>
+    {%load staticfiles%}
+	<title>گارسون | صفحه کاربری</title>
+	<link rel="icon" href="{%static 'img/logo-m.png'%}">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{%static 'css/user.css'%}">
+    <meta name="viewport" content="width=device-width,initial-scales=1">
+	<script src="{%static 'js/jquery.js'%}"></script>
+	<link rel="stylesheet" href="{%static 'css/jquery-ui.css'%}">
+	<script src="{%static 'js/jquery-ui.js'%}"></script>
+
+
+</head>
+<body>
+	<div class="header">
+		<div class="rtl">
+		<span class="name">{{ name }}</span>
+		<span class="credit">اعتبار شما : {{ credit }} تومان</span>
+		<span class="id">{{ uni_id }}</span>
+        <span class="id"><a href="/authentication/logout/">خروج</a> </span>
+		</div>
+		<div class="ltr">
+            <form method="post" action="/account/change_email/">
+                {% csrf_token %}
+                <input type="submit" value="ثبت">
+                <input type="email" name="new_email" placeholder="ایمیل خود را وارد کنید" value="{{ email }}">
+                <label for="email">ایمیل </label>
+            </form>
+		</div>
+	</div>
+    <div class="content">
+	<h1>جدول برنامه رزرو غذای هفته</h1>
+	<p class="describe">در این جدول شما تعیین خواهید کرد که برای چه روز هایی و در کدام سلف غذا رزرو شود</p>
+	<table>
+		<tr>
+			<th></th>
+			<th>شنبه</th>
+			<th>یکشنبه</th>
+			<th>دوشنبه</th>
+			<th>سشنبه</th>
+			<th>چهارشنبه</th>
+			<th>پنجشنبه</th>
+		</tr>
+
+		<tr>
+			<td id="time"style="background:#3498db;color:#fff;">صبحانه</td>
+            {% for day in breakfast %}
+                <td data-day="sat" data-time="brk" data-location="{{ day }}">
+                    <select>
+                        <option data-location="0" selected="selected">نمیخواهم</option>
+                        {% for self in all_selves %}
+                            {% if forloop.counter == day %}
+                                <option data-location="{{ self.id_ }}" selected="selected">{{ self.name }}</option>
+                            {% else %}
+                                <option data-location="{{ self.id_ }}">{{ self.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+            {% endfor %}
+		</tr>
+		<tr>
+			<td id="time" style="background:#3498db;color:#fff;">نهار</td>
+            {% for day in lunch %}
+                <td data-day="sat" data-time="brk" data-location="{{ day }}">
+                    <select>
+                        <option data-location="0" selected="selected">نمیخواهم</option>
+                        {% for self in all_selves %}
+                            {% if forloop.counter == day %}
+                                <option data-location="{{ self.id_ }}" selected="selected">{{ self.name }}</option>
+                            {% else %}
+                                <option data-location="{{ self.id_ }}">{{ self.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+            {% endfor %}
+		</tr>
+		<tr>
+			<td id="time" style="background:#3498db;color:#fff;">شام</td>
+            {% for day in dinner %}
+                <td data-day="sat" data-time="brk" data-location="{{ day }}">
+                    <select>
+                        <option data-location="0" selected="selected">نمیخواهم</option>
+                        {% for self in all_selves %}
+                            {% if forloop.counter == day %}
+                                <option data-location="{{ self.id_ }}" selected="selected">{{ self.name }}</option>
+                            {% else %}
+                                <option data-location="{{ self.id_ }}">{{ self.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+            {% endfor %}
+		</tr>
+		
+	</table>
+	<div class="btn">
+	<button class="accday">ثبت تغییرات</button>
+	</div>
+	<div class="pop">
+		<select data-day="" data-time="">
+			<option data-val="1">سلف مرکزی</option>
+			<option data-val="12">خوابگاه حکیمیه</option>
+			<option data-val="4">کوی بسیج</option>
+			<option data-val="0">نمیخواهم</option>
+		</select>
+
+		<button class="submit">تغییر</button>
+	</div>
+
+	<hr>
+
+
+	<h1>غذا های مورد علاقه</h1>
+	<p class="describe">لیست قرمز شامل غذا هایی است که شما نمیپسندید و لیست سبز شامل غذا های مورد علاقه ی شماست لیست زرد منوی غذا هایی است که در اولویت دوم برای رزرو قرار دارند</p>
+	<div class="sort">
+		<ul id="sortable1" class="droptrue">
+            {% for food in food_list_name_1 %}
+            <li data-foodType="{{ food.id_ }}" class="ui-state-default">{{ food.name }} - {{ food.price }}</li>
+            {% endfor %}
+		</ul>
+		<ul id="sortable2" class="droptrue">
+            {% for food in food_list_name_2 %}
+            <li data-foodType="{{ food.id_ }}" class="ui-state-default">{{ food.name }} - {{ food.price }}</li>
+            {% endfor %}
+		</ul>
+		<ul id="sortable3" class="droptrue">
+            {% for food in food_list_name_3 %}
+            <li data-foodType="{{ food.id_ }}" class="ui-state-default">{{ food.name }} - {{ food.price }}</li>
+            {% endfor %}
+		</ul>
+		
+
+	</div>
+	<div style="text-align:center;">
+	<button class="accfood">ثبت تغییرات</button>
+	</div>
+    </div>
+	<div class="footer">
+		کاری از گروه <a href="http://rishe.co">ریشه</a>
+	</div>
+	
+	<script>
+  $(function() {
+    $( "ul.droptrue" ).sortable({
+      connectWith: "ul"
+    });
+ 
+    $( "#sortable1, #sortable3, #sortable2" ).disableSelection();
+  });
+  </script>
+
+	<script>
+		$(document).ready(function(){
+            $('select').change(function(){
+				var location = $(this).children('option:selected').attr('data-location');
+				$(this).parent('td').attr('data-location',location);
+			});
+			$('button.submit').click(function(){
+				var option = $('div.pop option:selected');
+				var text = option.text() ;
+				var day = $('div.pop select').attr('data-day');
+				var time = $('div.pop select').attr('data-time');
+				var target = $('td[data-day="'+day+'"]'+'[data-time="'+time+'"]');
+				target.text(text);
+				target.attr('data-location',option.attr('data-val'));
+				$('div.pop').hide();
+			});
+            $('button.accfood').click(function(){
+               var list1="";
+               var ul1 = $('ul#sortable1').children('li');
+               for(var i=0;i<ul1.length;i++){
+                   var text = ul1[i].getAttribute('data-foodType').toString();
+                   list1 += text+" " ;
+               }
+
+               var list2="";
+               var ul2 = $('ul#sortable2').children('li');
+               for(var i=0;i<ul2.length;i++){
+                   var text = ul2[i].getAttribute('data-foodType').toString();
+                   list2 += text+" " ;
+               }
+
+               var list3="";
+               var ul3 = $('ul#sortable3').children('li');
+               for(var i=0;i<ul3.length;i++){
+                   var text = ul3[i].getAttribute('data-foodType').toString();
+                   list3 += text+" " ;
+               }
+
+               console.log(list1);
+               console.log(list2);
+               console.log(list3);
+
+                $.post("/account/change_food_order/",
+                {
+                    food_list_1:list1,
+                    food_list_2:list2,
+                    food_list_3:list3
+                },
+                function(data,status){
+                alert("Data: " + data + "\nStatus: " + status);
+                });
+            });
+		});
+
+	</script>
+</body>
+</html>
