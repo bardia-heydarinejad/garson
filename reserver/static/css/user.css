@@ -108,13 +108,15 @@ hr {
 	vertical-align: top;
 }
 #sortable3 {
-	background: #2ecc71;
+	background: #e74c3c;
 }
 #sortable2 {
 	background:#f1c40f;
 }
 #sortable1{
-	background: #e74c3c;
+
+
+    background: #2ecc71;
 }
 #sortable1 li, #sortable3 li,#sortable2 li { 
   	margin: 5px;
@@ -181,10 +183,11 @@ select {
 	background: inherit;
 	color: inherit;
     width: 100%;
-	text-align: center;
+	text-align: center; !important
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
+    direction: rtl;
 
 }
 select:hover{
@@ -193,6 +196,12 @@ select:hover{
 option{
 	text-align: center;
 }
+input{
+    font-family: 'Mitra',sans-serif;
+    padding: 5px;
+    text-align: center;
+}
+
 @media(max-width: 1000px){
     #sortable1,#sortable1,#sortable3 {
         display: block;

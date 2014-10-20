@@ -22,10 +22,10 @@
 		</div>
 		<div class="ltr">
             <form method="post" action="/account/change_email/">
-                <label for="email">email : </label>
                 {% csrf_token %}
-                <input type="email" name="new_email" placeholder="ایمیل خود را وارد کنید" value="{{ email }}">
                 <input type="submit" value="ثبت">
+                <input type="email" name="new_email" placeholder="ایمیل خود را وارد کنید" value="{{ email }}">
+                <label for="email">ایمیل </label>
             </form>
 		</div>
 	</div>
@@ -123,7 +123,7 @@
 		</ul>
 		<ul id="sortable2" class="droptrue">
             {% for food in food_list_name_2 %}
-            <li data-list_id="2" class="ui-state-default">{{food}}</li>
+            <li data-foodType="2" data-list_id="2" class="ui-state-default">{{food}}</li>
             {% endfor %}
 		</ul>
 		<ul id="sortable3" class="droptrue">
@@ -135,7 +135,7 @@
 
 	</div>
 	<div style="text-align:center;">
-	<button class="accfood">ثبت تغییرات</button>	
+	<button class="accfood">ثبت تغییرات</button>
 	</div>
     </div>
 	<div class="footer">
@@ -168,7 +168,20 @@
 				target.attr('data-location',option.attr('data-val'));
 				$('div.pop').hide();
 			});
+            $('button.accfood').click(function(){
+               var list1="".r list2="",list3="" ;
+               var fav = $('ul#sortable2').children('li');
+               for(var i=0;i<fav.length;i++){
+                   var text = fav[i].getAttribute('data-foodtype').toString();
+                   list1 += text+" " ;
+
+               }
+
+               console.log(list1);
+
+            });
 		});
+
 	</script>
 </body>
 </html>

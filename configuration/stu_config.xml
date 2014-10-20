@@ -11,6 +11,8 @@
     </foods>
     <dinings>
         <self id="1" >سلف مرکزی برادران</self>
+        <self id="2" >سلف یاس</self>
+        <self id="3" >سلف خوابگاه خواهران</self>
         <self id="4">سلف کوی بسیج برادران</self>
         <self id="5">خوابگاه حکیمیه ارشد</self>
         <self id="6">خوابگاه دکترا بلوک 10</self>
