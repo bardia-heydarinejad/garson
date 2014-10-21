@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate
 from userpanel.models import UserCollection
 
 __author__ = 'bardia'
@@ -55,6 +56,7 @@ def login(request):
 
             new_user_in_mongo.save()
             user.save()
+            user = authenticate(username=username, password=password)
             print "Registered successfully"
 
             auth.login(request, user)
