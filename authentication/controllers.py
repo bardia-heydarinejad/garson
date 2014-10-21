@@ -58,7 +58,8 @@ def login(request):
             user.save()
 
             print "Registered successfully"
-
+            user = auth.authenticate(username=username, password=password)
+            auth.login(request, user)
             return redirect(next_url)
     else:
         return views.login(request)

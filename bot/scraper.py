@@ -120,5 +120,6 @@ def credit((username, password)):
 
 
 if __name__ == "__main__":
-    print credit(("92521114", "0017578167"))
+    print credit(("92521501", "agost1373"))
+    # print credit(("92521114", "0017578167"))
     # print check(("92521114", "0017578167"))
