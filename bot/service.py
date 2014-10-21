@@ -20,26 +20,9 @@ class MyDaemon(Daemon):
             time.sleep(1)
             logging.info('Task begin!')
             # TODO : get this week foods
-            week_food = {
-                1: [
-                    ([], [1, 2], []),
-                    ([], [1, 2], []),
-                    ([], [3, 2], []),
-                    ([], [4, 2], []),
-                    ([], [], []),
-                    ([], [], []),
-                ],
-                2: [
-                    ([3, 4], [1, 2], [4, 6]),
-                    ([3, 4], [1, 2], [4, 6]),
-                    ([3, 4], [1, 2], [4, 6]),
-                    ([3, 4], [1, 2], [4, 6]),
-                    ([3, 4], [1, 2], [4, 6]),
-                    ([3, 4], [1, 2], [4, 6]),
-                ]
-            }
-            for user in UserCollection.objects():
 
+            for user in UserCollection.objects():
+                print user.name
             logging.info('Task end!')
 
 

@@ -1,8 +1,7 @@
-from django.contrib.auth import authenticate
 from userpanel.models import UserCollection
 
 __author__ = 'bardia'
-from django.shortcuts import HttpResponse, redirect
+from django.shortcuts import  redirect
 
 from django.contrib import auth
 from django.contrib.auth.models import User
