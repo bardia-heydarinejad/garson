@@ -8,7 +8,7 @@
 	<script src="{%static 'js/jquery-1.9.1.js'%}"></script>
 </head>
 <body>
-
+<div class="bg">
 	<div class="login">
 		<div class="showonmobile">
 		<h1>گارسون</h1>
@@ -19,8 +19,8 @@
 		<form method="post" action="/authentication/login/">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{NEXT}}">
-			<p><input tabindex="0" name="username" type="tel" placeholder ="شماره دانشجویی"></p>
-			<p><input tabindex="1" name="password" type="password" placeholder="رمز عبور"></p>
+			<p><input tabindex="1" name="username" type="tel" placeholder ="شماره دانشجویی"></p>
+			<p><input tabindex="0" name="password" type="password" placeholder="رمز عبور"></p>
 			<p><input	type="submit" value="ورود"></p>
 			
             {% if msg %}
@@ -37,18 +37,18 @@
 		<h1>گارسون</h1>
 		<h3>رزرو اتوماتیک غذای دانشجویی</h3>
 	</div>
-
+</div>
 	<script>
 	 var x = window.innerWidth ;
 	 $(document).ready(function(){
 	 	if(x > 650){
-	 		$('body').animate({'background-position':'0px'},1200);
+	 		$('div.bg').animate({'background-position':'0px'},1200);
 	 	}
 	 	else{
-	 		$('body').css('background-image','none');
+	 		$('div.bg').css('background-image','none');
 	 	}
 	 	window.onResize = function(){
-	 		$('body').css('background-position','0px');
+	 		$('div.bg').css('background-position','0px');
 	 	}
 	 })
 	</script>
