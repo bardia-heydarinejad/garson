@@ -56,10 +56,9 @@ def login(request):
 
             new_user_in_mongo.save()
             user.save()
-            user = authenticate(username=username, password=password)
+
             print "Registered successfully"
 
-            auth.login(request, user)
             return redirect(next_url)
     else:
         return views.login(request)

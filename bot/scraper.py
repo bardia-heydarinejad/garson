@@ -106,7 +106,7 @@ def credit((username, password)):
         return False
     #
 
-    credit_url = "https://stu.iust.ac.ir/nurture/user/credit/charge/view.rose"
+    credit_url = "https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose"
 
     req = urllib2.Request(credit_url, data)
 
@@ -114,9 +114,7 @@ def credit((username, password)):
     resp = urllib2.urlopen(req)
     contents = resp.read()
     soup = BeautifulSoup(contents)
-    user_credit = re.findall(r"\d+",
-                             soup.find(id="charge").find_all("table")[2].tr.td.table.tr.find_all('td')[1].contents[
-                                 0].replace(u'\xA0', ' ').replace('\n', ' ').strip())[0]
+    user_credit = soup.find(id="creditId").contents[0]
     print 'credit:', user_credit
     return int(user_credit)
 
