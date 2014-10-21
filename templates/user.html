@@ -46,7 +46,7 @@
 		<tr>
 			<td id="time"style="background:#3498db;color:#fff;">صبحانه</td>
             {% for day in breakfast %}
-                <td data-day="sat" data-time="brk" data-location="{{ day }}">
+                <td class="day" data-day="{{ forloop.counter }}" data-time="0" data-location="{{ day }}">
                     <select>
                         <option data-location="0" selected="selected">نمیخواهم</option>
                         {% for self in all_selves %}
@@ -63,7 +63,7 @@
 		<tr>
 			<td id="time" style="background:#3498db;color:#fff;">نهار</td>
             {% for day in lunch %}
-                <td data-day="sat" data-time="brk" data-location="{{ day }}">
+                <td class="day" data-day="{{ forloop.counter }}" data-time="1" data-location="{{ day }}">
                     <select>
                         <option data-location="0" selected="selected">نمیخواهم</option>
                         {% for self in all_selves %}
@@ -80,7 +80,7 @@
 		<tr>
 			<td id="time" style="background:#3498db;color:#fff;">شام</td>
             {% for day in dinner %}
-                <td data-day="sat" data-time="brk" data-location="{{ day }}">
+                <td class="day" data-day="{{ forloop.counter }}" data-time="2" data-location="{{ day }}">
                     <select>
                         <option data-location="0" selected="selected">نمیخواهم</option>
                         {% for self in all_selves %}
@@ -168,6 +168,34 @@
 				target.attr('data-location',option.attr('data-val'));
 				$('div.pop').hide();
 			});
+            $('button.accday').click(function(){
+                var data = {}
+                var tds = $('td[class="day"]');
+
+                for(var i=0;i<tds.length;i++){
+                    var key = ""
+                    switch (parseInt(tds[i].getAttribute('data-day'))){
+                        case 1: key="sat"; break;
+                        case 2: key="sun"; break;
+                        case 3: key="mon"; break;
+                        case 4: key="tue"; break;
+                        case 5: key="wed"; break;
+                        case 6: key="thu"; break;
+                    }
+                    switch (parseInt(tds[i].getAttribute('data-time'))){
+                        case 0: key+="_b"; break;
+                        case 1: key+="_l"; break;
+                        case 2: key+="_d"; break;
+                    }
+                    data[key] = parseInt(tds[i].getAttribute('data-location'));
+                }
+
+                $.post("/account/change_days/",
+                    data,
+                    function(data,status){
+                        console.log("Data: " + data + "\nStatus: " + status);
+                });
+            });
             $('button.accfood').click(function(){
                var list1="";
                var ul1 = $('ul#sortable1').children('li');
