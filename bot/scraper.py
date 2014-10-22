@@ -53,7 +53,7 @@ def check((username, password)):
     contents = resp.read()
 
     if contents.find('iconWarning.gif') != -1:
-        #print contents
+        # print contents
         return False, None, None
 
     soup = BeautifulSoup(contents)
@@ -106,7 +106,7 @@ def credit((username, password)):
         return False
     #
 
-    credit_url = "https://stu.iust.ac.ir/nurture/user/credit/charge/view.rose"
+    credit_url = "https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose"
 
     req = urllib2.Request(credit_url, data)
 
@@ -114,13 +114,63 @@ def credit((username, password)):
     resp = urllib2.urlopen(req)
     contents = resp.read()
     soup = BeautifulSoup(contents)
-    user_credit = re.findall(r"\d+",
-                             soup.find(id="charge").find_all("table")[2].tr.td.table.tr.find_all('td')[1].contents[
-                                 0].replace(u'\xA0', ' ').replace('\n', ' ').strip())[0]
+    user_credit = soup.find(id="creditId").contents[0]
     print 'credit:', user_credit
     return int(user_credit)
 
 
+def today_food((username, password)):
+    # Store the cookies and create an opener that will hold them
+    cj = cookielib.CookieJar()
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+
+    # Add our headers
+    opener.addheaders = [('User-agent', 'RedditTesting')]
+
+    # Install our opener (note that this changes the global opener to the one
+    # we just made, but you can also just call opener.open() if you want)
+    urllib2.install_opener(opener)
+
+    # The action/ target from the form
+    authentication_url = "https://stu.iust.ac.ir/j_security_check"
+
+    # Input parameters we are going to send
+    payload = encoded_dict({"j_username": username,
+                            "j_password": password,
+                            "login": u"ورود", })
+
+    # Use urllib to encode the payload
+    data = urllib.urlencode(payload)
+
+    # Build our Request object (supplying 'data' makes it a POST)
+    req = urllib2.Request(authentication_url, data)
+
+    # Make the request and read the response
+    resp = urllib2.urlopen(req)
+    contents = resp.read()
+
+    if contents.find('iconWarning.gif') != -1:
+        print "error"
+        return False
+    #
+
+    credit_url = "https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose"
+
+    req = urllib2.Request(credit_url, data)
+
+    # Make the request and read the response
+    resp = urllib2.urlopen(req)
+    contents = resp.read()
+    soup = BeautifulSoup(contents)
+    food_row = soup.find(id="pageTD").table.find_all('tr')[1].td.table.find_all('tr')[1]
+    date = re.findall(r"\d{4}\/\d{2}\/\d{2}", str(food_row))
+    #print matches[0]
+    #print 'credit:', user_credit
+    #return int(user_credit)
+
+
 if __name__ == "__main__":
-    print credit(("92521114", "0017578167"))
+    #print credit(("92521501", "agost1373"))
+    today_food(("92521501", "agost1373"))
+    # print credit(("92521114", "0017578167"))
     # print check(("92521114", "0017578167"))

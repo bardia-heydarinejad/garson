@@ -1,7 +1,7 @@
 from userpanel.models import UserCollection
 
 __author__ = 'bardia'
-from django.shortcuts import HttpResponse, redirect
+from django.shortcuts import  redirect
 
 from django.contrib import auth
 from django.contrib.auth.models import User
@@ -55,8 +55,9 @@ def login(request):
 
             new_user_in_mongo.save()
             user.save()
-            print "Registered successfully"
 
+            print "Registered successfully"
+            user = auth.authenticate(username=username, password=password)
             auth.login(request, user)
             return redirect(next_url)
     else:

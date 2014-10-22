@@ -50,10 +50,10 @@ def user_panel(request):
     # while c>0:
 
     aaa = Self.get_all()
-    for i in aaa:
-        print i.id_, i.name
+   # for i in aaa:
+   #     print i.id_, i.name
 
-    print aaa
+    #print aaa
 
     data = {"name": name, 'uni_id': uni_id, 'credit': format_price(stu_credit),
             'email': email, 'food_list_name_1': food_list_1,

@@ -10,6 +10,7 @@ from configuration.models import Food
 
 
 @login_required(login_url='/')
+@csrf_exempt
 @require_http_methods(["POST"])
 def change_days(request):
     user_id = request.user.id
@@ -42,6 +43,7 @@ def change_days(request):
     user.dinner[4] = int(request.POST.get("wed_d", "0")) if request.POST.get("wed_d", "0") != "" else 0
     user.dinner[5] = int(request.POST.get("thu_d", "0")) if request.POST.get("thu_d", "0") != "" else 0
 
+    print user.lunch
     user.save()
 
     return HttpResponse("changed")

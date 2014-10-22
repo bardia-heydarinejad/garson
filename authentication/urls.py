@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from authentication.controllers import *
+from authentication.controllers import login, logout
 
 urlpatterns = patterns('',
                        # Examples:
