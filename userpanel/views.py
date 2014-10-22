@@ -61,10 +61,3 @@ def user_panel(request):
             'all_selves': aaa, 'breakfast': us[0].breakfast,
             'lunch': us[0].lunch, 'dinner': us[0].dinner}
     return render(request, "user.html", data)
-
-
-@login_required(login_url='/')
-def credit(request):
-    us = UserCollection.objects(user_id=request.user.id)
-    if len(us) == 1:
-        return HttpResponse([0].credit if us[0].credit is not None else 0)

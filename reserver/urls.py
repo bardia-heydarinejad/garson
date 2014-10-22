@@ -12,5 +12,6 @@ urlpatterns = patterns('',
 
     url(r'^authentication/', include("authentication.urls")),
     url(r'^account/', include("userpanel.urls")),
+    url(r'^api/', include("api.urls")),
     url(r'^kerm_haye_koon/', include(admin.site.urls)),
 )+staticfiles_urlpatterns()

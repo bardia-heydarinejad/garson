@@ -19,7 +19,7 @@ class MyDaemon(Daemon):
         while True:
             time.sleep(1)
             logging.info('Task begin!')
-            # TODO : get this week foods
+            # TODO: get this week foods
 
             for user in UserCollection.objects():
                 print user.name

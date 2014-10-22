@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from jalali import JalaliToGregorian
 
 __author__ = 'bardia'
 
@@ -8,6 +9,7 @@ import urllib
 import cookielib
 from bs4 import BeautifulSoup
 import re
+import datetime
 
 
 def encoded_dict(in_dict):
@@ -162,15 +164,28 @@ def today_food((username, password)):
     resp = urllib2.urlopen(req)
     contents = resp.read()
     soup = BeautifulSoup(contents)
-    food_row = soup.find(id="pageTD").table.find_all('tr')[1].td.table.find_all('tr')[1]
-    date = re.findall(r"\d{4}\/\d{2}\/\d{2}", str(food_row))
-    #print matches[0]
-    #print 'credit:', user_credit
-    #return int(user_credit)
+
+    food_rows = soup.find(id="pageTD").table.find_all('tr')[1].td.table.find_all('tr', recursive=False)[1:]
+
+    for food_row in food_rows:
+        j_date = (re.findall(r"\d{4}\/\d{2}\/\d{2}", str(food_row))[0]).split('/')
+
+        g_date = JalaliToGregorian(int(j_date[0]), int(j_date[1]), int(j_date[2])).getGregorianList()
+
+        datetime_now = datetime.datetime.now()
+        c_g_date = (datetime_now.year, datetime_now.month, datetime_now.day)
+        if c_g_date == g_date:
+            for food_input in food_row.find_all("input"):
+                if food_input.has_attr("checked"):
+                    number = re.findall(r'id="userWeekReserves\.selected(\d+)"', str(food_input))[0]
+                    span_id = "foodNameSpan" + number
+                    span = food_row.find_all("span", attrs={'id': span_id})[0]
+                    return re.findall(r'\|(.+)\|', str(span))[0].strip()
+    return '-'
 
 
 if __name__ == "__main__":
-    #print credit(("92521501", "agost1373"))
-    today_food(("92521501", "agost1373"))
+    # print credit(("92521501", "agost1373"))
+    print today_food(("92521114", "0017578167"))
     # print credit(("92521114", "0017578167"))
     # print check(("92521114", "0017578167"))
