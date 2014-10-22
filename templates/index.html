@@ -13,16 +13,19 @@
 		<div class="showonmobile">
 		<h1>گارسون</h1>
 		<h3>رزرو اتوماتیک غذای دانشجویی</h3>
+		<h4>(نسخه ی آزمایشی)</h4>
 		<p><img class="logo-m" src="{%static 'img/logo-m.png'%}"></p>
 
 		</div>
 		<form method="post" action="/authentication/login/">
+            <h2>ورود</h2>
+        نام کاربری و رمز عبور سامانه ی رزرو غذای دانشگاه را وارد کنید!
             {% csrf_token %}
             <input name="next" type="hidden" value="{{NEXT}}">
 			<p><input tabindex="1" name="username" type="tel" placeholder ="شماره دانشجویی"></p>
 			<p><input tabindex="0" name="password" type="password" placeholder="رمز عبور"></p>
 			<p><input	type="submit" value="ورود"></p>
-			
+			<span class="warn">
             {% if msg %}
                 {% if msg == 'wrong_user_pass' %}
                     شماره ی دانشجویی یا رمز عبور اشتباه است!
@@ -30,12 +33,14 @@
                     خطایی رخ داد!!!
                 {% endif %}
             {% endif %}
+            </span>
 		</form>
 	</div>
 
 	<div class="describe">
 		<h1>گارسون</h1>
 		<h3>رزرو اتوماتیک غذای دانشجویی</h3>
+        <h4>(نسخه ی آزمایشی)</h4>
 	</div>
 </div>
 	<script>

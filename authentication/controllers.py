@@ -1,7 +1,8 @@
+import datetime
 from userpanel.models import UserCollection
 
 __author__ = 'bardia'
-from django.shortcuts import  redirect
+from django.shortcuts import redirect
 
 from django.contrib import auth
 from django.contrib.auth.models import User
@@ -52,6 +53,7 @@ def login(request):
             new_user_in_mongo.food_list_2 = Food.get_all_id()
             new_user_in_mongo.food_list_1 = []
             new_user_in_mongo.food_list_3 = []
+            new_user_in_mongo.today_meal_last_update = datetime.datetime.now().date()
 
             new_user_in_mongo.save()
             user.save()

@@ -69,10 +69,17 @@ a{
 	margin: auto;
 
 }
+input{
+    font-family: 'Mitra';
+}
+
 @media(min-width: 1000px){
 	body{
 		background-image: url(../img/bg.png);
 	}
+    input{
+        font-size: 20px;
+    }
 }
 @media(max-width:1000px){
 	body{
@@ -84,6 +91,9 @@ a{
 		background-image: none;
         font-size: 2.5em;
 	}
+        span.warn{
+        color: #F50C75;
+    }
     input{
         padding-left: 50px !important;
         padding-right: 50px !important;
