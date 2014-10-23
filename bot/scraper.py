@@ -67,10 +67,10 @@ def check((username, password)):
     if len(matches) != 1:
         return False, None, None
     uni_id = matches[0]
-    name = unicode(user_info).replace(uni_id, "").strip()
+    name = str(user_info).replace(uni_id, "").strip()
     if len(name) < 3:
         return False, None, None
-    return True, smart_unicode(name), uni_id
+    return True, name.decode(), uni_id
 
 
 def credit((username, password)):
