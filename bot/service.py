@@ -1,3 +1,6 @@
+from bot.register import register
+from bot.scraper import credit
+
 __author__ = 'bardia'
 
 #!/usr/bin/env python
@@ -22,7 +25,9 @@ class MyDaemon(Daemon):
             # TODO: get this week foods
 
             for user in UserCollection.objects():
-                print user.name
+                register(user)
+                user.credit = credit((user.stu_username, user.stu_password))
+                user.save()
             logging.info('Task end!')
 
 

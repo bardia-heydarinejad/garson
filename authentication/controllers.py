@@ -37,13 +37,15 @@ def login(request):
             name = check_res[1]
             uni_id = check_res[2]
 
+            if uni_id != username:
+                return redirect("/?msg=wrong_uni_id") #todo: set messesge
+
             user = User.objects.create_user(username=username, password=password)
             user.is_active = True
 
             new_user_in_mongo = UserCollection()
             new_user_in_mongo.user_id = user.id
             new_user_in_mongo.name = name
-            new_user_in_mongo.uni_id = uni_id
             new_user_in_mongo.stu_username = username
             new_user_in_mongo.stu_password = password
             new_user_in_mongo.credit = credit((username, password))

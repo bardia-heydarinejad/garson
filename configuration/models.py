@@ -14,11 +14,11 @@ class Food:
 
     @staticmethod
     def get_all():
-        all = []
+        all_food = []
         for e in Food.root.findall('.//foods/food'):
             # How to make decisions based on attributes even in 2.6:
-            all.append(Food(e.attrib.get('id'), e.text, int(e.attrib.get('price'))))
-        return all
+            all_food.append(Food(e.attrib.get('id'), e.text, int(e.attrib.get('price'))))
+        return all_food
 
     @staticmethod
     def get_all_id():
