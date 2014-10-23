@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <site name="stu.iust">
     <foods>
-        <food id="1" price="640">قیمه</food>
-        <food id="2" price="720">جوجه کباب</food>
-        <food id="3" price="800">کوبیده</food>
-        <food id="4" price="640">کرفس</food>
-        <food id="5" price="640">لوبیا پلو</food>
-        <food id="6" price="720">ماهی</food>
-        <food id="7" price="640">قرمه سبزی</food>
+        <food id="1" price="640">عدس پلو</food>
+        <food id="2" price="720">چلو خورش قيمه سيب زميني</food>
+        <food id="3" price="800">چلوخورش آلو اسفناج</food>
+        <food id="4" price="640">جوجه کباب</food>
+        <food id="5" price="640">لوبيا پلو</food>
+        <food id="6" price="720">سبزي پلو با ماهي</food>
+        <food id="7" price="640">کلم پلو</food>
+        <food id="8" price="640">زرشك پلو با مرغ</food>
+        <food id="9" price="640">چلوخورش كرفس</food>
+        <food id="10" price="640">چلو کباب کوبیده</food>
     </foods>
     <dinings>
         <self id="1" >سلف مرکزی برادران</self>

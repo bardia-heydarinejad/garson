@@ -39,21 +39,9 @@ def user_panel(request):
     for food_id in us[0].food_list_3:
         food_list_3.append(Food(food_id, Food.get_name(food_id), Food.get_price(food_id)))
 
-    print us[0].breakfast
-
     email = request.user.email if request.user.email is not None else ''
-    # week = [us[0].sat,us[0].sun,]
-    #
-    # c = credit
-    # days = 0
-    #
-    # while c>0:
 
     aaa = Self.get_all()
-   # for i in aaa:
-   #     print i.id_, i.name
-
-    #print aaa
 
     data = {"name": name, 'uni_id': uni_id, 'credit': format_price(stu_credit),
             'email': email, 'food_list_name_1': food_list_1,
