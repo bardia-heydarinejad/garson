@@ -63,12 +63,12 @@ def check((username, password)):
         'utf8')
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
-        print contents
+        #print contents
         return False, None, None
     uni_id = matches[0]
     name = str(user_info).replace(uni_id, "").replace(u'\xA0', ' ').strip()
     if len(name) < 3:
-        print contents
+        #print contents
         return False, None, None
     return True, name, uni_id
 
@@ -117,7 +117,7 @@ def credit((username, password)):
     contents = resp.read()
     soup = BeautifulSoup(contents)
     user_credit = soup.find(id="creditId").contents[0]
-    print 'credit:', user_credit
+    #print 'credit:', user_credit
     return int(user_credit)
 
 
