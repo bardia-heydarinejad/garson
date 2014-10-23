@@ -59,8 +59,8 @@ def check((username, password)):
         return False, None, None
 
     soup = BeautifulSoup(contents)
-    user_info = soup.body.table.tr.find_all('td')[4].div.contents[0].replace(u'\xA0', ' ').replace('\n', ' ').decode().encode(
-        'utf8')
+    user_info = soup.body.table.tr.find_all('td')[4].div.contents[0]
+    user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ").decode().encode('utf8')
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
         return False, None, None
@@ -115,7 +115,7 @@ def credit((username, password)):
     contents = resp.read()
     soup = BeautifulSoup(contents)
     user_credit = soup.find(id="creditId").contents[0]
-    #print 'credit:', user_credit
+    # print 'credit:', user_credit
     return int(user_credit)
 
 
