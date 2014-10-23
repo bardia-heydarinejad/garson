@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import datetime
 from django.shortcuts import HttpResponse
 from bot.scraper import today_food
