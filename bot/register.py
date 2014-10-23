@@ -1,29 +1,85 @@
 # -*- coding: utf-8 -*-
+import pprint
+import random
 import urllib2
 import urllib
 import cookielib
 from bs4 import BeautifulSoup
 import re
-import datetime
 from bot.scraper import encoded_dict
+from configuration.models import Food
+
+from userpanel.models import UserCollection
 
 __author__ = 'bardia'
 
 
-def _get_foods(contents, day, time):
-    foods_list = []
+def _get_foods(contents):
+    food_chart = [[[], [], []] for i in range(6)]
+    # for day in range(5):
+    # for time in range(3):
+    # food_chart[day][time] = 1
     soup = BeautifulSoup(contents)
-    day_tr = soup.find(id="pageTD").table.find_all('tr')[1].td.table.find_all('tr', recursive=False)[day + 1]
-    foods_td = day_tr.find_all('td', recursive=False)[time+1]
-    if foods_td.table is None:
-        return foods_list
-    food_trs = foods_td.table.find_all('tr', recursive=False)
-    for tr in food_trs:
-        number = re.findall(r'id="userWeekReserves\.selected(\d+)"', str(tr))[0]
-        name = re.findall(r'\|(.+)\|', str(tr))[0].strip()
-        foods_list.append((number,name))
-    print foods_list
-    return foods_list
+    day_trs = soup.find(id="pageTD").table.find_all('tr')[1].td.table.find_all('tr', recursive=False)[1:]
+    for day_tr in day_trs:
+        if unicode(day_tr).find(u"پنجشنبه") != -1:
+            day = 5
+        elif unicode(day_tr).find(u"چهارشنبه") != -1:
+            day = 4
+        elif unicode(day_tr).find(u"سه شنبه") != -1:
+            day = 3
+        elif unicode(day_tr).find(u"دوشنبه") != -1:
+            day = 2
+        elif unicode(day_tr).find(u"یکشنبه") != -1:
+            day = 1
+        elif unicode(day_tr).find(u"شنبه") != -1:
+            day = 0
+        foods_tds = day_tr.find_all('td', recursive=False)[1:]
+        for time in range(3):
+            foods_td = foods_tds[time]
+            if foods_td.table is None:
+                continue
+
+            food_trs = foods_td.table.find_all('tr', recursive=False)
+            for tr in food_trs:
+                number = re.findall(r'id="userWeekReserves\.selected(\d+)"', str(tr))[0]
+                name = re.findall(r'\|(.+)\|', str(tr))[0].strip()
+                food_chart[day][time].append((number, name))
+
+    # from pprint import pprint
+    # pprint(food_chart)
+    return food_chart
+
+
+def _init_data(contents):
+    soup = BeautifulSoup(contents)
+    data = {}
+    for input_tag in soup.find_all("form")[0].find_all("input"):
+        if input_tag.has_attr('name'):
+            if input_tag.has_attr('value'):
+                data[input_tag['name']] = input_tag['value']
+            else:
+                data[input_tag['name']] = ""
+    pprint.pprint(data)
+
+
+def choose_food(user, foods):
+    random_choice = []
+
+    list1 = [Food.get_name(i) for i in user.food_list_1]
+    list2 = [Food.get_name(i) for i in user.food_list_2]
+
+    for fav_food in list1:
+        for food in foods:
+            if food[1] == fav_food:
+                return food
+    for food in foods:
+        if food[1] in list2:
+            random_choice.append(food)
+    if len(random_choice) > 0:
+        return random.choice(random_choice)
+    return None, None
+
 
 def register((username, password)):
     # Store the cookies and create an opener that will hold them
@@ -68,12 +124,17 @@ def register((username, password)):
     resp = urllib2.urlopen(req)
     contents = resp.read()
 
-    lll = [None,None,None]
-    all_foods = [lll]*6
-    for day in range(5):
-        for time in range(3):
-            all_foods[day][time] = _get_foods(contents, day, time)
-    return all_foods
+    return _init_data(contents)
+    user = UserCollection.objects(stu_username=username, stu_password=password)[0]
+    chart = _get_foods(contents)
+    for day in chart:
+        print "Day"
+        for time in day:
+            print "\tTime"
+            print '\t Chosen:', choose_food(user, time)
+            for food in time:
+                if food is not None:
+                    print '\t\t', food[0], food[1]
 
 
 if __name__ == "__main__":
