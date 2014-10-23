@@ -26,7 +26,7 @@ def user_panel(request):
 
     name = us[0].name if us[0].name is not None else ""
     stu_credit = us[0].credit if us[0].credit is not None else 0
-    uni_id = us[0].uni_id if us[0].uni_id is not None else '00000000'
+    uni_id = us[0].stu_username if us[0].stu_username is not None else '00000000'
 
     food_list_1 = []
     food_list_2 = []

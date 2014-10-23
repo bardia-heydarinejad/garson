@@ -63,6 +63,17 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Garson',
+        'USER': 'root',
+        'PASSWORD': 'mitikoman',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 

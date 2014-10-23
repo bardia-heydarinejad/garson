@@ -51,7 +51,7 @@ def _get_foods(contents):
     return food_chart
 
 
-def _init_data(contents):
+def _init_data(contents, foods):
     soup = BeautifulSoup(contents)
     data = {}
     for input_tag in soup.find_all("form")[0].find_all("input"):
@@ -61,6 +61,7 @@ def _init_data(contents):
             else:
                 data[input_tag['name']] = ""
     pprint.pprint(data)
+    return encoded_dict(data)
 
 
 def choose_food(user, foods):
@@ -81,7 +82,7 @@ def choose_food(user, foods):
     return None, None
 
 
-def register((username, password)):
+def register(user):
     # Store the cookies and create an opener that will hold them
     cj = cookielib.CookieJar()
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
@@ -97,8 +98,8 @@ def register((username, password)):
     authentication_url = "https://stu.iust.ac.ir/j_security_check"
 
     # Input parameters we are going to send
-    payload = encoded_dict({"j_username": username,
-                            "j_password": password,
+    payload = encoded_dict({"j_username": user.stu_username,
+                            "j_password": user.stu_password,
                             "login": u"ورود", })
 
     # Use urllib to encode the payload
@@ -124,18 +125,20 @@ def register((username, password)):
     resp = urllib2.urlopen(req)
     contents = resp.read()
 
-    return _init_data(contents)
-    user = UserCollection.objects(stu_username=username, stu_password=password)[0]
     chart = _get_foods(contents)
+    food_to_register = []
     for day in chart:
         print "Day"
         for time in day:
             print "\tTime"
             print '\t Chosen:', choose_food(user, time)
-            for food in time:
-                if food is not None:
-                    print '\t\t', food[0], food[1]
+            food_to_register.append(choose_food(user, time))
 
+    data = _init_data(contents, food_to_register)
+
+    req = urllib2.Request(register_url, data)
+    resp = urllib2.urlopen(req)
+    contents = resp.read()
 
 if __name__ == "__main__":
     print register(("92521114", "0017578167"))
