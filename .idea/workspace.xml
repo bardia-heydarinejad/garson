@@ -32,8 +32,8 @@
       <file leaf-file-name="scraper.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot/scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.79403" vertical-offset="2106" max-vertical-offset="3528">
-              <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.032835823" vertical-offset="1087" max-vertical-offset="3492">
+              <caret line="61" column="118" selection-start-line="61" selection-start-column="118" selection-end-line="61" selection-end-column="118" />
               <folding />
             </state>
           </provider>
@@ -1020,8 +1020,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bot/scraper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.79403" vertical-offset="2106" max-vertical-offset="3528">
-          <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.032835823" vertical-offset="1087" max-vertical-offset="3492">
+          <caret line="61" column="118" selection-start-line="61" selection-start-column="118" selection-end-line="61" selection-end-column="118" />
           <folding />
         </state>
       </provider>
