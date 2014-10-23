@@ -4,8 +4,8 @@ import os
 
 
 class Food:
-    root = ET.parse(os.path.join(os.path.realpath('.'), '/configuration/stu_config.xml'))
-    #root = ET.parse('/home/bardia/www/reserver/configuration/stu_config.xml')
+    root = ET.parse(os.path.join(os.path.realpath('.'),'./configuration/stu_config.xml'))
+    # root = ET.parse('/home/bardia/www/reserver/configuration/stu_config.xml')
 
     def __init__(self, id_, name, price):
         self.id_ = id_
@@ -49,8 +49,8 @@ class Food:
 
 
 class Self:
-    root = ET.parse(os.path.realpath('.') + '/configuration/stu_config.xml')
-    #root = ET.parse('/home/bardia/www/reserver/configuration/stu_config.xml')
+    root = ET.parse(os.path.join(os.path.realpath('.') , './configuration/stu_config.xml'))
+    # root = ET.parse('/home/bardia/www/reserver/configuration/stu_config.xml')
 
     def __init__(self, id_, name):
         self.id_ = id_
