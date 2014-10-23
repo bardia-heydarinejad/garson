@@ -10,6 +10,8 @@ import cookielib
 from bs4 import BeautifulSoup
 import re
 import datetime
+from django.utils.encoding import smart_unicode
+
 
 
 def encoded_dict(in_dict):
@@ -59,7 +61,7 @@ def check((username, password)):
         return False, None, None
 
     soup = BeautifulSoup(contents)
-    user_info = str(soup.body.table.tr.find_all('td')[4].div.contents[0]).encode('utf8')
+    user_info = smart_unicode(soup.body.table.tr.find_all('td')[4].div.contents[0]).encode('utf8')
     user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ").decode().encode('utf8')
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
