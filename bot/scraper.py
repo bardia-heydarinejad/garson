@@ -53,16 +53,15 @@ def check((username, password)):
 
     # Make the request and read the response
     resp = urllib2.urlopen(req)
-    contents = resp.read().decode('utf8', 'ignore').encode('utf8', 'ignore')
+    contents = str(resp.read())
 
     if contents.find('iconWarning.gif') != -1:
         # print contents
         return False, None, None
 
     soup = BeautifulSoup(contents)
-    user_info = smart_unicode(soup.body.table.tr.find_all('td')[4].div.contents[0]).decode('utf8', 'ignore').encode(
-        'utf8', 'ignore')
-    user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ").decode('utf8', 'ignore').encode('utf8', 'ignore')
+    user_info = smart_unicode(soup.body.table.tr.find_all('td')[4].div.contents[0])
+    user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ")
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
         return False, None, None
@@ -70,7 +69,7 @@ def check((username, password)):
     name = str(user_info).replace(uni_id, "").strip()
     if len(name) < 3:
         return False, None, None
-    return [True, unicode(name, errors='ignore'), unicode(uni_id, errors='ignore')]
+    return [True, name, uni_id]
 
 
 def credit((username, password)):
