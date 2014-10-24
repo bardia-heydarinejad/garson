@@ -70,7 +70,7 @@ def check((username, password)):
     name = str(user_info).replace(uni_id, "").strip()
     if len(name) < 3:
         return False, None, None
-    return [True, name.decode('utf8', errors='ignore'), uni_id.decode('utf8', error='ignore')]
+    return [True, unicode(name, errors='ignore'), unicode(uni_id, errors='ignore')]
 
 
 def credit((username, password)):
