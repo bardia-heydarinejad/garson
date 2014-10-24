@@ -13,7 +13,6 @@ import datetime
 from django.utils.encoding import smart_unicode
 
 
-
 def encoded_dict(in_dict):
     out_dict = {}
     for k, v in in_dict.iteritems():
@@ -61,8 +60,9 @@ def check((username, password)):
         return False, None, None
 
     soup = BeautifulSoup(contents)
-    user_info = smart_unicode(soup.body.table.tr.find_all('td')[4].div.contents[0]).decode('utf8','ignore').encode('utf8', 'ignore')
-    user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ").decode('utf8','ignore').encode('utf8', 'ignore')
+    user_info = smart_unicode(soup.body.table.tr.find_all('td')[4].div.contents[0]).decode('utf8', 'ignore').encode(
+        'utf8', 'ignore')
+    user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ").decode('utf8', 'ignore').encode('utf8', 'ignore')
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
         return False, None, None
@@ -70,7 +70,7 @@ def check((username, password)):
     name = str(user_info).replace(uni_id, "").strip()
     if len(name) < 3:
         return False, None, None
-    return True, name.decode('utf8','ignore').encode('utf8', 'ignore') , uni_id.decode('utf8','ignore').encode('utf8', 'ignore')
+    return [True, name.decode('utf8', errors='ignore'), uni_id.decode('utf8', error='ignore')]
 
 
 def credit((username, password)):
