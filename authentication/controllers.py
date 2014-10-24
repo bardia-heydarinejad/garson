@@ -65,7 +65,7 @@ def login(request):
             auth.login(request, user)
             return redirect(next_url)
     else:
-        return views.login(request)
+        return redirect('/')
 
 
 def logout(request):

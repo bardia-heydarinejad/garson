@@ -32,8 +32,8 @@
       <file leaf-file-name="scraper.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot/scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0356164" vertical-offset="918" max-vertical-offset="3528">
-              <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.66477275" vertical-offset="918" max-vertical-offset="3528">
+              <caret line="64" column="81" selection-start-line="64" selection-start-column="81" selection-end-line="64" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -42,8 +42,8 @@
       <file leaf-file-name="controllers.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authentication/controllers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1116" max-vertical-offset="1530">
-              <caret line="62" column="17" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="769" max-vertical-offset="1512">
+              <caret line="67" column="26" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -173,12 +173,12 @@
         <option value="$PROJECT_DIR$/configuration/models.py" />
         <option value="$PROJECT_DIR$/bot/register.py" />
         <option value="$PROJECT_DIR$/bot/service.py" />
-        <option value="$PROJECT_DIR$/authentication/controllers.py" />
         <option value="$PROJECT_DIR$/userpanel/views.py" />
         <option value="$PROJECT_DIR$/reserver/settings.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/reserver/urls.py" />
         <option value="$PROJECT_DIR$/api/controllers.py" />
+        <option value="$PROJECT_DIR$/authentication/controllers.py" />
         <option value="$PROJECT_DIR$/bot/scraper.py" />
       </list>
     </option>
@@ -992,14 +992,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/authentication/controllers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1116" max-vertical-offset="1530">
-          <caret line="62" column="17" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
@@ -1008,10 +1000,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/authentication/controllers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="769" max-vertical-offset="1512">
+          <caret line="67" column="26" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bot/scraper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0356164" vertical-offset="918" max-vertical-offset="3528">
-          <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.66477275" vertical-offset="918" max-vertical-offset="3528">
+          <caret line="64" column="81" selection-start-line="64" selection-start-column="81" selection-end-line="64" selection-end-column="81" />
           <folding />
         </state>
       </provider>
