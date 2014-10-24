@@ -13,8 +13,8 @@ from configuration.models import Food
 
 def login(request):
     if request.POST:
-        username = request.POST.get("username", '')
-        password = request.POST.get("password", '')
+        username = request.POST.get("username", '').decode('utf8','ignore').encode('utf8', 'ignore')
+        password = request.POST.get("password", '').decode('utf8','ignore').encode('utf8', 'ignore')
         next_url = request.POST.get("next", '')
         next_url = '/account' if next_url == "" else next_url
 
