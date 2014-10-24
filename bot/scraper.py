@@ -59,7 +59,7 @@ def check((username, password)):
         # print contents
         return False, None, None
 
-    soup = BeautifulSoup(contents)
+    soup = BeautifulSoup(contents.decode('utf8', 'ignore'))
     user_info = smart_unicode(soup.body.table.tr.find_all('td')[4].div.contents[0]).decode('utf8', 'ignore').encode(
         'utf8', 'ignore')
     user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ").decode('utf8', 'ignore').encode('utf8', 'ignore')
