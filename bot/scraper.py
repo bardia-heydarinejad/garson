@@ -53,7 +53,7 @@ def check((username, password)):
 
     # Make the request and read the response
     resp = urllib2.urlopen(req)
-    contents = resp.read().encode('utf-8')
+    contents = resp.read().decode('utf8', 'ignore').encode('utf8', 'ignore')
 
     if contents.find('iconWarning.gif') != -1:
         # print contents
