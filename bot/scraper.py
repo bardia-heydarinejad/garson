@@ -61,8 +61,8 @@ def check((username, password)):
         return False, None, None
 
     soup = BeautifulSoup(contents)
-    user_info = smart_unicode(soup.body.table.tr.find_all('td')[4].div.contents[0]).encode('utf8', 'ignore')
-    user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ").decode('utf8').encode('utf8', 'ignore')
+    user_info = smart_unicode(soup.body.table.tr.find_all('td')[4].div.contents[0]).decode('utf8','ignore').encode('utf8', 'ignore')
+    user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ").decode('utf8','ignore').encode('utf8', 'ignore')
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
         return False, None, None
