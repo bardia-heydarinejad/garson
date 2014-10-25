@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from userpanel.models import UserCollection
@@ -8,7 +8,7 @@ from json import dumps
 
 
 def format_price(price):
-    price = str(price / 10)
+    price = str(int(price / 10))
     l = len(price)
     new_format = ""
     for i in range(1, l + 1):
@@ -18,7 +18,7 @@ def format_price(price):
     return new_format
 
 
-@login_required(login_url='/')
+#@login_required(login_url='/')
 def user_panel(request):
     us = UserCollection.objects(user_id=request.user.id)
     if len(us) != 1:

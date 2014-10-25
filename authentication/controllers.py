@@ -13,8 +13,8 @@ from configuration.models import Food
 
 def login(request):
     if request.POST:
-        username = request.POST.get("username", '').decode('utf8','ignore').encode('utf8', 'ignore')
-        password = request.POST.get("password", '').decode('utf8','ignore').encode('utf8', 'ignore')
+        username = request.POST.get("username", '')
+        password = request.POST.get("password", '')
         next_url = request.POST.get("next", '')
         next_url = '/account' if next_url == "" else next_url
 
@@ -60,7 +60,7 @@ def login(request):
             new_user_in_mongo.save()
             user.save()
 
-            print "Registered successfully"
+            print("Registered successfully")
             user = auth.authenticate(username=username, password=password)
             auth.login(request, user)
             return redirect(next_url)
