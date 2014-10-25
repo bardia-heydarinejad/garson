@@ -6,7 +6,6 @@ from django.shortcuts import redirect
 
 from django.contrib import auth
 from django.contrib.auth.models import User
-from authentication import views
 from bot.scraper import check, credit
 from configuration.models import Food
 
@@ -29,7 +28,7 @@ def login(request):
             return redirect(next_url)
         else:
             print("Not registerd try to register")
-            check_res = check((username, password))
+            check_res = check(username, password)
             if not check_res[0]:
                 print("wrong user or pass to register")
                 return redirect("/?msg=wrong_user_pass")
@@ -48,7 +47,7 @@ def login(request):
             new_user_in_mongo.name = name
             new_user_in_mongo.stu_username = username
             new_user_in_mongo.stu_password = password
-            new_user_in_mongo.credit = credit((username, password))
+            new_user_in_mongo.credit = credit(username, password)
             new_user_in_mongo.breakfast = [0, 0, 0, 0, 0, 0]
             new_user_in_mongo.lunch = [0, 0, 0, 0, 0, 0]
             new_user_in_mongo.dinner = [0, 0, 0, 0, 0, 0]

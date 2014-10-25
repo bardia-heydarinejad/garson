@@ -11,11 +11,14 @@
         <food id="8" price="640">زرشك پلو با مرغ</food>
         <food id="9" price="640">چلوخورش كرفس</food>
         <food id="10" price="640">چلو کباب کوبیده</food>
+        <food id="11" price="640">استانبولی پلو</food>
+        <food id="12" price="640">چلوخورش قورمه سبزي</food>
+        <food id="13" price="640">رشته پلو</food>
     </foods>
     <dinings>
         <self id="1" >سلف مرکزی برادران</self>
-        <self id="2" >سلف یاس</self>
-        <self id="3" >سلف خوابگاه خواهران</self>
+        <self id="2" >سلف خوابگاه خواهران</self>
+        <self id="10" >سلف یاس</self>
         <self id="4">سلف کوی بسیج برادران</self>
         <self id="5">خوابگاه حکیمیه ارشد</self>
         <self id="6">خوابگاه دکترا بلوک 10</self>
