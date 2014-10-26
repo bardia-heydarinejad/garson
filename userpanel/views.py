@@ -32,11 +32,11 @@ def user_panel(request):
     food_list_3 = []
 
     for food_id in user.food_list_1:
-        food_list_1.append(Food(food_id, Food.get_name(food_id), Food.get_price(food_id)))
+        food_list_1.append(Food(food_id, Food.get_name(food_id)))
     for food_id in user.food_list_2:
-        food_list_2.append(Food(food_id, Food.get_name(food_id), Food.get_price(food_id)))
+        food_list_2.append(Food(food_id, Food.get_name(food_id)))
     for food_id in user.food_list_3:
-        food_list_3.append(Food(food_id, Food.get_name(food_id), Food.get_price(food_id)))
+        food_list_3.append(Food(food_id, Food.get_name(food_id)))
 
     l1 = [int(food_id) for food_id in user.food_list_1]
     l2 = [int(food_id) for food_id in user.food_list_2]

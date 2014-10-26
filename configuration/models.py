@@ -7,17 +7,16 @@ class Food:
     #root = ET.parse(os.path.join(os.path.realpath('.'),'./configuration/stu_config.xml'))
     root = ET.parse('/home/bardia/www/reserver/configuration/stu_config.xml')
 
-    def __init__(self, id_, name, price):
+    def __init__(self, id_, name):
         self.id_ = id_
         self.name = name
-        self.price = price
 
     @staticmethod
     def get_all():
         all_food = []
         for e in Food.root.findall('.//foods/food'):
             # How to make decisions based on attributes even in 2.6:
-            all_food.append(Food(e.attrib.get('id'), e.text, int(e.attrib.get('price'))))
+            all_food.append(Food(e.attrib.get('id'), e.text))
         return all_food
 
     @staticmethod
@@ -36,24 +35,10 @@ class Food:
         return all_id
 
     @staticmethod
-    def max_price():
-        maximum = 0
-        for food in Food.get_all():
-            if food.price > maximum:
-                maximum = food.price
-        return maximum
-
-    @staticmethod
     def get_name(food_id):
         s = './/foods/food[@id="' + str(food_id) + '"]'
         node = Food.root.find(s)
         return node.text if node is not None else 'None'
-
-    @staticmethod
-    def get_price(food_id):
-        s = './/foods/food[@id="' + str(food_id) + '"]'
-        node = Food.root.find(s)
-        return node.attrib.get('price') if node is not None else 'None'
 
 
 class Self:
