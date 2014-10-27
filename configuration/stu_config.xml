@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <site name="stu.iust">
     <foods>
-        <food id="1" price="640">عدس پلو</food>
-        <food id="2" price="720">چلو خورش قيمه سيب زميني</food>
-        <food id="3" price="800">چلوخورش آلو اسفناج</food>
-        <food id="4" price="640">جوجه کباب</food>
-        <food id="5" price="640">لوبيا پلو</food>
-        <food id="6" price="720">سبزي پلو با ماهي</food>
-        <food id="7" price="640">کلم پلو</food>
-        <food id="8" price="640">زرشك پلو با مرغ</food>
-        <food id="9" price="640">چلوخورش كرفس</food>
-        <food id="10" price="640">چلو کباب کوبیده</food>
+        <food id="1" type="lunch">عدس پلو</food>
+        <food id="2" type="lunch">چلو خورش قيمه سيب زميني</food>
+        <food id="3" type="lunch">چلوخورش آلو اسفناج</food>
+        <food id="4" type="lunch">جوجه کباب</food>
+        <food id="5" type="lunch">لوبيا پلو</food>
+        <food id="6" type="lunch">سبزي پلو با ماهي</food>
+        <food id="7" type="lunch">کلم پلو</food>
+        <food id="8" type="lunch">زرشك پلو با مرغ</food>
+        <food id="9" type="lunch">چلوخورش كرفس</food>
+        <food id="10" type="lunch">چلو کباب کوبیده</food>
+        <food id="11" type="lunch">استانبولی پلو</food>
+        <food id="12" type="lunch">چلوخورش قورمه سبزي</food>
+        <food id="13" type="lunch">رشته پلو</food>
     </foods>
     <dinings>
         <self id="1" >سلف مرکزی برادران</self>
-        <self id="2" >سلف یاس</self>
-        <self id="3" >سلف خوابگاه خواهران</self>
+        <self id="2" >سلف خوابگاه خواهران</self>
+        <self id="10" >سلف یاس</self>
         <self id="4">سلف کوی بسیج برادران</self>
         <self id="5">خوابگاه حکیمیه ارشد</self>
         <self id="6">خوابگاه دکترا بلوک 10</self>

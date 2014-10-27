@@ -1,67 +1,55 @@
 # -*- coding: utf-8 -*-
-import pprint
 import random
-import urllib2
-import urllib
-import cookielib
 from bs4 import BeautifulSoup
 import re
-from bot.scraper import encoded_dict
 from configuration.models import Food
-
 from userpanel.models import UserCollection
+from selenium import webdriver
+from pyvirtualdisplay import Display
+import contextlib
+
 
 __author__ = 'bardia'
 
 
 def _get_foods(contents):
+    all_names = Food.get_all_name()
+
     food_chart = [[[], [], []] for i in range(6)]
-    # for day in range(5):
-    # for time in range(3):
-    # food_chart[day][time] = 1
     soup = BeautifulSoup(contents)
-    day_trs = soup.find(id="pageTD").table.find_all('tr')[1].td.table.find_all('tr', recursive=False)[1:]
+    day_trs = soup.find(id="pageTD").table.find_all('tr')[1].td.table.tbody.find_all('tr', recursive=False)[1:]
     for day_tr in day_trs:
-        if unicode(day_tr).find(u"پنجشنبه") != -1:
+        if str(day_tr).find(u"پنجشنبه") != -1:
             day = 5
-        elif unicode(day_tr).find(u"چهارشنبه") != -1:
+        elif str(day_tr).find(u"چهارشنبه") != -1:
             day = 4
-        elif unicode(day_tr).find(u"سه شنبه") != -1:
+        elif str(day_tr).find(u"سه شنبه") != -1:
             day = 3
-        elif unicode(day_tr).find(u"دوشنبه") != -1:
+        elif str(day_tr).find(u"دوشنبه") != -1:
             day = 2
-        elif unicode(day_tr).find(u"یکشنبه") != -1:
+        elif str(day_tr).find(u"یکشنبه") != -1:
             day = 1
-        elif unicode(day_tr).find(u"شنبه") != -1:
+        elif str(day_tr).find(u"شنبه") != -1:
             day = 0
+        else:
+            print('error')
+            continue
         foods_tds = day_tr.find_all('td', recursive=False)[1:]
         for time in range(3):
             foods_td = foods_tds[time]
             if foods_td.table is None:
                 continue
 
-            food_trs = foods_td.table.find_all('tr', recursive=False)
+            food_trs = foods_td.table.tbody.find_all('tr', recursive=False)
             for tr in food_trs:
                 number = re.findall(r'id="userWeekReserves\.selected(\d+)"', str(tr))[0]
                 name = re.findall(r'\|(.+)\|', str(tr))[0].strip()
                 food_chart[day][time].append((number, name))
+                if name not in all_names:
+                    with open("found_food.txt", "a") as my_file:
+                        my_file.write(name+'\n')
 
-    # from pprint import pprint
-    # pprint(food_chart)
     return food_chart
-
-
-def _init_data(contents, foods):
-    soup = BeautifulSoup(contents)
-    data = {}
-    for input_tag in soup.find_all("form")[0].find_all("input"):
-        if input_tag.has_attr('name'):
-            if input_tag.has_attr('value'):
-                data[input_tag['name']] = input_tag['value']
-            else:
-                data[input_tag['name']] = ""
-    pprint.pprint(data)
-    return encoded_dict(data)
 
 
 def choose_food(user, foods):
@@ -77,68 +65,78 @@ def choose_food(user, foods):
     for food in foods:
         if food[1] in list2:
             random_choice.append(food)
+
     if len(random_choice) > 0:
         return random.choice(random_choice)
     return None, None
 
 
-def register(user):
-    # Store the cookies and create an opener that will hold them
-    cj = cookielib.CookieJar()
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+class Registerer:
+    food_chart = None
 
-    # Add our headers
-    opener.addheaders = [('User-agent', 'RedditTesting')]
+    def __init__(self, user):
+        self.user = user
 
-    # Install our opener (note that this changes the global opener to the one
-    # we just made, but you can also just call opener.open() if you want)
-    urllib2.install_opener(opener)
+    def register(self):
+        try:
+            display = Display(visible=False, size=(1600, 1200))
+            display.start()
+            with contextlib.closing(webdriver.Firefox()) as browser2:
+                browser = webdriver.Firefox()
+                browser.get("https://stu.iust.ac.ir")
+                browser.find_element_by_id("j_username").send_keys(self.user.stu_username)
+                browser.find_element_by_id("j_password").send_keys(self.user.stu_password)
+                browser.find_element_by_id("login_btn_submit").submit()
+                # TODO: handle wrong user or pass
+                # if contents.find('iconWarning.gif') != -1:
+                # print "error"
+                browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
+                #browser.find_element_by_id("nextWeekBtn").click()
 
-    # The action/ target from the form
-    authentication_url = "https://stu.iust.ac.ir/j_security_check"
+                for self_id in set(self.user.breakfast + self.user.lunch + self.user.dinner) - {0}:
+                    print('self id', self_id)
+                    browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
+                    if browser.find_element_by_id("selfHiddenId").get_attribute('value') != self_id:
+                        browser.find_element_by_id("selfId").find_element_by_xpath(
+                            "//option[@value='" + str(self_id) + "']").click()
+                    foods_to_register = []
+                    food_chart = _get_foods(browser.page_source)
 
-    # Input parameters we are going to send
-    payload = encoded_dict({"j_username": user.stu_username,
-                            "j_password": user.stu_password,
-                            "login": u"ورود", })
+                    # import pprint
+                    # pprint.pprint(food_chart)
 
-    # Use urllib to encode the payload
-    data = urllib.urlencode(payload)
+                    for i, day in enumerate(self.user.breakfast):
+                        if day == self_id:
+                            foods_in_day = food_chart[i][0]
+                            if len(foods_in_day) > 0:
+                                foods_to_register += [choose_food(self.user, foods_in_day)]
+                    for i, day in enumerate(self.user.lunch):
+                        if day == self_id:
+                            foods_in_day = food_chart[i][1]
+                            if len(foods_in_day) > 0:
+                                foods_to_register += [choose_food(self.user, foods_in_day)]
+                    for i, day in enumerate(self.user.dinner):
+                        if day == self_id:
+                            foods_in_day = food_chart[i][2]
+                            if len(foods_in_day) > 0:
+                                foods_to_register += [choose_food(self.user, foods_in_day)]
 
-    # Build our Request object (supplying 'data' makes it a POST)
-    req = urllib2.Request(authentication_url, data)
+                    for index, food_to_check in foods_to_register:
+                        print(index, food_to_check)
+                        browser.find_element_by_id("userWeekReserves.selected" + str(index)).click()
+                    browser.find_element_by_id("doReservBtn").click()
 
-    # Make the request and read the response
-    resp = urllib2.urlopen(req)
-    contents = resp.read()
+        except Exception as e:
+            return str(e)
+            browser.quit()
+        display.stop()
+        return None
 
-    if contents.find('iconWarning.gif') != -1:
-        print "error"
-        return False
-    #
-
-    register_url = "https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose"
-
-    req = urllib2.Request(register_url, data)
-
-    # Make the request and read the response
-    resp = urllib2.urlopen(req)
-    contents = resp.read()
-
-    chart = _get_foods(contents)
-    food_to_register = []
-    for day in chart:
-        print "Day"
-        for time in day:
-            print "\tTime"
-            print '\t Chosen:', choose_food(user, time)
-            food_to_register.append(choose_food(user, time))
-
-    data = _init_data(contents, food_to_register)
-
-    req = urllib2.Request(register_url, data)
-    resp = urllib2.urlopen(req)
-    contents = resp.read()
 
 if __name__ == "__main__":
-    print register(("92521114", "0017578167"))
+
+    user = UserCollection.objects(stu_username="92522267", stu_password="0440518075")[0]
+    # # reg = Registerer(UserCollection.objects(stu_username="92521114", stu_password="0017578167")[0])
+    reg = Registerer(user)
+    reg.register()
+    # # print(choose_food(user, [('6', 'رشته پلو'), ('7', 'زرشك پلو با مرغ')]))

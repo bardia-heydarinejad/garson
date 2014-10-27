@@ -27,6 +27,8 @@ class UserCollection(Document):
     def _update_today_meal(cls):
         pass
 
+
+
 if __name__ == "__main__":
     from bot.scraper import today_food
     user = UserCollection.objects(stu_username="92521114", stu_password="0017578167")[0]
@@ -36,4 +38,4 @@ if __name__ == "__main__":
         user.today_meal_last_update = today
         user.save()
 
-    print user.today_lunch
+    print(user.today_lunch)
