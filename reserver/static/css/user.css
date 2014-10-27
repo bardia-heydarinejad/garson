@@ -87,6 +87,7 @@ button.accday,button.accfood{
 	text-align: center;
 	color: white;
 	font-size: 1.2em;
+    margin: 10px;
 }
 div.btn{
 	text-align: center;

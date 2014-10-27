@@ -1,5 +1,6 @@
 <html>
 <head>
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">#}
     {%load staticfiles%}
 	<meta charset="utf-8">
 	<link rel="icon" href="{%static 'img/logo-m.png'%}">
@@ -22,8 +23,8 @@
         نام کاربری و رمز عبور سامانه ی رزرو غذای دانشگاه را وارد کنید!
             {% csrf_token %}
             <input name="next" type="hidden" value="{{NEXT}}">
-			<p><input tabindex="1" name="username" type="tel" placeholder ="شماره دانشجویی"></p>
-			<p><input tabindex="0" name="password" type="password" placeholder="رمز عبور"></p>
+			<p><input class="form-control" tabindex="1" name="username" type="tel" placeholder ="شماره دانشجویی"></p>
+			<p><input class="form-control" tabindex="0" name="password" type="password" placeholder="رمز عبور"></p>
 			<p><input	type="submit" value="ورود"></p>
 			<span class="warn">
             {% if msg %}

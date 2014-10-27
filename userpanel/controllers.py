@@ -92,7 +92,7 @@ def change_food_order(request):
     user.food_list_2 = l2
     user.food_list_3 = l3
     user.save()
-    return HttpResponse("changed")
+    return HttpResponse("ثبت شد")
 
 
 @login_required(login_url='/')
