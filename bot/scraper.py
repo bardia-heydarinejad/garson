@@ -31,7 +31,7 @@ def check(username, password):
         return False, None, None
 
     soup = BeautifulSoup(contents)
-    user_info = soup.body.table.tr.find_all('td')[4].div.contents[0
+    user_info = soup.body.table.tr.find_all('td')[4].div.contents[0]
     user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ")
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
