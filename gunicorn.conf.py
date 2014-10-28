@@ -1,0 +1,9 @@
+bind = "127.0.0.1:8000"
+chdir = "/var/www/reserver/"
+logfile = "/var/www/reserver/log/gunicorn.log"
+workers = 3
+user = "gunicorn"
+group = "www-data"
+daemon = True
+pid = "/tmp/gunicorn.pid"
+pythonpath =  "/var/www/reserver/venv"
