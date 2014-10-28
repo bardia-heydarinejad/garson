@@ -11,7 +11,7 @@ __author__ = 'bardia'
 RESERVE_START_TIME = datetime.time(0, 30, 0)
 
 
-class MyDaemon(Daemon):
+class RegisterDaemon(Daemon):
     def run(self):
         log_file = open('bot/logs/' + str(datetime.datetime.now().date()), "a")
         log_file.write("INF -\t Started at " + str(datetime.datetime.now().time()) + '\n')
@@ -45,7 +45,7 @@ class MyDaemon(Daemon):
                 log_file.write("ERR -\t ERROR:\n " + res + '\n')
             user.credit = credit(user.stu_username, user.stu_password)
             user.save()
-            log_file.write("INF -\t "+user.stu_username+' update credit: '+user.credit+'\n')
+            log_file.write("INF -\t "+user.stu_username+' update credit: '+str(user.credit)+'\n')
         end_time = datetime.datetime.now()
         log_file.write("INF -\t Process time: " + str(end_time - start_time) + '\n')
         log_file.close()
@@ -63,12 +63,12 @@ class MyDaemon(Daemon):
 
 
 if __name__ == "__main__":
-    daemon = MyDaemon('/tmp/daemon-garson.pid')
+    daemon = RegisterDaemon('/tmp/daemon-garson.pid')
     if len(sys.argv) == 2:
         if 'update_credit' == sys.argv[1]:
-            Registerer.update_credit_for_all_user()
-        elif 'register_food' == sys.argv[1]:
-            Registerer.register_for_all_user()
+            RegisterDaemon.update_credit_for_all_user()
+        elif 'reserve' == sys.argv[1]:
+            RegisterDaemon.register_for_all_user()
         elif 'start' == sys.argv[1]:
             daemon.start()
         elif 'stop' == sys.argv[1]:

@@ -47,7 +47,7 @@ def _get_foods(contents):
                 food_chart[day][time].append((number, name))
                 if name not in all_names:
                     with open("found_food.txt", "a") as my_file:
-                        my_file.write(name+'\n')
+                        my_file.write(name + '\n')
 
     return food_chart
 
@@ -81,29 +81,23 @@ class Registerer:
         try:
             display = Display(visible=False, size=(1600, 1200))
             display.start()
-            with contextlib.closing(webdriver.Firefox()) as browser2:
-                browser = webdriver.Firefox()
+            with contextlib.closing(webdriver.Firefox()) as browser:
+                #browser = webdriver.Firefox()
                 browser.get("https://stu.iust.ac.ir")
                 browser.find_element_by_id("j_username").send_keys(self.user.stu_username)
                 browser.find_element_by_id("j_password").send_keys(self.user.stu_password)
                 browser.find_element_by_id("login_btn_submit").submit()
                 # TODO: handle wrong user or pass
-                # if contents.find('iconWarning.gif') != -1:
-                # print "error"
                 browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
-                #browser.find_element_by_id("nextWeekBtn").click()
+                browser.find_element_by_id("nextWeekBtn").click()
 
                 for self_id in set(self.user.breakfast + self.user.lunch + self.user.dinner) - {0}:
-                    print('self id', self_id)
-                    browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
+                    #browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
                     if browser.find_element_by_id("selfHiddenId").get_attribute('value') != self_id:
                         browser.find_element_by_id("selfId").find_element_by_xpath(
                             "//option[@value='" + str(self_id) + "']").click()
                     foods_to_register = []
                     food_chart = _get_foods(browser.page_source)
-
-                    # import pprint
-                    # pprint.pprint(food_chart)
 
                     for i, day in enumerate(self.user.breakfast):
                         if day == self_id:
@@ -122,21 +116,19 @@ class Registerer:
                                 foods_to_register += [choose_food(self.user, foods_in_day)]
 
                     for index, food_to_check in foods_to_register:
-                        print(index, food_to_check)
                         browser.find_element_by_id("userWeekReserves.selected" + str(index)).click()
                     browser.find_element_by_id("doReservBtn").click()
 
         except Exception as e:
             return str(e)
             browser.quit()
-        display.stop()
+        # display.stop()
         return None
 
 
 if __name__ == "__main__":
-
-    user = UserCollection.objects(stu_username="92522267", stu_password="0440518075")[0]
-    # # reg = Registerer(UserCollection.objects(stu_username="92521114", stu_password="0017578167")[0])
+    # user = UserCollection.objects(stu_username="92522267", stu_password="0440518075")[0]
+    user = UserCollection.objects(stu_username="92521114", stu_password="0017578167")[0]
     reg = Registerer(user)
     reg.register()
     # # print(choose_food(user, [('6', 'رشته پلو'), ('7', 'زرشك پلو با مرغ')]))
