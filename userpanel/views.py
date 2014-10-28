@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from userpanel.models import UserCollection
@@ -20,7 +20,7 @@ def format_price(price):
 def user_panel(request):
     us = UserCollection.objects(user_id=request.user.id)
     if len(us) != 1:
-        return HttpResponse("Wrong")
+        return redirect('/?msg=invalid_id')
     user = us[0]
 
     name = user.name if user.name is not None else ""
@@ -49,6 +49,7 @@ def user_panel(request):
     email = request.user.email if request.user.email is not None else ''
 
     aaa = Self.get_all()
+    print(user.lunch)
     data = {"name": name, 'uni_id': uni_id, 'credit': format_price(stu_credit),
             'email': email, 'food_list_name_1': food_list_1,
             'food_list_name_2': food_list_2, 'food_list_name_3': food_list_3,
