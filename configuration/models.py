@@ -53,7 +53,7 @@ class Self:
     def get_all():
         all = []
         for e in Self.root.findall('.//dinings/self'):
-            all.append(Self(e.attrib.get('id'), e.text))
+            all.append(Self(int(e.attrib.get('id')), e.text))
         return all
 
 

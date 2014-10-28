@@ -51,7 +51,7 @@
                     <select>
                         <option data-location="0" selected="selected">نمیخواهم</option>
                         {% for self in all_selves %}
-                            {% if forloop.counter == day %}
+                            {% if self.id_ == day %}
                                 <option data-location="{{ self.id_ }}" selected="selected">{{ self.name }}</option>
                             {% else %}
                                 <option data-location="{{ self.id_ }}">{{ self.name }}</option>
@@ -68,7 +68,7 @@
                     <select>
                         <option data-location="0" selected="selected">نمیخواهم</option>
                         {% for self in all_selves %}
-                            {% if forloop.counter == day %}
+                            {% if self.id_ == day %}
                                 <option data-location="{{ self.id_ }}" selected="selected">{{ self.name }}</option>
                             {% else %}
                                 <option data-location="{{ self.id_ }}">{{ self.name }}</option>
@@ -85,7 +85,7 @@
                     <select>
                         <option data-location="0" selected="selected">نمیخواهم</option>
                         {% for self in all_selves %}
-                            {% if forloop.counter == day %}
+                            {% if self.id_ == day %}
                                 <option data-location="{{ self.id_ }}" selected="selected">{{ self.name }}</option>
                             {% else %}
                                 <option data-location="{{ self.id_ }}">{{ self.name }}</option>
