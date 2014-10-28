@@ -25,9 +25,9 @@ def check(username, password):
     req = urllib.request.Request(authentication_url, binary_data)
     resp = urllib.request.urlopen(req)
     contents = str(resp.read(), 'utf-8')
+    print(contents)
 
     if 'iconWarning.gif' in contents:
-        # print contents
         return False, None, None
 
     soup = BeautifulSoup(contents)
