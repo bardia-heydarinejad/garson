@@ -9,6 +9,7 @@ body{
 	font-family: 'Mitra' !important;
 	margin: 0;
 	padding: 0;
+    direction: rtl;
 }
 div.header{
 	background: #34495e;
@@ -21,6 +22,7 @@ div.rtl{
 }
 div.ltr{
 	margin-left: 25px;
+    direction: ltr;
 }
 div.header span{
 	margin: 10px;
@@ -28,6 +30,7 @@ div.header span{
 h1,h2{
 	text-align: center;
 }
+
 table {
 	width: 95%;
 	margin: auto;
@@ -139,6 +142,7 @@ td.fav{
 p.describe{
 	text-align: center;
 	margin:auto;
+    font-size: 20px;
 }
 div.footer{
 	min-height: 35%;

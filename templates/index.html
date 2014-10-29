@@ -26,10 +26,11 @@
 			<p><input class="form-control" tabindex="1" name="username" type="tel" placeholder ="شماره دانشجویی"></p>
 			<p><input class="form-control" tabindex="0" name="password" type="password" placeholder="رمز عبور"></p>
 			<p><input	type="submit" value="ورود"></p>
-			<span class="warn">
+			<span class="warn" style="font-family: Mitra,'Courier New'">
             {% if msg %}
                 {% if msg == 'wrong_user_pass' %}
-                    شماره ی دانشجویی یا رمز عبور اشتباه است!
+                    شماره ی دانشجویی یا رمز عبور اشتباه است! <br>
+                    با رمز عبور stu وارد شوید!
                 {% else %}
                     خطایی رخ داد!!!
                 {% endif %}
