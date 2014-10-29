@@ -1,0 +1,88 @@
+INF -	 I'm awake!! 2014-10-28 19:03:07.954079
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-10-28 19:04:33.800995
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 46400
+INF -	 Register: 92522267
+INF -	 92522267 update credit: 100350
+INF -	 Process time: 0:00:28.845753
+INF -	 I'm awake!! 2014-10-28 19:08:13.356504
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-10-28 19:09:09.383201
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 46400
+INF -	 Register: 92522267
+INF -	 92522267 update credit: 100350
+INF -	 Process time: 0:00:27.860081
+INF -	 I'm awake!! 2014-10-28 19:14:29.875999
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:10.098334
+INF -	 I'm awake!! 2014-10-28 19:16:32.386309
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:15.939629
+INF -	 I'm awake!! 2014-10-28 19:17:24.345696
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:10.764370
+INF -	 I'm awake!! 2014-10-28 19:18:04.727786
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ name 'user' is not defined
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:10.431471
+INF -	 I'm awake!! 2014-10-28 19:19:05.403307
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ name 'user' is not defined
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:09.508815
+INF -	 I'm awake!! 2014-10-28 19:21:06.538100
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:13.530284
+INF -	 I'm awake!! 2014-10-28 19:21:49.886580
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Element is not currently visible and so may not be interacted with
+Stacktrace:
+    at fxdriver.preconditions.visible (file:///tmp/tmpas8karp2/extensions/fxdriver@googlecode.com/components/command-processor.js:8959)
+    at DelayedCommand.prototype.checkPreconditions_ (file:///tmp/tmpas8karp2/extensions/fxdriver@googlecode.com/components/command-processor.js:11618)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmpas8karp2/extensions/fxdriver@googlecode.com/components/command-processor.js:11635)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmpas8karp2/extensions/fxdriver@googlecode.com/components/command-processor.js:11640)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmpas8karp2/extensions/fxdriver@googlecode.com/components/command-processor.js:11582)
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:12.180609
+INF -	 I'm awake!! 2014-10-28 19:27:48.327250
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Request-sent
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:01:53.372761
+INF -	 I'm awake!! 2014-10-28 19:29:43.380102
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ [Errno 104] Connection reset by peer
+INF -	 I'm awake!! 2014-10-28 19:30:37.814803
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Element is not currently visible and so may not be interacted with
+Stacktrace:
+    at fxdriver.preconditions.visible (file:///tmp/tmpkgbfizgk/extensions/fxdriver@googlecode.com/components/command-processor.js:8959)
+    at DelayedCommand.prototype.checkPreconditions_ (file:///tmp/tmpkgbfizgk/extensions/fxdriver@googlecode.com/components/command-processor.js:11618)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmpkgbfizgk/extensions/fxdriver@googlecode.com/components/command-processor.js:11635)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmpkgbfizgk/extensions/fxdriver@googlecode.com/components/command-processor.js:11640)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmpkgbfizgk/extensions/fxdriver@googlecode.com/components/command-processor.js:11582)
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:24.202474
+INF -	 I'm awake!! 2014-10-28 19:33:19.813548
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 25900
+INF -	 Process time: 0:00:23.494420
+INF -	 I'm awake!! 2014-10-28 19:34:56.567007
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 19400
+INF -	 Register: 92522267
+INF -	 92522267 update credit: 85850
+INF -	 Process time: 0:00:31.739877
