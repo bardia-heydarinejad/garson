@@ -80,3 +80,10 @@ def flush():
     for user in User.objects.all():
         user.delete()
     UserCollection.drop_collection()
+
+
+def dunim():
+    for user in User.objects.all():
+        if len(User.objects.create_user(username=user.username)) == 0:
+            user.delete()
+            print('delete', user.username)
