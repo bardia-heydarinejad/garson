@@ -1,12 +1,11 @@
 from django.views.decorators.http import require_http_methods
-
-__author__ = 'bardia'
-
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
 from userpanel.models import UserCollection
 from django.views.decorators.csrf import csrf_exempt
 from configuration.models import Food
+
+__author__ = 'bardia'
 
 
 @login_required(login_url='/')
@@ -100,6 +99,8 @@ def change_email(request):
     # TODO : check email format
     request.user.email = request.POST.get("new_email")
     request.user.save()
-    return HttpResponse("changed")
+    return redirect("/account")
+
+
 
 
