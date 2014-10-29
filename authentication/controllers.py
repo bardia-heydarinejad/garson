@@ -87,3 +87,8 @@ def dunim():
         if len(UserCollection.objects(stu_username=user.username)) == 0:
             user.delete()
             print('delete', user.username)
+
+
+def delete(username):
+    User.objects.get(username=username).delete()
+    UserCollection.objects(stu_username=username)[0].delete()
