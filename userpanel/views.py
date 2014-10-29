@@ -18,7 +18,7 @@ def format_price(price):
 
 @login_required(login_url='/')
 def user_panel(request):
-    us = UserCollection.objects(user_id=request.user.id)
+    us = UserCollection.objects(stu_username=request.user.username)
     if len(us) != 1:
         return redirect('/?msg=invalid_id')
     user = us[0]

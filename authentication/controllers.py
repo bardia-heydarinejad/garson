@@ -42,7 +42,7 @@ def login(request):
             user = User.objects.create_user(username=username, password=password)
             user.is_active = True
 
-            if len(UserCollection.objects(stu_username=username)) == 0:
+            if len(UserCollection.objects(stu_username=username)) == 1:
                 user.save()
                 return redirect(next_url)
 
