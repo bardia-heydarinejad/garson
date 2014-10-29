@@ -73,7 +73,7 @@ def credit(username, password):
     return int(user_credit)
 
 
-def today_food(username, password):
+def get_this_week_food(username, password):
     cj = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -92,34 +92,44 @@ def today_food(username, password):
         print("error")
         return False
 
-    credit_url = "https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose"
+    food_url = "https://stu.iust.ac.ir/nurture/user/multi/reserve/displayPanel.rose"
 
-    req = urllib.request.Request(credit_url, binary_data)
+    req = urllib.request.Request(food_url, binary_data)
     resp = urllib.request.urlopen(req)
     contents = resp.read()
     soup = BeautifulSoup(contents)
 
-    food_rows = soup.find(id="pageTD").table.find_all('tr')[1].td.table.find_all('tr', recursive=False)[1:]
+    food_chart = [[None, None, None] for i in range(6)]
+    # /html/body/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody
+    week_rows = soup.body.find_all('div', recursive=False)[1].find_all('div', recursive=False)[1].div.find_all('div', recursive=False)[1].table.tbody.find_all('tr', recursive=False)[1].td.table.tr.td.table.find_all('tr', recursive=False)[1].td.table.find_all('tr', recursive=False)[1:]
 
-    for food_row in food_rows:
-        j_date = (re.findall(r"\d{4}\/\d{2}\/\d{2}", str(food_row))[0]).split('/')
+    for day_tr in week_rows:
+        day = 6
+        if str(day_tr).find(u"پنجشنبه") != -1:
+            day = 5
+        elif str(day_tr).find(u"چهارشنبه") != -1:
+            day = 4
+        elif str(day_tr).find(u"سه شنبه") != -1:
+            day = 3
+        elif str(day_tr).find(u"دوشنبه") != -1:
+            day = 2
+        elif str(day_tr).find(u"یکشنبه") != -1:
+            day = 1
+        elif str(day_tr).find(u"شنبه") != -1:
+            day = 0
 
-        g_date = JalaliToGregorian(int(j_date[0]), int(j_date[1]), int(j_date[2])).getGregorianList()
-
-        datetime_now = datetime.datetime.now()
-        c_g_date = (datetime_now.year, datetime_now.month, datetime_now.day)
-        if c_g_date == g_date:
-            for food_input in food_row.find_all("input"):
-                if food_input.has_attr("checked"):
-                    number = re.findall(r'id="userWeekReserves\.selected(\d+)"', str(food_input))[0]
-                    span_id = "foodNameSpan" + number
-                    span = food_row.find_all("span", attrs={'id': span_id})[0]
-                    return re.findall(r'\|(.+)\|', str(span))[0].strip()
-    return '-'
+        for term, food_cell in enumerate(day_tr.find_all('td', recursive=False)[1:]):
+            cell_content = food_cell.text.strip()
+            if cell_content != "":
+                food_chart[day][term] = (cell_content.split('/')[0].split('-')[0].strip(), cell_content.split('/')[2].strip())
+    import pprint
+    pprint.pprint(food_chart)
+    return food_chart
 
 
 if __name__ == "__main__":
     # print credit(("92521501", "agost1373"))
-    #print(today_food("92521114", "0017578167"))
+    # print(today_food("92521114", "0017578167"))
     #print(credit("92521114", "0017578167"))
-    print(check("92521114", "0017578167")[1])
+    #print(check("92521114", "0017578167")[1])
+    get_this_week_food("92521114", "0017578167")

@@ -1,6 +1,6 @@
 import sys
 from bot.register import Registerer
-from bot.scraper import credit
+from bot.scraper import credit, get_this_week_food
 from userpanel.models import UserCollection
 from bot.daemon import Daemon
 import datetime
@@ -61,6 +61,16 @@ class RegisterDaemon(Daemon):
         log_file.write("INF -\t End of updating credit " + str(datetime.datetime.now()) + '\n')
         log_file.close()
 
+    @staticmethod
+    def update_food_for_all_user():
+        log_file = open('bot/logs/' + str(datetime.datetime.now().date()), "a")
+        log_file.write("INF -\t Updating food " + str(datetime.datetime.now()) + '\n')
+        for user in UserCollection.objects():
+            user.reserved_food = get_this_week_food(user.stu_username, user.stu_password)
+            user.save()
+        log_file.write("INF -\t End of updating credit " + str(datetime.datetime.now()) + '\n')
+        log_file.close()
+
 
 if __name__ == "__main__":
     daemon = RegisterDaemon('/tmp/daemon-garson.pid')
@@ -69,6 +79,8 @@ if __name__ == "__main__":
             RegisterDaemon.update_credit_for_all_user()
         elif 'reserve' == sys.argv[1]:
             RegisterDaemon.register_for_all_user()
+        elif 'update_food' == sys.argv[1]:
+            RegisterDaemon.update_food_for_all_user()
         elif 'start' == sys.argv[1]:
             daemon.start()
         elif 'stop' == sys.argv[1]:

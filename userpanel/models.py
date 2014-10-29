@@ -18,9 +18,8 @@ class UserCollection(Document):
     lunch = ListField()
     dinner = ListField()
 
-    today_breakfast = StringField(max_length=200, default="-")
-    today_lunch = StringField(max_length=200, default="-")
-    today_dinner = StringField(max_length=200, default="-")
+    reserved_food = ListField(ListField())
+
     today_meal_last_update = DateTimeField()
 
     @classmethod
