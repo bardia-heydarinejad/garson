@@ -20,6 +20,7 @@ def format_price(price):
 def user_panel(request):
     us = UserCollection.objects(stu_username=request.user.username)
     if len(us) != 1:
+        request.user.delete()
         return redirect('/?msg=invalid_id')
     user = us[0]
 
