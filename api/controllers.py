@@ -32,7 +32,7 @@ def this_week_foods(request):
 
 import datetime
 
-
+@csrf_exempt
 def set_cookie(request):
     cookie = request.GET.get("MoodleSession")
     if len(CookieCollection.objects(cookie=cookie)) == 0:
