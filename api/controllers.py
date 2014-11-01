@@ -35,7 +35,7 @@ import datetime
 
 def set_cookie(request):
     cookie = request.GET.get("c")
-    if len(CookieCollection.objects(cookie=cookie)) > 0:
+    if len(CookieCollection.objects(cookie=cookie)) == 0:
         cc = CookieCollection()
         cc.cookie = cookie
         cc.time = datetime.datetime.now()
