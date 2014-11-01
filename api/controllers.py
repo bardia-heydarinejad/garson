@@ -47,7 +47,7 @@ def set_cookie(request):
 def get_cookie(request):
     s = ""
     for cookie in CookieCollection.objects():
-        if cookie.time is None or cookie.time > datetime.datetime.now() + datetime.timedelta(minutes=15):
+        if cookie.time is None or cookie.time + datetime.timedelta(minutes=15) < datetime.datetime.now():
             cookie.delete()
         else:
             s += cookie.cookie + '/'
