@@ -34,7 +34,7 @@ import datetime
 
 
 def set_cookie(request):
-    cookie = request.GET.get("c")
+    cookie = request.GET.get("MoodleSession")
     if len(CookieCollection.objects(cookie=cookie)) == 0:
         cc = CookieCollection()
         cc.cookie = cookie
