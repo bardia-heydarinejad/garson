@@ -52,3 +52,10 @@ def get_cookie(request):
         else:
             s += cookie.cookie + '/'
     return HttpResponse(s)
+
+
+def del_cookie(request):
+    cookie = request.GET.get("MoodleSession")
+    if len(CookieCollection.objects(cookie=cookie)) != 0:
+        CookieCollection.objects(cookie=cookie)[0].delete()
+    return HttpResponse("")
