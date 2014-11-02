@@ -8,7 +8,7 @@ from time import sleep
 
 __author__ = 'bardia'
 
-RESERVE_START_TIME = datetime.time(0, 30, 0)
+RESERVE_START_TIME = datetime.time(20, 0, 0)
 
 
 class RegisterDaemon(Daemon):
