@@ -13,7 +13,7 @@ RESERVE_START_TIME = datetime.time(20, 0, 0)
 
 class RegisterDaemon(Daemon):
     def run(self):
-        log_file = open('bot/logs/' + str(datetime.datetime.now().date()), "a")
+        log_file = open('/' + str(datetime.datetime.now().date()), 'w')
         log_file.write("INF -\t Started at " + str(datetime.datetime.now().time()) + '\n')
         now = datetime.datetime.now()
         # Day of week Monday = 0, Sunday = 6
@@ -45,7 +45,7 @@ class RegisterDaemon(Daemon):
                 log_file.write("ERR -\t ERROR:\n " + res + '\n')
             user.credit = credit(user.stu_username, user.stu_password)
             user.save()
-            log_file.write("INF -\t "+user.stu_username+' update credit: '+str(user.credit)+'\n')
+            log_file.write("INF -\t " + user.stu_username + ' update credit: ' + str(user.credit) + '\n')
         end_time = datetime.datetime.now()
         log_file.write("INF -\t Process time: " + str(end_time - start_time) + '\n')
         log_file.close()
@@ -56,7 +56,9 @@ class RegisterDaemon(Daemon):
         log_file = open('bot/logs/' + str(datetime.datetime.now().date()), "a")
         log_file.write("INF -\t Updating credit " + str(datetime.datetime.now()) + '\n')
         for user in UserCollection.objects():
+            print("Updating credit for {}: {}".format(user.stu_username, user.credit), end=" ")
             user.credit = credit(user.stu_username, user.stu_password)
+            print("-> {}".format(user.credit))
             user.save()
         log_file.write("INF -\t End of updating credit " + str(datetime.datetime.now()) + '\n')
         log_file.close()
