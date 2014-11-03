@@ -89,6 +89,8 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         if 'update_credit' == sys.argv[1]:
             RegisterDaemon.update_credit_for_all_user()
+        elif 'clean_users' == sys.argv[1]:
+            RegisterDaemon.delete_user_with_changed_password()
         elif 'reserve' == sys.argv[1]:
             RegisterDaemon.register_for_all_user()
         elif 'update_food' == sys.argv[1]:
