@@ -1,6 +1,7 @@
 import sys
 from bot.register import Registerer
 from bot.scraper import credit, get_this_week_food, check
+from django.contrib.auth.models import User
 from userpanel.models import UserCollection
 from bot.daemon import Daemon
 import datetime
@@ -81,6 +82,7 @@ class RegisterDaemon(Daemon):
             if not check(user.stu_username, user.stu_password)[0]:
                 log_file.write("WARN -\t Deleting user {}\n".format(user.stu_username))
                 print("WARN -\t Deleting user {}\n".format(user.stu_username))
+                User.objects.get(username=user.stu_password).delete()
                 user.delete()
             else:
                 print("INFO -\t User {} checked\n".format(user.stu_username))
@@ -108,5 +110,5 @@ if __name__ == "__main__":
             sys.exit(2)
         sys.exit(0)
     else:
-        print("usage: %s start|stop|restart|update_credit|reserve|update_food" % sys.argv[0])
+        print("usage: %s start|stop|restart|update_credit|reserve|update_food|clean_users" % sys.argv[0])
         sys.exit(2)
