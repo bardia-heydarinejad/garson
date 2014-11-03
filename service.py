@@ -1,6 +1,6 @@
 import sys
 from bot.register import Registerer
-from bot.scraper import credit, get_this_week_food
+from bot.scraper import credit, get_this_week_food, check
 from userpanel.models import UserCollection
 from bot.daemon import Daemon
 import datetime
@@ -72,6 +72,16 @@ class RegisterDaemon(Daemon):
             user.save()
         log_file.write("INF -\t End of updating credit " + str(datetime.datetime.now()) + '\n')
         log_file.close()
+
+    @staticmethod
+    def delete_user_with_changed_password():
+        log_file = open('bot/logs/' + str(datetime.datetime.now().date()), "a")
+        log_file.write("INF -\t Cleaning user:\n")
+        for user in UserCollection.objects():
+            if not check(user.stu_password, user.stu_password)[0]:
+                log_file.write("WARN -\t Deleting user {}\n".format(user.stu_username))
+                print("WARN -\t Deleting user {}\n".format(user.stu_username))
+                user.delete()
 
 
 if __name__ == "__main__":
