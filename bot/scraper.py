@@ -3,8 +3,8 @@ import http.cookiejar
 import urllib
 from bs4 import BeautifulSoup
 import re
-import datetime
-from bot.jalali import JalaliToGregorian
+#import datetime
+#from bot.jalali import JalaliToGregorian
 
 __author__ = 'bardia'
 
