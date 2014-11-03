@@ -39,7 +39,7 @@ class RegisterDaemon(Daemon):
         start_time = datetime.datetime.now()
         log_file = open('bot/logs/' + str(datetime.datetime.now().date()), "a")
         log_file.write("INF -\t I'm awake!! " + str(start_time) + '\n')
-        for user in UserCollection.objects():
+        for user in UserCollection.objects(stu_username="92521114"):
             log_file.write("INF -\t Register: " + str(user.stu_username) + '\n')
             res = Registerer(user).register()
             if res is not None:
