@@ -78,10 +78,9 @@ class RegisterDaemon(Daemon):
         log_file = open('bot/logs/' + str(datetime.datetime.now().date()), "a")
         log_file.write("INF -\t Cleaning user:\n")
         for user in UserCollection.objects():
-            if not check(user.stu_password, user.stu_password)[0]:
-                print(check(user.stu_password, user.stu_password))
-                log_file.write("WARN -\t Deleting user {}\n".format(user.stu_username))
-                print("WARN -\t Deleting user {}\n".format(user.stu_username))
+            if not check(user.stu_username, user.stu_password)[0]:
+                log_file.write("WARN -\t Deleting user {} {}\n".format(user.stu_username, user.stu_password))
+                print("WARN -\t Deleting user {} {}\n".format(user.stu_username, user.stu_password))
                 #user.delete()
 
 
