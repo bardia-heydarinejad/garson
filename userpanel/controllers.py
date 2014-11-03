@@ -12,8 +12,7 @@ __author__ = 'bardia'
 @csrf_exempt
 @require_http_methods(["POST"])
 def change_days(request):
-    user_id = request.user.id
-    us = UserCollection.objects(user_id=user_id)
+    us = UserCollection.objects(stu_username=request.user.username)
     if len(us) != 1:
         return HttpResponse("not active")
     user = us[0]
@@ -52,7 +51,7 @@ def change_days(request):
 @csrf_exempt
 @require_http_methods(["POST"])
 def change_food_order(request):
-    us = UserCollection.objects(user_id=request.user.id)
+    us = UserCollection.objects(stu_username=request.user.username)
     if len(us) != 1:
         return HttpResponse("not active")
     user = us[0]

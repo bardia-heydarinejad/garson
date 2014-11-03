@@ -50,7 +50,6 @@ def user_panel(request):
     email = request.user.email if request.user.email is not None else ''
 
     aaa = Self.get_all()
-    print(user.lunch)
     data = {"name": name, 'uni_id': uni_id, 'credit': format_price(stu_credit),
             'email': email, 'food_list_name_1': food_list_1,
             'food_list_name_2': food_list_2, 'food_list_name_3': food_list_3,

@@ -39,6 +39,9 @@ def _get_foods(contents):
             foods_td = foods_tds[time]
             if foods_td.table is None:
                 continue
+            if 'checked="checked"' in str(foods_td):
+                print(day,time,"is checked")
+                continue
 
             food_trs = foods_td.table.tbody.find_all('tr', recursive=False)
             for tr in food_trs:
@@ -68,7 +71,7 @@ def choose_food(user, foods):
 
     if len(random_choice) > 0:
         return random.choice(random_choice)
-    return None, None
+    return None
 
 
 class Registerer:
@@ -81,8 +84,8 @@ class Registerer:
         try:
             display = Display(visible=False, size=(1600, 1200))
             display.start()
-            with contextlib.closing(webdriver.Firefox()) as browser:
-                #browser = webdriver.Firefox()
+            with contextlib.closing(webdriver.Firefox()) as browser2:
+                browser = webdriver.Firefox()
                 browser.get("https://stu.iust.ac.ir")
                 browser.find_element_by_id("j_username").send_keys(self.user.stu_username)
                 browser.find_element_by_id("j_password").send_keys(self.user.stu_password)
@@ -90,6 +93,8 @@ class Registerer:
                 # TODO: handle wrong user or pass
                 browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
                 browser.find_element_by_id("nextWeekBtn").click()
+                import time
+                time.sleep(3)
 
                 for self_id in set(self.user.breakfast + self.user.lunch + self.user.dinner) - {0}:
                     #browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
@@ -102,27 +107,31 @@ class Registerer:
                     for i, day in enumerate(self.user.breakfast):
                         if day == self_id:
                             foods_in_day = food_chart[i][0]
-                            if len(foods_in_day) > 0:
-                                foods_to_register += [choose_food(self.user, foods_in_day)]
+                            chosen = choose_food(self.user, foods_in_day)
+                            if chosen is not None:
+                                foods_to_register.append(chosen)
                     for i, day in enumerate(self.user.lunch):
                         if day == self_id:
                             foods_in_day = food_chart[i][1]
-                            if len(foods_in_day) > 0:
-                                foods_to_register += [choose_food(self.user, foods_in_day)]
+                            chosen = choose_food(self.user, foods_in_day)
+                            if chosen is not None:
+                                foods_to_register.append(chosen)
                     for i, day in enumerate(self.user.dinner):
                         if day == self_id:
                             foods_in_day = food_chart[i][2]
-                            if len(foods_in_day) > 0:
-                                foods_to_register += [choose_food(self.user, foods_in_day)]
+                            chosen = choose_food(self.user, foods_in_day)
+                            if chosen is not None:
+                                foods_to_register.append(chosen)
 
                     for index, food_to_check in foods_to_register:
+                        print("\t->"+str(food_to_check))
                         browser.find_element_by_id("userWeekReserves.selected" + str(index)).click()
                     browser.find_element_by_id("doReservBtn").click()
 
         except Exception as e:
             return str(e)
-            browser.quit()
-        # display.stop()
+            #browser.quit()
+        display.stop()
         return None
 
 
