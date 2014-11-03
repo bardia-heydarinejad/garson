@@ -1,7 +1,6 @@
 import sys
 from bot.register import Registerer
-from bot.scraper import credit, get_this_week_food, check
-from django.contrib.auth.models import User
+from bot.scraper import credit, get_this_week_food
 from userpanel.models import UserCollection
 from bot.daemon import Daemon
 import datetime
@@ -74,27 +73,12 @@ class RegisterDaemon(Daemon):
         log_file.write("INF -\t End of updating credit " + str(datetime.datetime.now()) + '\n')
         log_file.close()
 
-    @staticmethod
-    def delete_user_with_changed_password():
-        log_file = open('bot/logs/' + str(datetime.datetime.now().date()), "a")
-        log_file.write("INF -\t Cleaning user:\n")
-        for user in UserCollection.objects():
-            if not check(user.stu_username, user.stu_password)[0]:
-                log_file.write("WARN -\t Deleting user {}\n".format(user.stu_username))
-                print("WARN -\t Deleting user {}\n".format(user.stu_username))
-                User.objects.get(username=user.stu_password).delete()
-                user.delete()
-            else:
-                print("INFO -\t User {} checked\n".format(user.stu_username))
-
 
 if __name__ == "__main__":
     daemon = RegisterDaemon('/tmp/daemon-garson.pid')
     if len(sys.argv) == 2:
         if 'update_credit' == sys.argv[1]:
             RegisterDaemon.update_credit_for_all_user()
-        elif 'clean_users' == sys.argv[1]:
-            RegisterDaemon.delete_user_with_changed_password()
         elif 'reserve' == sys.argv[1]:
             RegisterDaemon.register_for_all_user()
         elif 'update_food' == sys.argv[1]:

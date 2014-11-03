@@ -85,9 +85,19 @@ def flush():
 
 def dunim():
     for user in User.objects.all():
-        if len(UserCollection.objects(stu_username=user.username)) == 0:
+        if len(user.username) == 8 and len(UserCollection.objects(stu_username=user.username)) == 0:
             user.delete()
             print('delete', user.username)
+
+
+def duchp():
+    for user in UserCollection.objects():
+        if not check(user.stu_username, user.stu_password)[0]:
+            print("WARN -\t Deleting user {}\n".format(user.stu_username))
+            User.objects.get(username=user.stu_password).delete()
+            user.delete()
+        else:
+            print("INFO -\t User {} checked\n".format(user.stu_username))
 
 
 def delete(username):
