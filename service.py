@@ -79,9 +79,11 @@ class RegisterDaemon(Daemon):
         log_file.write("INF -\t Cleaning user:\n")
         for user in UserCollection.objects():
             if not check(user.stu_username, user.stu_password)[0]:
-                log_file.write("WARN -\t Deleting user {} {}\n".format(user.stu_username, user.stu_password))
-                print("WARN -\t Deleting user {} {}\n".format(user.stu_username, user.stu_password))
-                #user.delete()
+                log_file.write("WARN -\t Deleting user {}\n".format(user.stu_username))
+                print("WARN -\t Deleting user {}\n".format(user.stu_username))
+                user.delete()
+            else:
+                print("INFO -\t User {} checked\n".format(user.stu_username))
 
 
 if __name__ == "__main__":
