@@ -11,6 +11,7 @@ WARN -	 Deleting user 92521114 0017578167
 INF -	 Cleaning user:
 WARN -	 Deleting user 92522177 05100272883316
 WARN -	 Deleting user 92521114 0017578167
+<<<<<<< HEAD
 >>>>>>> 815d35ffb323bce922f4cd6421367c52eb8ee3e3
 INF -	 Cleaning user:
 WARN -	 Deleting user 92432015 1373723
@@ -26,3 +27,82 @@ You can install it in terminal:
 sudo apt-get install xvfb
 INF -	 92521114 update credit: 46400
 INF -	 Process time: 0:00:04.279116
+=======
+INF -	 I'm awake!! 2014-11-03 13:06:27.434706
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:13.860380
+INF -	 I'm awake!! 2014-11-03 13:12:48.453680
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 37900
+INF -	 Process time: 0:00:16.469757
+INF -	 I'm awake!! 2014-11-03 15:21:49.883840
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Unable to locate element: {"method":"id","selector":"selfHiddenId"}
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///tmp/tmpgftaekhk/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+    at FirefoxDriver.prototype.findElement (file:///tmp/tmpgftaekhk/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmpgftaekhk/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmpgftaekhk/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmpgftaekhk/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+INF -	 92521114 update credit: 37900
+INF -	 Process time: 0:00:12.886222
+INF -	 I'm awake!! 2014-11-03 15:23:40.193321
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Unable to locate element: {"method":"id","selector":"selfHiddenId"}
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///tmp/tmpkh28jrux/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+    at FirefoxDriver.prototype.findElement (file:///tmp/tmpkh28jrux/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmpkh28jrux/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmpkh28jrux/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmpkh28jrux/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+INF -	 92521114 update credit: 37900
+INF -	 Process time: 0:00:13.382575
+INF -	 I'm awake!! 2014-11-03 15:29:55.714997
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-11-03 15:45:56.039435
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-11-03 15:46:30.699010
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-11-03 16:06:45.228702
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:13.610592
+INF -	 I'm awake!! 2014-11-03 16:11:34.371019
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-11-03 16:12:24.937045
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-11-03 16:13:06.455148
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-11-03 16:14:00.672200
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-11-03 16:19:10.333100
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2014-11-03 16:27:04.032399
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Alert Text: مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده میباشد.
+<super: <class 'WebDriverException'>, <UnexpectedAlertPresentException object>>
+INF -	 92521114 update credit: 36400
+INF -	 Process time: 0:00:15.828910
+INF -	 I'm awake!! 2014-11-03 16:27:50.296080
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Alert Text: مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده میباشد.
+<super: <class 'WebDriverException'>, <UnexpectedAlertPresentException object>>
+INF -	 92521114 update credit: 36400
+INF -	 Process time: 0:00:16.323047
+INF -	 I'm awake!! 2014-11-03 16:30:11.429090
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Alert Text: مجموع تعداد غذاهای انتخاب شده بیشتر از تعداد مجاز گروه شما در این وعده میباشد.
+<super: <class 'WebDriverException'>, <UnexpectedAlertPresentException object>>
+INF -	 92521114 update credit: 36400
+INF -	 Process time: 0:00:16.704723
+INF -	 I'm awake!! 2014-11-03 16:31:48.192193
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 36400
+INF -	 Process time: 0:00:16.279246
+>>>>>>> c0c9bb027713e3f2318ec4145411e0b87096ec10

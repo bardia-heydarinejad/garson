@@ -11,7 +11,6 @@ class UserCollection(Document):
     food_list_1 = ListField()
     food_list_2 = ListField()
     food_list_3 = ListField()
-    user_id = IntField(required=True)
     credit = IntField(default=0)
 
     breakfast = ListField()
