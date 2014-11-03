@@ -78,6 +78,7 @@ def logout(request):
 
 def flush():
     for user in User.objects.all():
+        print("WARN -\t Deleting user - {}".format(user.username))
         user.delete()
     UserCollection.drop_collection()
 
