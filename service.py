@@ -41,7 +41,7 @@ class RegisterDaemon(Daemon):
         for user in UserCollection.objects():
             log_file.write("INF -\t Register: " + str(user.stu_username) + '\n')
             print('\nRegistering for {}:'.format(user.stu_username))
-            res = Registerer(user).register()
+            res = Registerer(user).register
             print("result: <{}>".format(res))
             if res is not None:
                 log_file.write("ERR -\t ERROR:\n " + res + '\n')

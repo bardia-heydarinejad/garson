@@ -14,6 +14,25 @@
         <food id="11" type="lunch">استانبولی پلو</food>
         <food id="12" type="lunch">چلوخورش قورمه سبزي</food>
         <food id="13" type="lunch">رشته پلو</food>
+        <food id="14" type="breakfast">تخم مرغ سه عدد</food>
+        <food id="15" type="breakfast">تخم مرغ+پنیر</food>
+        <food id="16" type="breakfast">پنیر</food>
+        <food id="17" type="breakfast">شیر</food>
+        <food id="18" type="breakfast">مربا</food>
+        <food id="19" type="breakfast">خامه</food>
+        <food id="20" type="breakfast">مربا +خامه</food>
+        <food id="21" type="breakfast">شیر+حلوا</food>
+        <food id="22" type="breakfast">حلوا شكري</food>
+        <food id="23" type="dinner">ماكاروني</food>
+        <food id="24" type="dinner">کنسرو لوبیا</food>
+        <food id="25" type="dinner">کنسرو عدسی سیب زمینی</food>
+        <food id="26" type="dinner">مسما بادمجان</food>
+        <food id="27" type="dinner">كوكو سيب زميني</food>
+        <food id="28" type="dinner">چلو خورش قيمه بادمجان</food>
+        <food id="29" type="dinner">خوراك كتلت</food>
+        <food id="30" type="dinner">ميرزا قاسمي</food>
+        <food id="31" type="dinner">خوراک مرغ وسبزیجات</food>
+        <food id="32" type="lunch">شویدپلو با گوشت</food>
     </foods>
     <dinings>
         <self id="1" >سلف مرکزی برادران</self>

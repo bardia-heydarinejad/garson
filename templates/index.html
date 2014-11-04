@@ -14,13 +14,12 @@
 		<div class="showonmobile">
 		<h1>گارسون</h1>
 		<h3>رزرو اتوماتیک غذای دانشجویی</h3>
-		<h4>(نسخه ی آزمایشی)</h4>
 		<p><img class="logo-m" src="{%static 'img/logo-m.png'%}"></p>
 
 		</div>
 		<form method="post" action="/authentication/login/">
-            <h2>ورود</h2>
-        نام کاربری و رمز عبور سامانه ی رزرو غذای دانشگاه را وارد کنید!
+            <h2>وارد شوید</h2>
+        نام کاربری و رمز عبور سامانه ی رزرو غذای دانشگاه را وارد کنید:
             {% csrf_token %}
             <input name="next" type="hidden" value="{{NEXT}}">
 			<p><input class="form-control" tabindex="1" name="username" type="tel" placeholder ="شماره دانشجویی"></p>
@@ -30,7 +29,7 @@
             {% if msg %}
                 {% if msg == 'wrong_user_pass' %}
                     شماره ی دانشجویی یا رمز عبور اشتباه است! <br>
-                    با رمز عبور stu وارد شوید!
+                    با رمز عبور stu وارد شوید.
                 {% else %}
                     خطایی رخ داد!!!
                 {% endif %}
@@ -38,12 +37,17 @@
             </span>
 		</form>
 	</div>
-
+    <span id="user_count">
+        {{ user_count }}
+    </span>
 	<div class="describe">
 		<h1>گارسون</h1>
 		<h3>رزرو اتوماتیک غذای دانشجویی</h3>
-        <h4>(نسخه ی آزمایشی)</h4>
+        <h4>(علموص)</h4>
 	</div>
+    <div id="footer">
+        کاری از چندتا از بروبچه های ورودی ۹۲ دانشکده کامپیوتر دانشگاه علم و صنعت ایران
+    </div>
 </div>
 	<script>
 	 var x = window.innerWidth ;

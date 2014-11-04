@@ -73,6 +73,22 @@ input{
     font-family: 'Mitra';
 }
 
+span#user_count{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #ffffff;
+    font-size: 60px;
+}
+
+div#footer{
+    position: absolute;
+    bottom: 10px;
+    color: #ffffff;
+    right: 10px;
+}
+
+
 @media(min-width: 1000px){
 	body{
 		background-image: url(../img/bg.png);

@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from userpanel.models import UserCollection
 from configuration.models import Food, Self
+from authentication.controllers import dunim
 
 
 def format_price(price):
@@ -20,7 +21,7 @@ def format_price(price):
 def user_panel(request):
     us = UserCollection.objects(stu_username=request.user.username)
     if len(us) != 1:
-        request.user.delete()
+        dunim()
         return redirect('/?msg=invalid_id')
     user = us[0]
 

@@ -80,7 +80,11 @@ class Registerer:
     def __init__(self, user):
         self.user = user
 
+    @property
     def register(self):
+        if not(any(user.breakfast) or any(user.lunch) or any(user.dinner)):
+            print("\tNothing to reserve.")
+            return None
         try:
             display = Display(visible=False, size=(1600, 1200))
             display.start()
@@ -94,10 +98,17 @@ class Registerer:
                 browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
                 browser.find_element_by_id("nextWeekBtn").click()
                 import time
-                time.sleep(3)
 
                 for self_id in set(self.user.breakfast + self.user.lunch + self.user.dinner) - {0}:
                     #browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
+                    self_hidden_id = None
+                    for i in range(10):
+                        try:
+                            self_hidden_id = browser.find_element_by_id("selfHiddenId")
+                            break
+                        except:
+                            time.sleep(0.3)
+
                     if browser.find_element_by_id("selfHiddenId").get_attribute('value') != self_id:
                         browser.find_element_by_id("selfId").find_element_by_xpath(
                             "//option[@value='" + str(self_id) + "']").click()
