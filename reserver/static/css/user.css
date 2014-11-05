@@ -91,7 +91,23 @@ button.accday,button.accfood{
 	text-align: center;
 	color: white;
 	font-size: 1.2em;
-    margin: 10px;
+	-webkit-box-shadow: 0 -5px 35px #2eff71;
+     -moz-box-shadow: 0 -5px 35px #2eff71;
+          box-shadow: 0 -5px 35px #2eff71;
+    border-bottom: 3px #27ae60 solid;
+    vertical-align: top;
+}
+button:active{
+	border-bottom: none;
+	margin-top:3px;
+	box-shadow: none; 
+
+}
+button[disabled]{
+	background-color: #ccc;
+	color: #999999;
+	box-shadow: none;
+	border-bottom-color: #aaa;
 }
 div.btn{
 	text-align: center;

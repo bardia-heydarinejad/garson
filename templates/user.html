@@ -106,7 +106,7 @@
 		
 	</table>
 	<div class="btn">
-	<button class="accday">ثبت تغییرات</button>
+	<button disabled="" class="accday">ثبت تغییرات</button>
 	</div>
 	<div class="pop">
 		<select data-day="" data-time="">
@@ -153,7 +153,7 @@
 
 	</div>
 	<div style="text-align:center;">
-	<button class="accfood">ثبت تغییرات</button>
+	<button disabled="" class="accfood">ثبت تغییرات</button>
     <div id="msgAlert" class="alert alert-success"> یک پیغام موفق </div>
     <div id="msgAlertDanger" class="alert alert-danger"> یک پیغام موفق </div>
 	</div>
@@ -165,7 +165,11 @@
 	<script>
   $(function() {
     $( "ul.droptrue" ).sortable({
-      connectWith: "ul"
+      connectWith: "ul",
+      change:function(){
+        $('button.accfood').removeAttr('disabled');
+
+      }
     });
  
     $( "#sortable1, #sortable3, #sortable2" ).disableSelection();
@@ -181,6 +185,7 @@
             $('select').change(function(){
 				var location = $(this).children('option:selected').attr('data-location');
 				$(this).parent('td').attr('data-location',location);
+                $('button.accday').removeAttr('disabled');
 			});
 			$('button.submit').click(function(){
 				var option = $('div.pop option:selected');
