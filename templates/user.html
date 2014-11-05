@@ -162,6 +162,13 @@
 		کاری از گروه <a href="http://rishe.co">ریشه</a>
 	</div>
 
+    <div id="success">
+        <div id="popup">
+            <h3>ثبت شد</h3>
+        </div>
+    </div>
+
+
 	<script>
   $(function() {
     $( "ul.droptrue" ).sortable({
@@ -223,6 +230,15 @@
                     data,
                     function(data,status){
                         console.log("Data: " + data + "\nStatus: " + status);
+                        if(status == "success"){
+                            $('div#success p').text('ثبت شد');
+                            $('div#success').show();
+                            $('div#success').delay(300).hide();
+                        }else{
+                            $('div#success p').text('متاسفانه مشکلی بوجود آمده لطفا دوباره سعی کنید');
+                            $('div#success').show();
+                            $('div#success').delay(300).hide();
+                        }
                 });
             });
             $('button.accemail').click(function(){});
@@ -260,10 +276,15 @@
                 },
                 function(data,status){
                     if (status == "success") {
-                        $("#msgAlert").html(data).slideDown(500)
+                        $('div#success p').text('ثبت شد');
+                        $('div#success').show();
+                        $('div#success').delay(300).hide();
                     }
                     else {
-                        $("#msgAlertDanger").html(data).slideDown(500)
+                        $('div#success p').text('متاسفانه مشکلی بوجود آمده لطفا دوباره سعی کنید');
+                        $('div#success').show();
+                        $('div#success').delay(300).hide();
+                        
                     }
 
                     setTimeout(function () {
