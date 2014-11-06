@@ -108,17 +108,7 @@
 	<div class="btn">
 	<button disabled="" class="accday">ثبت تغییرات</button>
 	</div>
-	<div class="pop">
-		<select data-day="" data-time="">
-			<option data-val="1">سلف مرکزی</option>
-			<option data-val="12">خوابگاه حکیمیه</option>
-			<option data-val="4">کوی بسیج</option>
-			<option data-val="0">نمیخواهم</option>
-		</select>
-
-		<button class="submit">تغییر</button>
-	</div>
-
+	
 	<hr>
 
 
@@ -165,6 +155,7 @@
     <div id="success">
         <div id="popup">
             <h3>ثبت شد</h3>
+            <button id="ok">OK</button>
         </div>
     </div>
 
@@ -204,6 +195,9 @@
 				target.attr('data-location',option.attr('data-val'));
 				$('div.pop').hide();
 			});
+            $('button#ok').click(function(){
+                $('div#success').hide();
+            });
             $('button.accday').click(function(){
                 var data = {}
                 var tds = $('td[class="day"]');
@@ -232,12 +226,15 @@
                         console.log("Data: " + data + "\nStatus: " + status);
                         if(status == "success"){
                             $('div#success p').text('ثبت شد');
-                            $('div#success').show();
-                            $('div#success').delay(300).hide();
+                            $('div#success').css('display','block');
+                            $('button.accday').attr('disabled','true');
+                            
+                            
                         }else{
                             $('div#success p').text('متاسفانه مشکلی بوجود آمده لطفا دوباره سعی کنید');
-                            $('div#success').show();
-                            $('div#success').delay(300).hide();
+                            $('div#success').css('display','block');
+                            
+                           
                         }
                 });
             });
@@ -275,17 +272,18 @@
                     food_list_3:list3
                 },
                 function(data,status){
-                    if (status == "success") {
-                        $('div#success p').text('ثبت شد');
-                        $('div#success').show();
-                        $('div#success').delay(300).hide();
-                    }
-                    else {
-                        $('div#success p').text('متاسفانه مشکلی بوجود آمده لطفا دوباره سعی کنید');
-                        $('div#success').show();
-                        $('div#success').delay(300).hide();
-                        
-                    }
+                    if(status == "success"){
+                            $('div#success p').text('ثبت شد');
+                            $('div#success').css('display','block');
+                            $('button.accfood').attr('disabled','true');
+                            
+                            
+                        }else{
+                            $('div#success p').text('متاسفانه مشکلی بوجود آمده لطفا دوباره سعی کنید');
+                            $('div#success').css('display','block');
+                            
+                           
+                        }
 
                     setTimeout(function () {
                         $(".alert").slideUp(500)
