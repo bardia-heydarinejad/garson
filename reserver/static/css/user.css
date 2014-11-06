@@ -55,15 +55,25 @@ div#success{
 	top:0 ;
 	background: black;
 	text-align: center;
+	display: none;
 }
 div#popup {
-	width: 65%;
-	height: 45%;
+	width: 25%;
+	height: 35%;
 	margin: auto ;
-	margin-top: 25%;
+	margin-top: 15%;
 	text-align: center;
 	background: #fff;
 	border-radius: 5px ;
+}
+div#popup button {
+	background: #1abc9c ;
+	height: 45px;
+	border : none;
+	border-radius: 60%;
+	color: #fff ;
+	min-width: 45px;
+	border-bottom: #27ae60 solid 3px;
 }
 
 button:hover{
@@ -91,7 +101,7 @@ button.accday,button.accfood{
     vertical-align: top;
 }
 button:active{
-	border-bottom: none;
+	border-bottom: none !important;
 	margin-top:3px;
 	box-shadow: none; 
 
