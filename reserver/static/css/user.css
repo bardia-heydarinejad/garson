@@ -53,28 +53,22 @@ div#success{
 	height: 100%;
 	right: 0;
 	top:0 ;
-	background: black;
+	background: rgba(0,0,0,0.3);
 	text-align: center;
 	display: none;
 }
 div#popup {
 	width: 25%;
-	height: 35%;
+	height: auto;
+	padding : 10px;
 	margin: auto ;
 	margin-top: 15%;
 	text-align: center;
 	background: #fff;
 	border-radius: 5px ;
+	font-size: 32px;
 }
-div#popup button {
-	background: #1abc9c ;
-	height: 45px;
-	border : none;
-	border-radius: 60%;
-	color: #fff ;
-	min-width: 45px;
-	border-bottom: #27ae60 solid 3px;
-}
+
 
 button:hover{
 	cursor: pointer;
@@ -112,6 +106,67 @@ button[disabled]{
 	box-shadow: none;
 	border-bottom-color: #aaa;
 }
+.input-group{
+	display: table;
+	border-collapse: separate;
+	width: 35%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.input-group span{
+	white-space: nowrap;
+	font-size: 0;
+	position: relative;
+	vertical-align: middle;
+	display: table-cell;
+	width: 1%;
+	border-collapse: separate;
+
+}
+input.btn:hover{
+	opacity: 0.9;
+}
+input.btn{
+	font-family: 'Mitra';
+
+	border-radius: 5px 0px 0px 5px;
+	margin-right: -1px;
+	color: #333;
+	background: #fff;
+	border-color : #ccc;
+	display: inline-block;
+	padding : 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	background-image: none;
+	border: none;
+	border-right: 1px solid transparent;
+	width: auto;
+	min-width: 55px;
+}
+input.form-control {
+	direction: rtl;
+	position: relative;
+	z-index: 2;
+	float: left;
+	width: 100%;
+	margin-bottom: 0;
+	border-left: none;
+	border-radius: 0px 5px 5px 0px;	
+	box-shadow: none;
+	margin-left: 0;
+}
 
 div.btn{
 	text-align: center;
@@ -125,29 +180,32 @@ hr {
 
 #sortable1, #sortable3,#sortable2 {
     vertical-align: top;
-	list-style: none; 
-	margin-right: 10px;  
-	padding: 30px; 
-	width: 143px;
-	display: inline-table;
+	list-style: decimal; 
+	padding: 0;
+	padding-top: 30px; 
+	width: 100%;
+	margin: 0;
+	text-align: center;
+	direction: rtl;
 	vertical-align: top;
+	display: inline-table;
+	min-height: 50px;
 }
 #sortable3 {
 	background: #e74c3c;
+	margin-bottom: 25px;
 }
 #sortable2 {
 	background:#f1c40f;
 }
 #sortable1{
-
-
     background: #2ecc71;
 }
 #sortable1 li, #sortable3 li,#sortable2 li { 
   	margin: 5px;
-  	padding: 5px; 		
+  	padding: 3px;
 	font-size: 1.2em; 
-  	width: 120px; 
+  	display: inline-table;
   }
 #sortable1 li:hover , #sortable2 li:hover,#sortable3 li:hover{
 	cursor:move;
@@ -254,21 +312,6 @@ input {
           transition: border linear 0.2s, box-shadow linear 0.2s;
 
 }
-input[type="submit"]{
-	width: 10%;
-	height: 25px;
-	background: #2ecc71;
-	color: #fff;
-	border: none;
-	font-family: 'Mitra';
-	vertical-align: baseline;
-	padding: 5px;
-	font-size: 18px;
-}
-input[type="submit"]:hover{
-	cursor: pointer;
-	background-color: #1abc9c;
-}
 input[type="email"]:focus,
 input[type="password"]:focus{
 		border-color: rgba(82, 168, 236, 0.8);
@@ -301,12 +344,11 @@ label{
 }
 
 @media(max-width: 1000px){
-    #sortable1,#sortable1,#sortable3 {
-        display: block;
-        margin: auto !important;
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
-        vertical-align: top;
+   
+    .input-group {
+    	width: 85%;
+    	text-align: center;
+    	margin: auto;
     }
     html{
         margin: 0px;
