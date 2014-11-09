@@ -7,7 +7,7 @@ from userpanel.models import UserCollection
 from selenium import webdriver
 from pyvirtualdisplay import Display
 import contextlib
-
+from selenium.common.exceptions import NoSuchElementException
 
 __author__ = 'bardia'
 
@@ -82,7 +82,7 @@ class Registerer:
 
     @property
     def register(self):
-        if not(any(user.breakfast) or any(user.lunch) or any(user.dinner)):
+        if not(any(self.user.breakfast) or any(self.user.lunch) or any(self.user.dinner)):
             print("\tNothing to reserve.")
             return None
         try:
@@ -110,8 +110,12 @@ class Registerer:
                             time.sleep(0.3)
 
                     if browser.find_element_by_id("selfHiddenId").get_attribute('value') != self_id:
-                        browser.find_element_by_id("selfId").find_element_by_xpath(
-                            "//option[@value='" + str(self_id) + "']").click()
+                        try:
+                            browser.find_element_by_id("selfId").find_element_by_xpath(
+                                "//option[@value='" + str(self_id) + "']").click()
+                        except NoSuchElementException:
+                            print("ERR - Invalid self: {} self:{}".format(self.user.stu_username, self_id))
+                            continue
                     foods_to_register = []
                     food_chart = _get_foods(browser.page_source)
 
