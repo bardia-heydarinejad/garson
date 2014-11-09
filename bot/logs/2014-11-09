@@ -1,2 +1,31 @@
+<<<<<<< HEAD
 INF -	 I'm awake!! 2014-11-09 20:45:09.254110
+INF -	 Register: 92522177
+=======
+INF -	 I'm awake!! 2014-11-09 20:59:35.278433
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Unable to locate element: {"method":"xpath","selector":"//option[@value='2']"}
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///tmp/tmpcxm3tmz5/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+    at FirefoxDriver.prototype.findChildElement (file:///tmp/tmpcxm3tmz5/extensions/fxdriver@googlecode.com/components/driver-component.js:9653:3)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmpcxm3tmz5/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmpcxm3tmz5/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmpcxm3tmz5/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+INF -	 92521114 update credit: 16400
+INF -	 Register: 92522177
+INF -	 92522177 update credit: 9150
+INF -	 Register: 92521501
+INF -	 92521501 update credit: 11700
+INF -	 Process time: 0:00:27.081423
+INF -	 I'm awake!! 2014-11-09 21:09:22.711247
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 16400
+INF -	 Register: 92522177
+INF -	 92522177 update credit: 9150
+INF -	 Register: 92521501
+INF -	 92521501 update credit: 11700
+INF -	 Process time: 0:00:26.122696
+>>>>>>> 25b5d3170cdce40af9215edac74b60bb0fd147e7
+INF -	 I'm awake!! 2014-11-09 21:00:52.168007
 INF -	 Register: 92522177
