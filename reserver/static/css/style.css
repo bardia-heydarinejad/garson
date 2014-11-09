@@ -130,9 +130,14 @@ a{
 	margin: auto;
 
 }
+a.text{
+    color: #ffffff;
+}
+
 input{
     font-family: 'Mitra';
     text-align: center;
+    width: 100%;
 }
 
 span#user_count{
@@ -161,7 +166,7 @@ div#footer{
 }
 @media(max-width:1000px){
 	body{
-		
+		height: 100%;
 		width: 100%;
 		overflow-x: hidden;
 		font-family: 'Mitra';
@@ -173,10 +178,17 @@ div#footer{
     input{
         padding-left: 50px !important;
         padding-right: 50px !important;
-        min-height: 55px ;
+        min-height: 65px ;
         text-align: center !important;
         font-family: 'Mitra';
         font-size: 2em;
+    }
+    div#footer{
+        position: relative;
+        bottom: 0px;
+    }
+    div#footer a{
+        color: black !important;
     }
 	div.login{
 		background: none;
@@ -199,20 +211,5 @@ div#footer{
 		width: 35%;
 		height: auto;
 	}
-}
-@media(max-width: 600px){
-	img.logo-m{
-	    width: 85%;
-		height: auto;
-	}
-    input{
-        padding-left: 50px !important;
-        padding-right: 50px !important;
-        min-height: 55px ;
-        text-align: center !important;
-        font-family: 'Mitra';
-        font-size: 2em;
-    }
-
 }
 

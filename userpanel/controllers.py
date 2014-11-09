@@ -103,7 +103,7 @@ def change_email(request):
         request.user.save()
     from bot.mandrill_mail import MandrillContact, MandrillEmail
 
-    MandrillEmail().send(u"ثبت ایمیل", u"ایمیل شما با موفقیت ثبت شد. با تشکر. گروه ریشه", [MandrillContact("", email)])
+    MandrillEmail().send(u"ثبت ایمیل", [MandrillContact("", email)], u"ایمیل شما با موفقیت ثبت شد. با تشکر. گروه ریشه")
     return redirect("/account")
 
 

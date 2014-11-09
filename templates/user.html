@@ -10,23 +10,29 @@
 	<script src="{%static 'js/jquery.js'%}"></script>
 	<link rel="stylesheet" href="{%static 'css/jquery-ui.css'%}">
 	<script src="{%static 'js/jquery-ui.js'%}"></script>
+    <script src="{%static 'js/jquery.foggy.min.js'%}"></script>
+    <script src="{%static 'js/touch.js'%}"></script>
 
 
 </head>
 <body>
+<div id="blur">
 	<div class="header">
 		<div class="rtl">
 		<span class="name">{{ name }}</span>
-		<span class="credit">اعتبار شما : {{ credit }} تومان</span>
 		<span class="id">{{ uni_id }}</span>
+		<span class="credit">اعتبار شما : {{ credit }} تومان</span>
         <span class="id"><a href="/authentication/logout/">خروج</a> </span>
 		</div>
 		<div class="ltr">
             <form method="post" action="/account/change_email/">
                 {% csrf_token %}
-                <input class="btn btn-default" type="submit" value="ثبت">
+                <div class="input-group">
+                <span><input class="btn btn-default" type="submit" value="ثبت"></span>
                 <input class="form-control" type="email" name="new_email" placeholder="ایمیل خود را وارد کنید" value="{{ email }}">
-                <label for="email">ایمیل </label>
+                </div>
+                <!-- <label for="email">ایمیل </label> -->
+
             </form>
 		</div>
 	</div>
@@ -115,8 +121,8 @@
 	<h2>غذا های مورد علاقه</h2>
 	<p class="describe">
         غذا هارو مرتب کن تا بدونم چی برات رزرو کنم :)
-        اونایی که دوست نداری رو بذار توی قرمز اوتایی که خیلی دوست داری بذار توی سبز
-        (ترتیبش مهمه!!)
+        اونایی که دوست نداری رو بذار توی قرمز اونایی که خیلی دوست داری بذار توی سبز
+        (از راست به چپ ، ترتیبش مهمه!!)
         اوناییم که برات فرق ندارن رو بذار تو زرد.
         <br>
         اول سعی میکنم غذایی که بیشتر دوست داری رو رزرو کنم.
@@ -152,14 +158,13 @@
 		کاری از گروه <a href="http://rishe.co">ریشه</a>
 	</div>
 
-    <div id="success">
+    
+</div>
+<div id="success">
         <div id="popup">
             <h3>ثبت شد</h3>
-            <button id="ok">OK</button>
         </div>
     </div>
-
-
 	<script>
   $(function() {
     $( "ul.droptrue" ).sortable({
@@ -195,9 +200,7 @@
 				target.attr('data-location',option.attr('data-val'));
 				$('div.pop').hide();
 			});
-            $('button#ok').click(function(){
-                $('div#success').hide();
-            });
+           
             $('button.accday').click(function(){
                 var data = {}
                 var tds = $('td[class="day"]');
@@ -228,12 +231,17 @@
                             $('div#success p').text('ثبت شد');
                             $('div#success').css('display','block');
                             $('button.accday').attr('disabled','true');
-                            
+                            $('#blur').foggy();
+                            $('div#success').delay(1000).fadeOut(600);
+                            setTimeout(function(){$('#blur').foggy(false);},1000);
                             
                         }else{
                             $('div#success p').text('متاسفانه مشکلی بوجود آمده لطفا دوباره سعی کنید');
                             $('div#success').css('display','block');
-                            
+                            $('#blur').foggy();
+                            $('div#success').delay(1000).fadeOut(600);
+                            setTimeout(function(){$('#blur').foggy(false);},1000);
+
                            
                         }
                 });
@@ -276,12 +284,16 @@
                             $('div#success p').text('ثبت شد');
                             $('div#success').css('display','block');
                             $('button.accfood').attr('disabled','true');
-                            
+                            $('#blur').foggy();
+                            $('div#success').delay(1000).fadeOut(600);
+                            setTimeout(function(){$('#blur').foggy(false);},1000);
                             
                         }else{
                             $('div#success p').text('متاسفانه مشکلی بوجود آمده لطفا دوباره سعی کنید');
                             $('div#success').css('display','block');
-                            
+                            $('#blur').foggy();
+                            $('div#success').delay(1000).fadeOut(600);
+                            setTimeout(function(){$('#blur').foggy(false);},1000);
                            
                         }
 
@@ -295,15 +307,6 @@
 		});
 
 	</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-56020224-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
+<script src="http://rishe.co/js/analytics.js"></script>
 </body>
 </html>
