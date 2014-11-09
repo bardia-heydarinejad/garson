@@ -80,7 +80,6 @@ class Registerer:
     def __init__(self, user):
         self.user = user
 
-    @property
     def register(self):
         if not(any(self.user.breakfast) or any(self.user.lunch) or any(self.user.dinner)):
             print("\tNothing to reserve.")
@@ -88,8 +87,8 @@ class Registerer:
         try:
             display = Display(visible=False, size=(1600, 1200))
             display.start()
-            with contextlib.closing(webdriver.Firefox()) as browser2:
-                browser = webdriver.Firefox()
+            with contextlib.closing(webdriver.Firefox()) as browser:
+               # browser = webdriver.Firefox()
                 browser.get("https://stu.iust.ac.ir")
                 browser.find_element_by_id("j_username").send_keys(self.user.stu_username)
                 browser.find_element_by_id("j_password").send_keys(self.user.stu_password)
@@ -109,7 +108,7 @@ class Registerer:
                         except:
                             time.sleep(0.3)
 
-                    if browser.find_element_by_id("selfHiddenId").get_attribute('value') != self_id:
+                    if self_hidden_id.get_attribute('value') != self_id:
                         try:
                             browser.find_element_by_id("selfId").find_element_by_xpath(
                                 "//option[@value='" + str(self_id) + "']").click()
