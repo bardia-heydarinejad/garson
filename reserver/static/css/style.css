@@ -43,23 +43,84 @@ div.login {
 	display: inline-block;
 	min-height: 35%;
 }
-div.login input{
-	padding: 5px;
-	text-align: center;
-	width: 100%;
+input {
+	margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+  *overflow: visible;
+  line-height: normal;
+  display: inline-block;
+  height: 35px;
+  padding: 4px 6px !important;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #555555;
+  vertical-align: middle;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+          font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  width: 206px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
 
 }
+input[type="tel"]:focus,
+input[type="password"]:focus{
+		border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #999999;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #999999;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #999999;
+}
 div.login input[type="submit"]{
-	background-color: #9b59b6;
-	border:solid 1px #f9f9f9;
+	background-color: #1abc9c;
+	border: none;
 	color: white;
 	width: 100%;
 	text-align: center;
 	min-height: 50px;
+	vertical-align: top;
+  	box-shadow: 0px 3px 0px 0px #199085;
 }
 div.login input[type="submit"]:hover{
 	cursor: pointer;
-	opacity: 0.6;
+	/*opacity: 0.6;*/
+}
+input[type="submit"]:focus{
+	box-shadow: 0px 0px 0px 0px !important;
+	margin-top: 2px;
+	border: none !important;
+	-webkit-border: none !important;
+	-moz-border: none !important;
+	-o-border: none !important;
 }
 a{
 	color: #1abc9c;
@@ -69,9 +130,31 @@ a{
 	margin: auto;
 
 }
+a.text{
+    color: #ffffff;
+}
+
 input{
     font-family: 'Mitra';
+    text-align: center;
+    width: 100%;
 }
+
+span#user_count{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #ffffff;
+    font-size: 60px;
+}
+
+div#footer{
+    position: absolute;
+    bottom: 10px;
+    color: #ffffff;
+    right: 10px;
+}
+
 
 @media(min-width: 1000px){
 	body{
@@ -83,7 +166,7 @@ input{
 }
 @media(max-width:1000px){
 	body{
-		
+		height: 100%;
 		width: 100%;
 		overflow-x: hidden;
 		font-family: 'Mitra';
@@ -91,16 +174,21 @@ input{
 		background-image: none;
         font-size: 2.5em;
 	}
-        span.warn{
-        color: #F50C75;
-    }
+
     input{
         padding-left: 50px !important;
         padding-right: 50px !important;
-        min-height: 55px ;
+        min-height: 65px ;
         text-align: center !important;
         font-family: 'Mitra';
         font-size: 2em;
+    }
+    div#footer{
+        position: relative;
+        bottom: 0px;
+    }
+    div#footer a{
+        color: black !important;
     }
 	div.login{
 		background: none;
@@ -123,20 +211,5 @@ input{
 		width: 35%;
 		height: auto;
 	}
-}
-@media(max-width: 600px){
-	img.logo-m{
-	    width: 85%;
-		height: auto;
-	}
-    input{
-        padding-left: 50px !important;
-        padding-right: 50px !important;
-        min-height: 55px ;
-        text-align: center !important;
-        font-family: 'Mitra';
-        font-size: 2em;
-    }
-
 }
 

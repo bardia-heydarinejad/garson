@@ -95,9 +95,15 @@ def change_food_order(request):
 
 @login_required(login_url='/')
 def change_email(request):
-    # TODO : check email format
-    request.user.email = request.POST.get("new_email")
-    request.user.save()
+    email = request.POST.get("new_email")
+    import re
+
+    if re.match(r"\w+[a-zA-z0-9\.]+@[a-zA-z0-9\.]+\.\w+", email):
+        request.user.email = email
+        request.user.save()
+    from bot.mandrill_mail import MandrillContact, MandrillEmail
+
+    MandrillEmail().send(u"ثبت ایمیل", [MandrillContact("", email)], u"ایمیل شما با موفقیت ثبت شد. با تشکر. گروه ریشه")
     return redirect("/account")
 
 
