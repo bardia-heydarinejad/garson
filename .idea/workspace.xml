@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17d17718-cca0-4c4b-9a66-70a09eceb67f" name="Default" comment="service">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bot/logs/2014-11-09" afterPath="$PROJECT_DIR$/bot/logs/2014-11-09" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bot/register.py" afterPath="$PROJECT_DIR$/bot/register.py" />
     </list>
     <ignored path="reserver.iws" />
@@ -44,8 +43,8 @@
       <file leaf-file-name="register.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot/register.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.171123" vertical-offset="1920" max-vertical-offset="2480">
-              <caret line="132" column="32" selection-start-line="132" selection-start-column="32" selection-end-line="132" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.342246" vertical-offset="528" max-vertical-offset="2480">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1147,14 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="320" max-vertical-offset="1584">
-          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="1008">
@@ -1163,10 +1154,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/service.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="320" max-vertical-offset="1584">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bot/register.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.171123" vertical-offset="1920" max-vertical-offset="2480">
-          <caret line="132" column="32" selection-start-line="132" selection-start-column="32" selection-end-line="132" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.342246" vertical-offset="528" max-vertical-offset="2480">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>

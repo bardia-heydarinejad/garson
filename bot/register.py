@@ -40,7 +40,7 @@ def _get_foods(contents):
             if foods_td.table is None:
                 continue
             if 'checked="checked"' in str(foods_td):
-                print(day,time,"is checked")
+                print('\t', day, time, "is checked")
                 continue
 
             food_trs = foods_td.table.tbody.find_all('tr', recursive=False)
@@ -81,14 +81,14 @@ class Registerer:
         self.user = user
 
     def register(self):
-        if not(any(self.user.breakfast) or any(self.user.lunch) or any(self.user.dinner)):
+        if not (any(self.user.breakfast) or any(self.user.lunch) or any(self.user.dinner)):
             print("\tNothing to reserve.")
             return None
         try:
             display = Display(visible=False, size=(1600, 1200))
             display.start()
             with contextlib.closing(webdriver.Firefox()) as browser:
-               # browser = webdriver.Firefox()
+                # browser = webdriver.Firefox()
                 browser.get("https://stu.iust.ac.ir")
                 browser.find_element_by_id("j_username").send_keys(self.user.stu_username)
                 browser.find_element_by_id("j_password").send_keys(self.user.stu_password)
@@ -99,7 +99,7 @@ class Registerer:
                 import time
 
                 for self_id in set(self.user.breakfast + self.user.lunch + self.user.dinner) - {0}:
-                    #browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
+                    # browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
                     self_hidden_id = None
                     for i in range(10):
                         try:
@@ -113,7 +113,7 @@ class Registerer:
                             browser.find_element_by_id("selfId").find_element_by_xpath(
                                 "//option[@value='" + str(self_id) + "']").click()
                         except NoSuchElementException:
-                            print("ERR - Invalid self: {} self:{}".format(self.user.stu_username, self_id))
+                            print("\tERR - Invalid self: {} self:{}".format(self.user.stu_username, self_id))
                             continue
                     foods_to_register = []
                     food_chart = _get_foods(browser.page_source)
@@ -138,13 +138,13 @@ class Registerer:
                                 foods_to_register.append(chosen)
 
                     for index, food_to_check in foods_to_register:
-                        print("\t->"+str(food_to_check))
+                        print("\t->" + str(food_to_check))
                         browser.find_element_by_id("userWeekReserves.selected" + str(index)).click()
                     browser.find_element_by_id("doReservBtn").click()
 
         except Exception as e:
             return str(e)
-            #browser.quit()
+            # browser.quit()
         display.stop()
         return None
 
