@@ -132,6 +132,7 @@ a{
 }
 input{
     font-family: 'Mitra';
+    text-align: center;
 }
 
 span#user_count{
@@ -168,9 +169,7 @@ div#footer{
 		background-image: none;
         font-size: 2.5em;
 	}
-        span.warn{
-        color: #F50C75;
-    }
+
     input{
         padding-left: 50px !important;
         padding-right: 50px !important;
