@@ -1,3 +1,4 @@
 #!/bin/sh
 
-gunicorn -c gunicorn.conf.py wsgi:application
+
+"$(which gunicorn)" -c gunicorn.conf.py wsgi:application
