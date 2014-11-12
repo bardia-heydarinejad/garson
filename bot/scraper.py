@@ -1,10 +1,16 @@
 # -*- coding: utf-8 -*-
+import contextlib
 import http.cookiejar
 import urllib
 from bs4 import BeautifulSoup
 import re
-#import datetime
+# import datetime
 #from bot.jalali import JalaliToGregorian
+from pyvirtualdisplay import Display
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+#from configuration.models import Food
+from userpanel.models import UserCollection
 
 __author__ = 'bardia'
 
@@ -37,7 +43,8 @@ def check(username, password):
     if len(matches) != 1:
         return False, None, None
     uni_id = matches[0]
-    name = user_info.replace(uni_id, "").strip()
+    name = user_info.replace(uni_id, "").replace('\r', '')
+    name = name.replace(re.findall(r" *", name)[0], '').strip()
     if len(name) < 3:
         return False, None, None
     return [True, name, uni_id]
@@ -101,7 +108,11 @@ def get_this_week_food(username, password):
 
     food_chart = [[None, None, None] for i in range(6)]
     # /html/body/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody
-    week_rows = soup.body.find_all('div', recursive=False)[1].find_all('div', recursive=False)[1].div.find_all('div', recursive=False)[1].table.tbody.find_all('tr', recursive=False)[1].td.table.tr.td.table.find_all('tr', recursive=False)[1].td.table.find_all('tr', recursive=False)[1:]
+    week_rows = soup.body.find_all('div', recursive=False)[1].find_all('div', recursive=False)[1].div.find_all('div',
+                                                                                                               recursive=False)[
+                    1].table.tbody.find_all('tr', recursive=False)[1].td.table.tr.td.table.find_all('tr',
+                                                                                                    recursive=False)[
+                    1].td.table.find_all('tr', recursive=False)[1:]
 
     for day_tr in week_rows:
         day = 6
@@ -121,10 +132,73 @@ def get_this_week_food(username, password):
         for term, food_cell in enumerate(day_tr.find_all('td', recursive=False)[1:]):
             cell_content = food_cell.text.strip()
             if cell_content != "":
-                food_chart[day][term] = (cell_content.split('/')[0].split('-')[0].strip(), cell_content.split('/')[2].strip())
+                food_chart[day][term] = (
+                    cell_content.split('/')[0].split('-')[0].strip(), cell_content.split('/')[2].strip())
     import pprint
+
     pprint.pprint(food_chart)
     return food_chart
+
+
+def get_new_food():
+    all_names = Food.get_all_name()
+    new_names = []
+
+    user = UserCollection.objects(stu_username="92521114", stu_password="0017578167")[0]
+    display = Display(visible=False, size=(1600, 1200))
+    display.start()
+    with contextlib.closing(webdriver.Firefox()) as browser:
+    #    browser = webdriver.Firefox()
+        browser.get("https://stu.iust.ac.ir")
+        browser.find_element_by_id("j_username").send_keys(user.stu_username)
+        browser.find_element_by_id("j_password").send_keys(user.stu_password)
+        browser.find_element_by_id("login_btn_submit").submit()
+        # TODO: handle wrong user or pass
+        browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
+        browser.find_element_by_id("nextWeekBtn").click()
+        import time
+
+        for self_id in [1, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14]:
+            #browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
+            self_hidden_id = None
+            for i in range(10):
+                try:
+                    self_hidden_id = browser.find_element_by_id("selfHiddenId")
+                    break
+                except:
+                    time.sleep(0.3)
+
+            if self_hidden_id.get_attribute('value') != self_id:
+                try:
+                    browser.find_element_by_id("selfId").find_element_by_xpath(
+                        "//option[@value='" + str(self_id) + "']").click()
+                except NoSuchElementException:
+                    print("\tERR - Invalid self: {} self:{}".format(user.stu_username, self_id))
+                    continue
+            contents = browser.page_source
+            soup = BeautifulSoup(contents)
+            food_table = soup.find(id="pageTD").table.find_all('tr')[1].td.table
+            if food_table is None:
+                continue
+            day_trs = food_table.tbody.find_all('tr', recursive=False)[1:]
+            for day_tr in day_trs:
+                foods_tds = day_tr.find_all('td', recursive=False)[1:]
+                for time in range(3):
+                    foods_td = foods_tds[time]
+                    if foods_td.table is None:
+                        continue
+
+                    food_trs = foods_td.table.tbody.find_all('tr', recursive=False)
+                    for tr in food_trs:
+                        str_for_name = tr.span.text
+                        name = str_for_name.split('|')[1].strip()
+                        if name not in all_names and name not in new_names:
+                            new_names.append(name)
+                            with open("found_food.txt", "a") as my_file:
+                                my_file.write(name + '\n')
+
+    for name in new_names:
+        print(name)
 
 
 if __name__ == "__main__":
