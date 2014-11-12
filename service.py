@@ -85,6 +85,9 @@ if __name__ == "__main__":
             RegisterDaemon.register_for_all_user()
         elif 'update_food' == sys.argv[1]:
             RegisterDaemon.update_food_for_all_user()
+        elif 'find_food' == sys.argv[1]:
+            from bot.scraper import get_new_food
+            get_new_food()
         elif 'start' == sys.argv[1]:
             daemon.start()
         elif 'stop' == sys.argv[1]:
@@ -96,5 +99,5 @@ if __name__ == "__main__":
             sys.exit(2)
         sys.exit(0)
     else:
-        print("usage: %s start|stop|restart|update_credit|reserve|update_food|clean_users" % sys.argv[0])
+        print("usage: %s start|stop|restart|update_credit|reserve|update_food|find_food" % sys.argv[0])
         sys.exit(2)

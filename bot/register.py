@@ -46,7 +46,8 @@ def _get_foods(contents):
             food_trs = foods_td.table.tbody.find_all('tr', recursive=False)
             for tr in food_trs:
                 number = re.findall(r'id="userWeekReserves\.selected(\d+)"', str(tr))[0]
-                name = re.findall(r'\|(.+)\|', str(tr))[0].strip()
+                str_for_name = tr.span.text
+                name = str_for_name.split('|')[1].strip()
                 food_chart[day][time].append((number, name))
                 if name not in all_names:
                     with open("found_food.txt", "a") as my_file:

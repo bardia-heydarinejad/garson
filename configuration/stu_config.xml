@@ -33,6 +33,13 @@
         <food id="30" type="dinner">ميرزا قاسمي</food>
         <food id="31" type="dinner">خوراک مرغ وسبزیجات</food>
         <food id="32" type="lunch">شویدپلو با گوشت</food>
+        <food id="32" type="breakfast">تخم مرغ+ خامه</food>
+        <food id="32" type="breakfast">شیر +پنیر</food>
+        <food id="32" type="breakfast">كره</food>
+        <food id="32" type="breakfast">مربا+کره</food>
+        <food id="32" type="dinner">كشك بادمجان</food>
+        <food id="32" type="dinner">خوراک شنیتسل</food>
+        <food id="32" type="dinner">کنسرو ماهی تن</food>
     </foods>
     <dinings>
         <self id="1" >سلف مرکزی برادران</self>
