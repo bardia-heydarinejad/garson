@@ -1,0 +1,70 @@
+INF -	 I'm awake!! 2015-02-10 08:09:25.108921
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ cmd=['Xvfb', '-help']
+OSError=[Errno 2] No such file or directory: 'Xvfb'
+Program install error! 
+You can install it in terminal:
+sudo apt-get install xvfb
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:10.468106
+INF -	 I'm awake!! 2015-02-10 08:13:44.099932
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Unable to locate element: {"method":"id","selector":"nextWeekBtn"}
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///tmp/tmp75a5wpvs/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+    at FirefoxDriver.prototype.findElement (file:///tmp/tmp75a5wpvs/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmp75a5wpvs/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmp75a5wpvs/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmp75a5wpvs/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:26.555715
+INF -	 I'm awake!! 2015-02-10 08:16:29.311215
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Unable to locate element: {"method":"id","selector":"nextWeekBtn"}
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///tmp/tmprxdwp9fj/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+    at FirefoxDriver.prototype.findElement (file:///tmp/tmprxdwp9fj/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmprxdwp9fj/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmprxdwp9fj/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmprxdwp9fj/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:24.785393
+INF -	 I'm awake!! 2015-02-10 08:18:23.284951
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Unable to locate element: {"method":"id","selector":"nextWeekBtn"}
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///tmp/tmp33z0rmq1/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+    at FirefoxDriver.prototype.findElement (file:///tmp/tmp33z0rmq1/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmp33z0rmq1/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmp33z0rmq1/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmp33z0rmq1/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:23.143918
+INF -	 I'm awake!! 2015-02-10 08:19:38.524943
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Unable to locate element: {"method":"id","selector":"nextWeekBtn"}
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///tmp/tmp1wo7g12j/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+    at FirefoxDriver.prototype.findElement (file:///tmp/tmp1wo7g12j/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmp1wo7g12j/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmp1wo7g12j/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmp1wo7g12j/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:23.788013
+INF -	 I'm awake!! 2015-02-10 08:26:32.598991
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ Message: Unable to locate element: {"method":"id","selector":"nextWeekBtn"}
+Stacktrace:
+    at FirefoxDriver.prototype.findElementInternal_ (file:///tmp/tmpj7oysti8/extensions/fxdriver@googlecode.com/components/driver-component.js:9641:26)
+    at FirefoxDriver.prototype.findElement (file:///tmp/tmpj7oysti8/extensions/fxdriver@googlecode.com/components/driver-component.js:9650:3)
+    at DelayedCommand.prototype.executeInternal_/h (file:///tmp/tmpj7oysti8/extensions/fxdriver@googlecode.com/components/command-processor.js:11635:16)
+    at DelayedCommand.prototype.executeInternal_ (file:///tmp/tmpj7oysti8/extensions/fxdriver@googlecode.com/components/command-processor.js:11640:7)
+    at DelayedCommand.prototype.execute/< (file:///tmp/tmpj7oysti8/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:30.654848

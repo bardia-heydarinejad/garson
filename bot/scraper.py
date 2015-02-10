@@ -8,8 +8,8 @@ import re
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-#from configuration.models import Food
-#from userpanel.models import UserCollection
+from configuration.models import Food
+from userpanel.models import UserCollection
 
 __author__ = 'bardia'
 
