@@ -1,0 +1,2 @@
+from pytesser import *
+print image_file_to_string('fnord.tif')

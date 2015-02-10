@@ -2,6 +2,7 @@
 import random
 from bs4 import BeautifulSoup
 import re
+from bot.scraper import get_captcha
 from configuration.models import Food
 from userpanel.models import UserCollection
 from selenium import webdriver
@@ -93,6 +94,7 @@ class Registerer:
                 browser.get("https://stu.iust.ac.ir")
                 browser.find_element_by_id("j_username").send_keys(self.user.stu_username)
                 browser.find_element_by_id("j_password").send_keys(self.user.stu_password)
+                browser.find_element_by_id("captcha_input").send_keys(get_captcha())
                 browser.find_element_by_id("login_btn_submit").submit()
                 # TODO: handle wrong user or pass
                 browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")

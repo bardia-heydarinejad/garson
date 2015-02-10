@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 import contextlib
 import http.cookiejar
+import os
 import urllib
 from bs4 import BeautifulSoup
 import re
-# import datetime
-#from bot.jalali import JalaliToGregorian
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-#from configuration.models import Food
+from configuration.models import Food
 from userpanel.models import UserCollection
 
 __author__ = 'bardia'
@@ -25,6 +24,7 @@ def check(username, password):
     authentication_url = "https://stu.iust.ac.ir/j_security_check"
     payload = {"j_username": username,
                "j_password": password,
+               "captcha_input": get_captcha(),
                "login": u"ورود", }
     data = urllib.parse.urlencode(payload)
     binary_data = data.encode('UTF-8')
@@ -58,6 +58,7 @@ def credit(username, password):
     authentication_url = "https://stu.iust.ac.ir/j_security_check"
     payload = {"j_username": username,
                "j_password": password,
+               "captcha_input": get_captcha(),
                "login": u"ورود", }
     data = urllib.parse.urlencode(payload)
     binary_data = data.encode('UTF-8')
@@ -88,6 +89,7 @@ def get_this_week_food(username, password):
     authentication_url = "https://stu.iust.ac.ir/j_security_check"
     payload = {"j_username": username,
                "j_password": password,
+               "captcha_input": get_captcha(),
                "login": u"ورود", }
     data = urllib.parse.urlencode(payload)
     binary_data = data.encode('UTF-8')
@@ -152,6 +154,7 @@ def get_new_food():
         browser.get("https://stu.iust.ac.ir")
         browser.find_element_by_id("j_username").send_keys(user.stu_username)
         browser.find_element_by_id("j_password").send_keys(user.stu_password)
+        browser.find_element_by_id("captcha_input").send_keys(get_captcha())
         browser.find_element_by_id("login_btn_submit").submit()
         # TODO: handle wrong user or pass
         browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
@@ -200,6 +203,17 @@ def get_new_food():
     for name in new_names:
         print(name)
 
+
+def get_captcha():
+    from random import randint
+    file_name = str(randint(1000, 10000))+'.jpg'
+    urllib.request.urlretrieve('https://stu.iust.ac.ir/captcha.jpg',file_name)
+    print(file_name)
+    import subprocess
+    subprocess.call('tesseract '+file_name+' captcha -l eng', shell=True)
+    f = open('captcha.txt')
+    os.remove(file_name)
+    return f.read()
 
 if __name__ == "__main__":
     # print credit(("92521501", "agost1373"))
