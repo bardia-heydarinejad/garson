@@ -5,21 +5,21 @@ import os
 import urllib
 from bs4 import BeautifulSoup
 import re
+import datetime
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from configuration.models import Food
 from userpanel.models import UserCollection
-import logging
 
 __author__ = 'bardia'
 
 url = "https://stu.iust.ac.ir/loginpage.rose"
 
-logger = logging.getLogger(__name__)
 def check(username, password):
-    logger.info(username+ " is loging in")
     cj = http.cookiejar.CookieJar()
+    #log_file = open(str(datetime.datetime.now().date()), 'w')
+    #log_file.write("checking")
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     urllib.request.install_opener(opener)
@@ -36,6 +36,7 @@ def check(username, password):
     #print(contents)
 
     if 'iconWarning.gif' in contents:
+        log_file.write("iconWarning.gif")
         return False, None, None
 
     soup = BeautifulSoup(contents)
@@ -43,13 +44,15 @@ def check(username, password):
     user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ")
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
-        logging.error("No id")
-        logging.error(contents)
+        #log_file.write("\n no uni id\n")
+        #log_file.write(contents)
         return False, None, None
     uni_id = matches[0]
     name = user_info.replace(uni_id, "").replace('\r', '')
     name = name.replace(re.findall(r" *", name)[0], '').strip()
     if len(name) < 3:
+        #log_file.write("\n no name\n")
+        #log_file.write(contents)
         return False, None, None
     return [True, name, uni_id]
 

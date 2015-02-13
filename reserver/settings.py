@@ -116,6 +116,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'dajaxice.finders.DajaxiceFinder',
 )
+<<<<<<< HEAD
 
 
 LOGGING = {
@@ -150,3 +151,5 @@ LOGGING = {
         },
     }
 }
+=======
+>>>>>>> ba6c4d4f89f94a7a5bda287f2951fe3f8dbb7f2e

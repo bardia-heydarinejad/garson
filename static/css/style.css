@@ -1,0 +1,215 @@
+@font-face{
+    font-family: 'Mitra';
+    src: url('../fonts/BMitra.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BMitra.woff') format('woff'),
+    url('../fonts/BMitra.ttf') format('truetype');
+}
+body {
+	background-color: #e74c3c;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	background-image: url(../img/bg.png);
+	
+	direction: rtl;
+	font-family: 'Mitra';
+}
+div.bg{
+	background-size: 40% auto;
+	background-position: -800px 0px;
+	background-repeat: no-repeat;
+	background-image: url(../img/logo.png);
+	height: 100%; 
+}
+.showonmobile{
+	display: none;
+}
+div.describe{
+	width: 50%;
+	display: inline-block;
+	margin-right: 1.6%;
+	text-align: center;
+	color: white;
+	font-family: 'Mitra';
+	font-size: 2em;
+}
+div.login {
+	padding: 1.6%;
+	background-color: #fff;
+	margin-top: 5.6%;
+	margin-right: 5.6%;
+	text-align: center;
+	width: 15%;
+	display: inline-block;
+	min-height: 35%;
+}
+input {
+	margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+  *overflow: visible;
+  line-height: normal;
+  display: inline-block;
+  height: 35px;
+  padding: 4px 6px !important;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #555555;
+  vertical-align: middle;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+          font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  width: 206px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+
+}
+input[type="tel"]:focus,
+input[type="password"]:focus{
+		border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #999999;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #999999;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #999999;
+}
+div.login input[type="submit"]{
+	background-color: #1abc9c;
+	border: none;
+	color: white;
+	width: 100%;
+	text-align: center;
+	min-height: 50px;
+	vertical-align: top;
+  	box-shadow: 0px 3px 0px 0px #199085;
+}
+div.login input[type="submit"]:hover{
+	cursor: pointer;
+	/*opacity: 0.6;*/
+}
+input[type="submit"]:focus{
+	box-shadow: 0px 0px 0px 0px !important;
+	margin-top: 2px;
+	border: none !important;
+	-webkit-border: none !important;
+	-moz-border: none !important;
+	-o-border: none !important;
+}
+a{
+	color: #1abc9c;
+	border-bottom: dotted 1px;
+	text-decoration: none;
+	text-align: center;
+	margin: auto;
+
+}
+a.text{
+    color: #ffffff;
+}
+
+input{
+    font-family: 'Mitra';
+    text-align: center;
+    width: 100%;
+}
+
+span#user_count{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #ffffff;
+    font-size: 60px;
+}
+
+div#footer{
+    position: absolute;
+    bottom: 10px;
+    color: #ffffff;
+    right: 10px;
+}
+
+
+@media(min-width: 1000px){
+	body{
+		background-image: url(../img/bg.png);
+	}
+    input{
+        font-size: 20px;
+    }
+}
+@media(max-width:1000px){
+	body{
+		height: 100%;
+		width: 100%;
+		overflow-x: hidden;
+		font-family: 'Mitra';
+		background-color: #fff;
+		background-image: none;
+        font-size: 2.5em;
+	}
+
+    input{
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+        min-height: 65px ;
+        text-align: center !important;
+        font-family: 'Mitra';
+        font-size: 2em;
+    }
+    div#footer{
+        position: relative;
+        bottom: 0px;
+    }
+    div#footer a{
+        color: black !important;
+    }
+	div.login{
+		background: none;
+		margin:0px;
+		width: 100%;
+	}
+	div.login input {
+		width: 85%;
+	}
+	div.login input[type="submit"]{
+		width: 85%;
+	}
+	.showonmobile{
+		display: block;
+	}
+	div.describe{
+		display: none;
+	}
+	img.logo-m{
+		width: 35%;
+		height: auto;
+	}
+}
+
