@@ -38,7 +38,7 @@ def check(username, password):
 
     if 'iconWarning.gif' in contents:
         log_file.write("iconWarning.gif")
-        return False, None, None
+        return False, "iconWarning.gif", contents
 
     soup = BeautifulSoup(contents)
     user_info = soup.body.table.tr.find_all('td')[4].div.contents[0]
@@ -47,14 +47,14 @@ def check(username, password):
     if len(matches) != 1:
         log_file.write("\n no uni id\n")
         log_file.write(contents)
-        return False, None, None
+        return False, "No uni id", None
     uni_id = matches[0]
     name = user_info.replace(uni_id, "").replace('\r', '')
     name = name.replace(re.findall(r" *", name)[0], '').strip()
     if len(name) < 3:
         log_file.write("\n no name\n")
         log_file.write(contents)
-        return False, None, None
+        return False, "no name", None
     return [True, name, uni_id]
 
 
