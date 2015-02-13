@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+INF -	 Updating credit 2014-11-03 11:19:32.009688
+INF -	 End of updating credit 2014-11-03 11:20:54.091647
+=======
 INF -	 Cleaning user:
 WARN -	 Deleting user 92522177
 WARN -	 Deleting user 92521114
@@ -7,6 +11,23 @@ WARN -	 Deleting user 92521114 0017578167
 INF -	 Cleaning user:
 WARN -	 Deleting user 92522177 05100272883316
 WARN -	 Deleting user 92521114 0017578167
+<<<<<<< HEAD
+>>>>>>> 815d35ffb323bce922f4cd6421367c52eb8ee3e3
+INF -	 Cleaning user:
+WARN -	 Deleting user 92432015 1373723
+INF -	 Cleaning user:
+WARN -	 Deleting user 92432015
+INF -	 I'm awake!! 2014-11-03 12:51:16.161728
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ cmd=['Xvfb', '-help']
+OSError=[Errno 2] No such file or directory: 'Xvfb'
+Program install error! 
+You can install it in terminal:
+sudo apt-get install xvfb
+INF -	 92521114 update credit: 46400
+INF -	 Process time: 0:00:04.279116
+=======
 INF -	 I'm awake!! 2014-11-03 13:06:27.434706
 INF -	 Register: 92521114
 INF -	 92521114 update credit: 46400
@@ -84,3 +105,70 @@ INF -	 I'm awake!! 2014-11-03 16:31:48.192193
 INF -	 Register: 92521114
 INF -	 92521114 update credit: 36400
 INF -	 Process time: 0:00:16.279246
+>>>>>>> c0c9bb027713e3f2318ec4145411e0b87096ec10
+INF -	 I'm awake!! 2014-11-03 17:02:41.249934
+INF -	 Register: 92522177
+INF -	 92522177 update credit: 9150
+INF -	 Register: 92521258
+INF -	 92521258 update credit: -11600
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 26400
+INF -	 Register: 91522086
+INF -	 91522086 update credit: 5500
+INF -	 Register: 91522149
+INF -	 91522149 update credit: 86150
+INF -	 Register: 91521284
+INF -	 91521284 update credit: 42800
+INF -	 Register: 92522168
+INF -	 92522168 update credit: 23100
+INF -	 Register: 92522006
+INF -	 92522006 update credit: 11500
+INF -	 Register: 92521312
+INF -	 92521312 update credit: 1150
+INF -	 Register: 91521122
+INF -	 91521122 update credit: 6200
+INF -	 Register: 92521231
+INF -	 92521231 update credit: -37500
+INF -	 Register: 92522051
+INF -	 92522051 update credit: 25000
+INF -	 Register: 92522321
+INF -	 92522321 update credit: 3500
+INF -	 Register: 92521204
+INF -	 92521204 update credit: -54950
+INF -	 Register: 91522185
+INF -	 91522185 update credit: 278900
+INF -	 Register: 92522267
+INF -	 92522267 update credit: 83350
+INF -	 Process time: 0:06:36.257593
+INF -	 I'm awake!! 2014-11-03 16:47:27.173631
+INF -	 Register: 92522177
+ERR -	 ERROR:
+ cmd=['Xvfb', '-help']
+OSError=[Errno 2] No such file or directory: 'Xvfb'
+Program install error! 
+You can install it in terminal:
+sudo apt-get install xvfb
+INF -	 92522177 update credit: 27650
+INF -	 Register: 92521258
+ERR -	 ERROR:
+ cmd=['Xvfb', '-help']
+OSError=[Errno 2] No such file or directory: 'Xvfb'
+Program install error! 
+You can install it in terminal:
+sudo apt-get install xvfb
+INF -	 I'm awake!! 2014-11-03 16:48:23.892087
+INF -	 Register: 92522177
+ERR -	 ERROR:
+ Could not find firefox in your system PATH. Please specify the firefox binary location or install firefox
+INF -	 92522177 update credit: 27650
+INF -	 Register: 92521258
+ERR -	 ERROR:
+ Could not find firefox in your system PATH. Please specify the firefox binary location or install firefox
+INF -	 I'm awake!! 2014-11-03 16:49:27.582681
+INF -	 Register: 92522177
+INF -	 92522177 update credit: 9150
+INF -	 Register: 92521258
+ERR -	 ERROR:
+ [Errno 104] Connection reset by peer
+INF -	 92521258 update credit: -11600
+INF -	 Register: 92521114

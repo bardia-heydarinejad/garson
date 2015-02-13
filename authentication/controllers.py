@@ -94,7 +94,7 @@ def duchp():
     for user in UserCollection.objects():
         if not check(user.stu_username, user.stu_password)[0]:
             print("WARN -\t Deleting user {}\n".format(user.stu_username))
-            User.objects.get(username=user.stu_password).delete()
+            User.objects.get(username=user.stu_username).delete()
             user.delete()
         else:
             print("INFO -\t User {} checked\n".format(user.stu_username))
