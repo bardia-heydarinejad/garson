@@ -10,6 +10,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from configuration.models import Food
 from userpanel.models import UserCollection
+import logging
 
 __author__ = 'bardia'
 
@@ -41,6 +42,8 @@ def check(username, password):
     user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ")
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
+        logging.error("No id")
+        logging.error(contents)
         return False, None, None
     uni_id = matches[0]
     name = user_info.replace(uni_id, "").replace('\r', '')
