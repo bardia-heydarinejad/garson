@@ -151,11 +151,31 @@ def get_new_food():
     display.start()
     with contextlib.closing(webdriver.Firefox()) as browser:
     #    browser = webdriver.Firefox()
+        cj = http.cookiejar.CookieJar()
+        opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+        opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+        authentication_url = "https://stu.iust.ac.ir/j_security_check"
+        payload = {"j_username": user.stu_username,
+                   "j_password": user.stu_password,
+                   "captcha_input": get_captcha(cj),
+                   "login": u"ورود", }
+        data = urllib.parse.urlencode(payload)
+        binary_data = data.encode('UTF-8')
+        request = urllib.request.Request(authentication_url, binary_data)
+        response = opener.open(request)
+        cj.extract_cookies(response, request)
+        print(cj._cookies)
+        contents = str(response.read(), 'utf-8')
+
+        if u'iconWarning.gif' in contents:
+            print("wrong user pass")
+            return "wup"
+
+        new_cookie = {'expiry': None, 'value':cj._cookies['stu.iust.ac.ir']['/']['JSESSIONID'].value, 'name': 'JSESSIONID', 'secure': True, 'path': '/', 'domain': 'stu.iust.ac.ir'}
+
+        browser = webdriver.Firefox()
         browser.get("https://stu.iust.ac.ir")
-        browser.find_element_by_id("j_username").send_keys(user.stu_username)
-        browser.find_element_by_id("j_password").send_keys(user.stu_password)
-        browser.find_element_by_id("captcha_input").send_keys(get_captcha())
-        browser.find_element_by_id("login_btn_submit").submit()
+        browser.add_cookie(new_cookie)
         # TODO: handle wrong user or pass
         browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
         browser.find_element_by_id("nextWeekBtn").click()
@@ -204,9 +224,14 @@ def get_new_food():
         print(name)
 
 
-def get_captcha():
+def get_captcha(cj = None):
     from random import randint
     file_name = str(randint(1000, 10000))+'.jpg'
+    if cj is None:
+        cj = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+    opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+    urllib.request.install_opener(opener)
     urllib.request.urlretrieve('https://stu.iust.ac.ir/captcha.jpg',file_name)
     print(file_name)
     import subprocess

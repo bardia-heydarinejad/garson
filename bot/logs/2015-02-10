@@ -68,3 +68,35 @@ Stacktrace:
     at DelayedCommand.prototype.execute/< (file:///tmp/tmpj7oysti8/extensions/fxdriver@googlecode.com/components/command-processor.js:11582:5)
 INF -	 92521114 update credit: 17900
 INF -	 Process time: 0:00:30.654848
+INF -	 I'm awake!! 2015-02-10 19:32:32.309875
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:25.610973
+INF -	 I'm awake!! 2015-02-10 19:44:38.468012
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:50.053558
+INF -	 I'm awake!! 2015-02-10 19:45:48.340370
+INF -	 Register: 92521114
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:48.716271
+INF -	 I'm awake!! 2015-02-10 20:28:35.585282
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ unorderable types: NoneType() > int()
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:35.130768
+INF -	 I'm awake!! 2015-02-10 20:30:10.421573
+INF -	 Register: 92521114
+ERR -	 ERROR:
+ unorderable types: NoneType() > int()
+INF -	 92521114 update credit: 17900
+INF -	 Process time: 0:00:20.612097
+INF -	 I'm awake!! 2015-02-10 20:33:07.829683
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2015-02-10 20:34:15.885440
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2015-02-10 20:37:06.808233
+INF -	 Register: 92521114
+INF -	 I'm awake!! 2015-02-10 20:38:36.236627
+INF -	 Register: 92521114
