@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
@@ -19,6 +20,9 @@ def format_price(price):
 
 @login_required(login_url='/')
 def user_panel(request):
+    logger = logging.getLogger(__name__)
+    print("log test")
+    logger.info("user page")
     us = UserCollection.objects(stu_username=request.user.username)
     if len(us) != 1:
         dunim()

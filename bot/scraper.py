@@ -16,8 +16,9 @@ __author__ = 'bardia'
 
 url = "https://stu.iust.ac.ir/loginpage.rose"
 
-
+logger = logging.getLogger("logger")
 def check(username, password):
+    logger.info(username+ " is loging in")
     cj = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
