@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17d17718-cca0-4c4b-9a66-70a09eceb67f" name="Default" comment="service">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bot/logs/2015-02-10" afterPath="$PROJECT_DIR$/bot/logs/2015-02-10" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/captcha.txt" afterPath="$PROJECT_DIR$/captcha.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bot/register.py" afterPath="$PROJECT_DIR$/bot/register.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bot/scraper.py" afterPath="$PROJECT_DIR$/bot/scraper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
     </list>
     <ignored path="reserver.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="register.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bot/register.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54140127" vertical-offset="2630" max-vertical-offset="3366">
-              <caret line="165" column="18" selection-start-line="165" selection-start-column="18" selection-end-line="165" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2630" max-vertical-offset="3366">
+              <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
               <folding>
                 <element signature="e#24#76#0" expanded="true" />
               </folding>
@@ -52,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllers.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="controllers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/authentication/controllers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1321" max-vertical-offset="1962">
-              <caret line="87" column="24" selection-start-line="87" selection-start-column="24" selection-end-line="87" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.32605305" vertical-offset="1321" max-vertical-offset="1962">
+              <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -1092,14 +1088,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/authentication/controllers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1321" max-vertical-offset="1962">
-          <caret line="87" column="24" selection-start-line="87" selection-start-column="24" selection-end-line="87" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bot/scraper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2473" max-vertical-offset="4572">
@@ -1113,11 +1101,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bot/register.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54140127" vertical-offset="2630" max-vertical-offset="3366">
-          <caret line="165" column="18" selection-start-line="165" selection-start-column="18" selection-end-line="165" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2630" max-vertical-offset="3366">
+          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
           <folding>
             <element signature="e#24#76#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/authentication/controllers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32605305" vertical-offset="1321" max-vertical-offset="1962">
+          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
