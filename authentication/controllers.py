@@ -3,8 +3,7 @@ import logging
 from userpanel.models import UserCollection
 
 __author__ = 'bardia'
-from django.shortcuts import redirect
-
+from django.shortcuts import redirect, HttpResponse
 from django.contrib import auth
 from django.contrib.auth.models import User
 from bot.scraper import check, credit
@@ -32,7 +31,7 @@ def login(request):
             print("Not registerd try to register")
             check_res = check(username, password)
             if not check_res[0]:
-                print("wrong user or pass to register")
+                return HttpResponse(check_res[1]+check_res[2])
                 return redirect("/?msg=wrong_user_pass")
 
             name = check_res[1]
