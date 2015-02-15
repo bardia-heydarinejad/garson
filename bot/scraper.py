@@ -239,7 +239,10 @@ def get_captcha(cj = None):
     subprocess.call('tesseract '+file_name+' captcha -l eng', shell=True)
     f = open('captcha.txt')
     os.remove(file_name)
-    return f.read()
+    result = f.read()
+    if len(result) != 6:
+        raise ValueError("Wrong captcha: "+result)
+    return result
 
 if __name__ == "__main__":
     # print credit(("92521501", "agost1373"))
