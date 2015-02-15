@@ -19,8 +19,6 @@ url = "https://stu.iust.ac.ir/loginpage.rose"
 
 def check(username, password):
     cj = http.cookiejar.CookieJar()
-    log_file = open(str(datetime.datetime.now().date()), 'w')
-    log_file.write("checking")
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     urllib.request.install_opener(opener)
@@ -37,7 +35,6 @@ def check(username, password):
     #print(contents)
 
     if 'iconWarning.gif' in contents:
-        log_file.write("iconWarning.gif")
         return False, "iconWarning.gif", contents
 
     soup = BeautifulSoup(contents)
@@ -45,15 +42,11 @@ def check(username, password):
     user_info = user_info.replace(u'\xA0', ' ').replace('\n', " ")
     matches = re.findall(r"\d{8}", user_info)
     if len(matches) != 1:
-        log_file.write("\n no uni id\n")
-        log_file.write(contents)
         return False, "No uni id", None
     uni_id = matches[0]
     name = user_info.replace(uni_id, "").replace('\r', '')
     name = name.replace(re.findall(r" *", name)[0], '').strip()
     if len(name) < 3:
-        log_file.write("\n no name\n")
-        log_file.write(contents)
         return False, "no name", None
     return [True, name, uni_id]
 
