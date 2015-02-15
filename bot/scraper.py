@@ -238,8 +238,9 @@ def get_captcha(cj = None):
     f = open('captcha.txt')
     os.remove(file_name)
     result = f.read()
+    result = result.strip()
     if len(result) != 6:
-        raise ValueError("Wrong captcha: "+result)
+        raise ValueError("Wrong captcha: <"+result+"> len is: "+str(len(result)))
     return result
 
 if __name__ == "__main__":
