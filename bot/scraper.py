@@ -21,19 +21,19 @@ def check(username, password):
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     urllib.request.install_opener(opener)
     authentication_url = "https://stu.iust.ac.ir/j_security_check"
+    captcha_input = get_captcha()
     payload = {"j_username": username,
                "j_password": password,
-               "captcha_input": get_captcha(),
+               "captcha_input": captcha_input,
                "login": u"ورود", }
     data = urllib.parse.urlencode(payload)
     binary_data = data.encode('UTF-8')
     req = urllib.request.Request(authentication_url, binary_data)
     resp = urllib.request.urlopen(req)
     contents = str(resp.read(), 'utf-8')
-    #print(contents)
 
     if 'iconWarning.gif' in contents:
-        return False, "iconWarning.gif", contents
+        return False, "iconWarning.gif: "+captcha_input, contents
 
     soup = BeautifulSoup(contents)
     user_info = soup.body.table.tr.find_all('td')[4].div.contents[0]
