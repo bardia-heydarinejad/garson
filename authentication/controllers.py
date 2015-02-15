@@ -1,5 +1,4 @@
 import datetime
-import logging
 from userpanel.models import UserCollection
 
 __author__ = 'bardia'
@@ -9,7 +8,6 @@ from django.contrib.auth.models import User
 from bot.scraper import check, credit
 from configuration.models import Food
 
-logger = logging.getLogger(__name__)
 def login(request):
     if request.POST:
         username = request.POST.get("username", '')
@@ -27,7 +25,6 @@ def login(request):
             auth.login(request, user)
             return redirect(next_url)
         else:
-            logger.info(username+ " Not registerd try to register")
             print("Not registerd try to register")
             check_res = check(username, password)
             if not check_res[0]:
