@@ -90,7 +90,8 @@ def sync_mongo_sqlite():
     for user_in_mongo in UserCollection.objects():
         username = user_in_mongo.stu_username
         password = user_in_mongo.stu_password
-        if len(User.objects.get(username=username)) == 0:
+        if User.objects.get(username=username) is None:
+            print('creating: {} in sqlite.'.format(username))
             user = User.objects.create_user(username=username, password=password)
             user.is_active = True
             user.save()
