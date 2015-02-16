@@ -81,11 +81,18 @@ def flush():
     UserCollection.drop_collection()
 
 
-def dunim():
+def sync_mongo_sqlite():
     for user in User.objects.all():
         if len(user.username) == 8 and len(UserCollection.objects(stu_username=user.username)) == 0:
             user.delete()
             print('delete', user.username)
+
+    for user_in_mongo in UserCollection.objects():
+        username = user_in_mongo.stu_username
+        password = user_in_mongo.stu_password
+        user = User.objects.create_user(username=username, password=password)
+        user.is_active = True
+        user.save()
 
 
 def duchp():
