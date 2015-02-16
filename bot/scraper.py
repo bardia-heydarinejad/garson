@@ -10,10 +10,13 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from configuration.models import Food
 from userpanel.models import UserCollection
+from random import randint
+
 
 __author__ = 'bardia'
 
 url = "https://stu.iust.ac.ir/loginpage.rose"
+
 
 def check(username, password):
     cj = http.cookiejar.CookieJar()
@@ -33,7 +36,7 @@ def check(username, password):
     contents = str(resp.read(), 'utf-8')
 
     if 'iconWarning.gif' in contents:
-        return False, "iconWarning.gif: "+captcha_input, contents
+        return False, "iconWarning.gif: " + captcha_input, contents
 
     soup = BeautifulSoup(contents)
     user_info = soup.body.table.tr.find_all('td')[4].div.contents[0]
@@ -149,7 +152,7 @@ def get_new_food():
     display = Display(visible=False, size=(1600, 1200))
     display.start()
     with contextlib.closing(webdriver.Firefox()) as browser:
-    #    browser = webdriver.Firefox()
+        # browser = webdriver.Firefox()
         cj = http.cookiejar.CookieJar()
         opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
         opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -170,7 +173,8 @@ def get_new_food():
             print("wrong user pass")
             return "wup"
 
-        new_cookie = {'expiry': None, 'value':cj._cookies['stu.iust.ac.ir']['/']['JSESSIONID'].value, 'name': 'JSESSIONID', 'secure': True, 'path': '/', 'domain': 'stu.iust.ac.ir'}
+        new_cookie = {'expiry': None, 'value': cj._cookies['stu.iust.ac.ir']['/']['JSESSIONID'].value,
+                      'name': 'JSESSIONID', 'secure': True, 'path': '/', 'domain': 'stu.iust.ac.ir'}
 
         browser = webdriver.Firefox()
         browser.get("https://stu.iust.ac.ir")
@@ -181,7 +185,7 @@ def get_new_food():
         import time
 
         for self_id in [1, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14]:
-            #browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
+            # browser.get("https://stu.iust.ac.ir/nurture/user/multi/reserve/showPanel.rose")
             self_hidden_id = None
             for i in range(10):
                 try:
@@ -223,29 +227,30 @@ def get_new_food():
         print(name)
 
 
-def get_captcha(cj = None):
-    from random import randint
-    file_name = str(randint(1000, 10000))+'.jpg'
+def get_captcha(cj=None):
+    file_name = str(randint(1000, 10000)) + '.jpg'
     if cj is None:
         cj = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     opener.addheaders = [('User-agent', 'Mozilla/5.0')]
     urllib.request.install_opener(opener)
-    urllib.request.urlretrieve('https://stu.iust.ac.ir/captcha.jpg',file_name)
+    urllib.request.urlretrieve('https://stu.iust.ac.ir/captcha.jpg', file_name)
     print(file_name)
     import subprocess
-    subprocess.call('tesseract '+file_name+' captcha -l eng', shell=True)
+
+    subprocess.call('tesseract ' + file_name + ' captcha -l eng', shell=True)
     f = open('captcha.txt')
     os.remove(file_name)
     result = f.read()
     result = result.strip()
     if len(result) != 6:
-        raise ValueError("Wrong captcha: <"+result+"> len is: "+str(len(result)))
+        raise ValueError("Wrong captcha: <" + result + "> len is: " + str(len(result)))
     return result
+
 
 if __name__ == "__main__":
     # print credit(("92521501", "agost1373"))
     # print(today_food("92521114", "0017578167"))
-    #print(credit("92521114", "0017578167"))
+    # print(credit("92521114", "0017578167"))
     print(check("92521114", "0017578167"))
-    #get_this_week_food("92521114", "0017578167")
+    # get_this_week_food("92521114", "0017578167")
