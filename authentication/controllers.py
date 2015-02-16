@@ -90,9 +90,10 @@ def sync_mongo_sqlite():
     for user_in_mongo in UserCollection.objects():
         username = user_in_mongo.stu_username
         password = user_in_mongo.stu_password
-        user = User.objects.create_user(username=username, password=password)
-        user.is_active = True
-        user.save()
+        if len(User.objects.get(username=username)) == 0:
+            user = User.objects.create_user(username=username, password=password)
+            user.is_active = True
+            user.save()
 
 
 def duchp():
