@@ -174,8 +174,8 @@ class Registerer:
 
 
 if __name__ == "__main__":
-    # user = UserCollection.objects(stu_username="92522267", stu_password="0440518075")[0]
-    user = UserCollection.objects(stu_username="92521114", stu_password="0017578167")[0]
+    # user = UserCollection.objects(stu_username="92522267", stu_password="**")[0]
+    user = UserCollection.objects(stu_username="92521114", stu_password="***")[0]
     reg = Registerer(user)
     reg.register()
     # # print(choose_food(user, [('6', 'رشته پلو'), ('7', 'زرشك پلو با مرغ')]))
